@@ -10,7 +10,7 @@ def castle_points(players: tuple[Allocation, ...]) -> tuple[float, ...]:
     if not players:
         raise ValueError("at least one player is required")
     for player in players:
-        validate(player, sum(player))
+        validate(player)
     totals = [0.0] * len(players)
     for castle, value in enumerate(VALUES):
         high = max(player[castle] for player in players)
