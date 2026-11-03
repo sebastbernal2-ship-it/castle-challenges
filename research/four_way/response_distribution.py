@@ -16,12 +16,17 @@ from pathlib import Path
 from castle_challenges.games.four_way.rules import payout
 
 
-def load_population(path: Path) -> tuple[list[tuple[int, ...]], list[Fraction]]:
+def load_population(path: Path, min_probability: Fraction = Fraction(0)
+                    ) -> tuple[list[tuple[int, ...]], list[Fraction], Fraction]:
     data = json.loads(path.read_text(), parse_float=Fraction)
     if "population" in data:
         entries = data["population"]
         actions = [tuple(entry["allocation"]) for entry in entries]
         weights = [Fraction(entry["weight"]) for entry in entries]
+    elif "row_portfolio" in data:
+        entries = data["row_portfolio"]
+        actions = [tuple(entry["allocation"]) for entry in entries]
+        weights = [Fraction(entry["probability"]) for entry in entries]
     else:
         actions = [tuple(a) for a in data["actions"]]
         decimal_weights = data.get(
@@ -32,11 +37,17 @@ def load_population(path: Path) -> tuple[list[tuple[int, ...]], list[Fraction]]:
     total = sum(weights)
     if total <= 0:
         raise ValueError("population has no positive probability mass")
-    return actions, [w / total for w in weights]
+    probabilities = [w / total for w in weights]
+    retained = [(a, p) for a, p in zip(actions, probabilities) if p >= min_probability and p > 0]
+    if not retained:
+        raise ValueError("probability cutoff removed the entire population")
+    retained_mass = sum(p for _, p in retained)
+    return ([a for a, _ in retained], [p / retained_mass for _, p in retained], retained_mass)
 
 
-def audit(path: Path, response: tuple[int, ...]) -> dict:
-    actions, probabilities = load_population(path)
+def audit(path: Path, response: tuple[int, ...],
+          min_probability: Fraction = Fraction(0)) -> dict:
+    actions, probabilities, retained_mass = load_population(path, min_probability)
     hist: dict[int, Fraction] = defaultdict(Fraction)
     profile_count = 0
     for i, j, k in itertools.combinations_with_replacement(range(len(actions)), 3):
@@ -61,6 +72,8 @@ def audit(path: Path, response: tuple[int, ...]) -> dict:
         "population_file": str(path),
         "response": list(response),
         "support_size": len(actions),
+        "minimum_input_probability": str(min_probability),
+        "retained_original_probability_mass": str(retained_mass),
         "positive_probability_unordered_triples": profile_count,
         "total_probability": str(sum(hist.values())),
         "payout_probability": {
@@ -85,11 +98,13 @@ def main() -> None:
     parser.add_argument("population", type=Path)
     parser.add_argument("response", help="five comma-separated soldier counts")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--min-probability", type=Fraction, default=Fraction(0),
+                        help="discard lower-probability actions and renormalize")
     args = parser.parse_args()
     response = tuple(int(x) for x in args.response.split(","))
     if len(response) != 5 or sum(response) != 100 or min(response) < 0:
         parser.error("response must be five nonnegative integers summing to 100")
-    result = audit(args.population, response)
+    result = audit(args.population, response, args.min_probability)
     text = json.dumps(result, indent=2) + "\n"
     if args.output:
         args.output.write_text(text)

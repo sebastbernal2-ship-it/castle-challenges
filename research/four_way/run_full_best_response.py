@@ -16,6 +16,11 @@ def main() -> None:
     data = json.loads(args.population.read_text())
     if "population" in data:
         entries = data["population"]
+    elif "row_portfolio" in data:
+        entries = [
+            {"allocation": entry["allocation"], "weight": entry["probability"]}
+            for entry in data["row_portfolio"]
+        ]
     else:
         probabilities = data.get(
             "last_half_time_average_probabilities_decimal",

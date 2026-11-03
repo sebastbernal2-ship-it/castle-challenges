@@ -1,0 +1,28 @@
+{
+  "population_file": "research/four_way/results/robust_candidate_portfolio.json",
+  "response": [
+    0,
+    0,
+    32,
+    26,
+    42
+  ],
+  "support_size": 3,
+  "minimum_input_probability": "0",
+  "retained_original_probability_mass": "1",
+  "positive_probability_unordered_triples": 10,
+  "total_probability": "1",
+  "payout_probability": {
+    "9": {
+      "fraction": "1",
+      "decimal": 1.0
+    }
+  },
+  "exact_expected_payout_fraction": "9",
+  "expected_payout_decimal": 9.0,
+  "expected_shortfall_from_nine_fraction": "0",
+  "expected_shortfall_from_nine_decimal": 0.0,
+  "probability_mass_below_nine": "0",
+  "probability_mass_below_nine_decimal": 0.0,
+  "guaranteed_first_against_full_support": true
+}

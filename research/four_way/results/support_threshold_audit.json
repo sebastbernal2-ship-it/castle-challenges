@@ -1,0 +1,547 @@
+{
+  "method": "exact-rational response payout audit after discarding actions below each probability cutoff and renormalizing",
+  "cutoffs_are_on_each_action_probability_before_renormalization": true,
+  "results": [
+    {
+      "case": "pool18",
+      "population_file": "results/replicator_runs/diverse-pool18.json",
+      "response": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "minimum_action_probability": "0",
+      "retained_support_size": 18,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 2.5242793142649777e-19,
+      "probability_of_payout_below_9": 5.048558628529955e-20,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool18",
+      "population_file": "results/replicator_runs/diverse-pool18.json",
+      "response": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "minimum_action_probability": "1/100000000",
+      "retained_support_size": 6,
+      "retained_original_probability_mass": 0.9999999999533677,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "pool18",
+      "population_file": "results/replicator_runs/diverse-pool18.json",
+      "response": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "minimum_action_probability": "1/1000000000000",
+      "retained_support_size": 10,
+      "retained_original_probability_mass": 0.9999999999984067,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "pool18",
+      "population_file": "results/replicator_runs/diverse-pool18.json",
+      "response": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "minimum_action_probability": "1/10000000000000000",
+      "retained_support_size": 14,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 2.5242793142649777e-19,
+      "probability_of_payout_below_9": 5.048558628529955e-20,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool18",
+      "population_file": "results/replicator_runs/diverse-pool18.json",
+      "response": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "minimum_action_probability": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "retained_support_size": 15,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 2.5242793142649777e-19,
+      "probability_of_payout_below_9": 5.048558628529955e-20,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool19",
+      "population_file": "results/replicator_runs/diverse-pool19-response1.json",
+      "response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "minimum_action_probability": "0",
+      "retained_support_size": 19,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.919072608999207,
+      "expected_shortfall_from_9": 0.08092739100079299,
+      "probability_of_payout_below_9": 0.016185478200158598,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool19",
+      "population_file": "results/replicator_runs/diverse-pool19-response1.json",
+      "response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "minimum_action_probability": "1/100000000",
+      "retained_support_size": 5,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.919072608999207,
+      "expected_shortfall_from_9": 0.08092739100079299,
+      "probability_of_payout_below_9": 0.016185478200158598,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool19",
+      "population_file": "results/replicator_runs/diverse-pool19-response1.json",
+      "response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "minimum_action_probability": "1/1000000000000",
+      "retained_support_size": 5,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.919072608999207,
+      "expected_shortfall_from_9": 0.08092739100079299,
+      "probability_of_payout_below_9": 0.016185478200158598,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool19",
+      "population_file": "results/replicator_runs/diverse-pool19-response1.json",
+      "response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "minimum_action_probability": "1/10000000000000000",
+      "retained_support_size": 5,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.919072608999207,
+      "expected_shortfall_from_9": 0.08092739100079299,
+      "probability_of_payout_below_9": 0.016185478200158598,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool19",
+      "population_file": "results/replicator_runs/diverse-pool19-response1.json",
+      "response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "minimum_action_probability": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "retained_support_size": 16,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.919072608999207,
+      "expected_shortfall_from_9": 0.08092739100079299,
+      "probability_of_payout_below_9": 0.016185478200158598,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool20",
+      "population_file": "results/replicator_runs/diverse-pool20-response2.json",
+      "response": [
+        6,
+        26,
+        30,
+        32,
+        6
+      ],
+      "minimum_action_probability": "0",
+      "retained_support_size": 20,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.999999999598376,
+      "expected_shortfall_from_9": 4.016241089383302e-10,
+      "probability_of_payout_below_9": 1.2683891210821827e-10,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool20",
+      "population_file": "results/replicator_runs/diverse-pool20-response2.json",
+      "response": [
+        6,
+        26,
+        30,
+        32,
+        6
+      ],
+      "minimum_action_probability": "1/100000000",
+      "retained_support_size": 7,
+      "retained_original_probability_mass": 0.999999999789326,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "pool20",
+      "population_file": "results/replicator_runs/diverse-pool20-response2.json",
+      "response": [
+        6,
+        26,
+        30,
+        32,
+        6
+      ],
+      "minimum_action_probability": "1/1000000000000",
+      "retained_support_size": 9,
+      "retained_original_probability_mass": 0.9999999999999964,
+      "expected_payout": 8.999999999598376,
+      "expected_shortfall_from_9": 4.016241089383319e-10,
+      "probability_of_payout_below_9": 1.2683891210821863e-10,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool20",
+      "population_file": "results/replicator_runs/diverse-pool20-response2.json",
+      "response": [
+        6,
+        26,
+        30,
+        32,
+        6
+      ],
+      "minimum_action_probability": "1/10000000000000000",
+      "retained_support_size": 11,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.999999999598376,
+      "expected_shortfall_from_9": 4.016241089383302e-10,
+      "probability_of_payout_below_9": 1.2683891210821827e-10,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool20",
+      "population_file": "results/replicator_runs/diverse-pool20-response2.json",
+      "response": [
+        6,
+        26,
+        30,
+        32,
+        6
+      ],
+      "minimum_action_probability": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "retained_support_size": 18,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.999999999598376,
+      "expected_shortfall_from_9": 4.016241089383302e-10,
+      "probability_of_payout_below_9": 1.2683891210821827e-10,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool21",
+      "population_file": "results/replicator_runs/diverse-pool21-response3-100k.json",
+      "response": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "minimum_action_probability": "0",
+      "retained_support_size": 21,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.99999999102311,
+      "expected_shortfall_from_9": 8.976890636128359e-09,
+      "probability_of_payout_below_9": 1.7953781272256718e-09,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool21",
+      "population_file": "results/replicator_runs/diverse-pool21-response3-100k.json",
+      "response": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "minimum_action_probability": "1/100000000",
+      "retained_support_size": 6,
+      "retained_original_probability_mass": 0.9999999937468788,
+      "expected_payout": 8.999999991023284,
+      "expected_shortfall_from_9": 8.976715706392384e-09,
+      "probability_of_payout_below_9": 1.795343141278477e-09,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool21",
+      "population_file": "results/replicator_runs/diverse-pool21-response3-100k.json",
+      "response": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "minimum_action_probability": "1/1000000000000",
+      "retained_support_size": 8,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.99999999102311,
+      "expected_shortfall_from_9": 8.976890636128359e-09,
+      "probability_of_payout_below_9": 1.7953781272256718e-09,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool21",
+      "population_file": "results/replicator_runs/diverse-pool21-response3-100k.json",
+      "response": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "minimum_action_probability": "1/10000000000000000",
+      "retained_support_size": 8,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.99999999102311,
+      "expected_shortfall_from_9": 8.976890636128359e-09,
+      "probability_of_payout_below_9": 1.7953781272256718e-09,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool21",
+      "population_file": "results/replicator_runs/diverse-pool21-response3-100k.json",
+      "response": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "minimum_action_probability": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "retained_support_size": 15,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 8.99999999102311,
+      "expected_shortfall_from_9": 8.976890636128359e-09,
+      "probability_of_payout_below_9": 1.7953781272256718e-09,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool22",
+      "population_file": "results/replicator_runs/diverse-pool22-response4-100k.json",
+      "response": [
+        0,
+        0,
+        32,
+        33,
+        35
+      ],
+      "minimum_action_probability": "0",
+      "retained_support_size": 22,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 8.836586073381301e-55,
+      "probability_of_payout_below_9": 1.163590284290876e-55,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "pool22",
+      "population_file": "results/replicator_runs/diverse-pool22-response4-100k.json",
+      "response": [
+        0,
+        0,
+        32,
+        33,
+        35
+      ],
+      "minimum_action_probability": "1/100000000",
+      "retained_support_size": 6,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "pool22",
+      "population_file": "results/replicator_runs/diverse-pool22-response4-100k.json",
+      "response": [
+        0,
+        0,
+        32,
+        33,
+        35
+      ],
+      "minimum_action_probability": "1/1000000000000",
+      "retained_support_size": 6,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "pool22",
+      "population_file": "results/replicator_runs/diverse-pool22-response4-100k.json",
+      "response": [
+        0,
+        0,
+        32,
+        33,
+        35
+      ],
+      "minimum_action_probability": "1/10000000000000000",
+      "retained_support_size": 6,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "pool22",
+      "population_file": "results/replicator_runs/diverse-pool22-response4-100k.json",
+      "response": [
+        0,
+        0,
+        32,
+        33,
+        35
+      ],
+      "minimum_action_probability": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "retained_support_size": 10,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 8.836586073381301e-55,
+      "probability_of_payout_below_9": 1.163590284290876e-55,
+      "guaranteed_9_against_retained_support": false
+    },
+    {
+      "case": "robust_portfolio",
+      "population_file": "results/robust_candidate_portfolio.json",
+      "response": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "minimum_action_probability": "0",
+      "retained_support_size": 3,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "robust_portfolio",
+      "population_file": "results/robust_candidate_portfolio.json",
+      "response": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "minimum_action_probability": "1/100000000",
+      "retained_support_size": 3,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "robust_portfolio",
+      "population_file": "results/robust_candidate_portfolio.json",
+      "response": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "minimum_action_probability": "1/1000000000000",
+      "retained_support_size": 3,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "robust_portfolio",
+      "population_file": "results/robust_candidate_portfolio.json",
+      "response": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "minimum_action_probability": "1/10000000000000000",
+      "retained_support_size": 3,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    },
+    {
+      "case": "robust_portfolio",
+      "population_file": "results/robust_candidate_portfolio.json",
+      "response": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "minimum_action_probability": "1/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "retained_support_size": 3,
+      "retained_original_probability_mass": 1.0,
+      "expected_payout": 9.0,
+      "expected_shortfall_from_9": 0.0,
+      "probability_of_payout_below_9": 0.0,
+      "guaranteed_9_against_retained_support": true
+    }
+  ],
+  "interpretation": "Truncation diagnostics only: discarded probability mass is reported, and no claim is made about profiles involving omitted actions."
+}

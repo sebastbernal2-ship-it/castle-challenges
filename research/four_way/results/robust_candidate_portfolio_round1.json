@@ -1,0 +1,79 @@
+{
+  "method": "fictitious play in the finite candidate-allocation by saved-population zero-sum meta-game",
+  "iterations": 100000,
+  "candidate_action_count": 23,
+  "opponent_population_count": 5,
+  "row_portfolio": [
+    {
+      "allocation": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "probability": 1e-05
+    },
+    {
+      "allocation": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "probability": 0.68565
+    },
+    {
+      "allocation": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "probability": 1e-05
+    },
+    {
+      "allocation": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "probability": 0.31433
+    }
+  ],
+  "scenario_results": [
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool18.json",
+      "probability": 0.2196,
+      "portfolio_expected_payout": 5.718988133487411
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool19-response1.json",
+      "probability": 0.0,
+      "portfolio_expected_payout": 6.967631895733613
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool20-response2.json",
+      "probability": 0.0,
+      "portfolio_expected_payout": 7.237774488895474
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool21-response3-100k.json",
+      "probability": 0.15292,
+      "portfolio_expected_payout": 5.719100475707918
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool22-response4-100k.json",
+      "probability": 0.62748,
+      "portfolio_expected_payout": 5.700453665568874
+    }
+  ],
+  "worst_scenario_expected_payout": 5.700453665568874,
+  "meta_game_upper_bound": 5.708184643227671,
+  "restricted_meta_game_gap": 0.007730977658797045,
+  "scope": "Robust only against these saved opponent populations and this finite candidate action set; not an equilibrium certificate."
+}

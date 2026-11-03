@@ -1,0 +1,79 @@
+{
+  "method": "fictitious play in the finite candidate-allocation by saved-population zero-sum meta-game",
+  "iterations": 2000000,
+  "candidate_action_count": 24,
+  "opponent_population_count": 5,
+  "row_portfolio": [
+    {
+      "allocation": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "probability": 5e-07
+    },
+    {
+      "allocation": [
+        0,
+        0,
+        32,
+        26,
+        42
+      ],
+      "probability": 0.6875245
+    },
+    {
+      "allocation": [
+        21,
+        24,
+        28,
+        25,
+        2
+      ],
+      "probability": 5e-07
+    },
+    {
+      "allocation": [
+        22,
+        27,
+        31,
+        0,
+        20
+      ],
+      "probability": 0.3124745
+    }
+  ],
+  "scenario_results": [
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool18.json",
+      "probability": 0.3651395,
+      "portfolio_expected_payout": 5.710068186680823
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool19-response1.json",
+      "probability": 0.0,
+      "portfolio_expected_payout": 6.962395342812398
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool20-response2.json",
+      "probability": 0.0,
+      "portfolio_expected_payout": 7.234262028652674
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool21-response3-100k.json",
+      "probability": 0.007646,
+      "portfolio_expected_payout": 5.710257213697415
+    },
+    {
+      "population": "research/four_way/results/replicator_runs/diverse-pool22-response4-100k.json",
+      "probability": 0.6272145,
+      "portfolio_expected_payout": 5.705794985573735
+    }
+  ],
+  "worst_scenario_expected_payout": 5.705794985573735,
+  "meta_game_upper_bound": 5.707511998634105,
+  "restricted_meta_game_gap": 0.0017170130603707534,
+  "scope": "Robust only against these saved opponent populations and this finite candidate action set; not an equilibrium certificate."
+}
