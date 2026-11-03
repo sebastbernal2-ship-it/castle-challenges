@@ -92,6 +92,7 @@ def main() -> None:
         "original_support_size": len(actions),
         "quantized_support_size": len(counts),
         "frequency_total": args.frequency_total,
+        "distribution_quantization": "largest-remainder integer frequencies; all response arithmetic is exact for this rationalized mixture",
         "best_response": [int(x) for x in allocation.split(",")],
         "exact_expected_payout_fraction": f"{numerator}/{denominator}",
         "expected_payout_decimal": float(Fraction(int(numerator), int(denominator))),
