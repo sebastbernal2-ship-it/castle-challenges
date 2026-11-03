@@ -86,7 +86,7 @@ PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
 PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/hpg-candidate-0.json
 ```
 
-The remaining four tasks of the eight-configuration Slurm sweep (`49312405_4`–`49312405_7`) are still running, starting from the earlier `0.0007690650` candidate. Tasks 1–3 did not improve it; task 0 produced the new incumbent above. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets, and writes a full-action certificate beside every candidate.
+Sweep task 0 produced the new incumbent above. Tasks 1–5 and 7 have completed; their gaps range from `0.0007687400` to `0.0007688900`, so none beat task 0. Task 6 (`49312405_6`) remains running. All tasks started from the earlier `0.0007690650` strategy. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets, and writes a full-action certificate beside every candidate.
 
 The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a materially stronger certified strategy, but Game 1 is not fully solved or GTO.
 
