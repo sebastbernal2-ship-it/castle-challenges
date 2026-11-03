@@ -1,5 +1,23 @@
 # Game 1 computation log
 
+## Exact equilibrium found
+
+`results/exact-equilibrium-flow-lp.json` is an exact equilibrium certificate under the encoded rules: 194 legal allocations with integer frequency total 410, exact full-action best-response score `6150/820 = 7.5`, and exploitability `0/820`. `verify_strategy.py` checks every legal allocation using exact integer DP. The certificate was found by solving a sparse marginal-polytope cutting-plane LP, reconstructing its simple rational marginals (common denominator 410), then finding an integer path-flow coupling. The float LP was only a discovery tool; the rational flow and exhaustive exact response audit establish the result.
+
+Reproduce the exact rational-flow extraction from the saved LP discovery candidate (requires the `research` optional dependencies):
+
+```sh
+python -m pip install -e '.[research]'
+PYTHONPATH=src python3 research/head_to_head/certify_marginal_equilibrium.py \\
+  --candidate research/head_to_head/results/marginal-polytope-lp-candidate.json \\
+  --output /tmp/exact-equilibrium.json
+PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/exact-equilibrium.json
+```
+
+The floating-point discovery candidate can be regenerated with `marginal_polytope_lp.py`; the committed exact strategy and verifier output do not depend on rerunning that LP.
+
+The proof is the saved exact strategy and zero-gap full-action audit, not the numerical LP status. Confirm tie and sampling semantics against the challenge implementation before claiming this is the definitive challenge answer.
+
 ## Full-action fictitious play, exact best responses
 
 Ran two-sided fictitious play on the entire 4,598,126-action strategy space. At each round, each side's action is a pure best response to the opponent's empirical mixture. The response is computed by the exact marginal-payoff dynamic program, not by sampling allocations. Each side starts with the same 26-action pseudocount set: equal allocation, five corner allocations, and 20 seeded uniform-composition draws. Deterministic tie-breaking and symmetric initialization make the two empirical strategies identical in these runs.
@@ -64,7 +82,7 @@ A stronger direction oracle then produced a substantial further gain. For the to
 | 50,000 | 1,000,000 | 0.0007702150 |
 | 50,000 | 1,000,000 | 0.0007690650 |
 
-Each accepted strategy was checked against all legal attacker actions using the integer-DP verifier. The current 68,862-action mixture is `results/polished-full-action-defense-oracle.json`, with exact exploitability `30,514 / 40,000,520 ≈ 0.00076284008` and full-action best response `(12,4,5,12,67)`. It came from three additional polishing steps in HPG job `49349592`, starting from the preserved prior incumbent `results/polished-full-action-defense-oracle-step3.json`. Its trace reduced the gap from `0.00076464006` through `0.00076351507` and `0.00076304008` to the final value; the final strategy was independently checked over all legal actions.
+Historical incumbent before the exact LP result: the 68,862-action mixture in `results/polished-full-action-defense-oracle.json` had exact exploitability `30,514 / 40,000,520 ≈ 0.00076284008` and best response `(12,4,5,12,67)`. HPG job `49349592` improved the prior candidate through three polishing steps; that heuristic artifact is retained for research history but superseded by the exact equilibrium above.
 
 Reproduce the final accepted step (the oracle run takes about 11 minutes on the recorded machine):
 
@@ -86,9 +104,9 @@ PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
 PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/hpg-candidate-0.json
 ```
 
-The eight-configuration sweep (`49312405`) is complete. Task 0 produced the previous incumbent; tasks 1–7 have exact-audited gaps between `0.0007687400` and `0.0007688900`. All tasks started from the earlier `0.0007690650` strategy. Three-step refinement job `49349592` improved task 0's result to the current strategy. A further three-step refinement (`49363145`) is running from this new exact-audited incumbent. `hpg_polish_array.sbatch` and `hpg_polish_refine.sbatch` preserve the search configurations and write full-action certificates.
+The eight-configuration sweep (`49312405`) and its refinement (`49349592`) are historical; they generated the positive-gap heuristic incumbent described above. A further refinement (`49363145`) had been submitted before the exact LP certificate superseded it. HPG SSH access is currently unavailable, so its present status and cancellation could not be confirmed. These heuristic jobs are not needed for the exact Game 1 result.
 
-The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a stronger certified strategy, but Game 1 is not fully solved or GTO.
+Those historical line-search strategies had positive gaps and were not equilibria. The exact flow-LP certificate above supersedes them for Game 1 under the encoded rules.
 
 ## Compact path-flow / mirror-prox experiment
 
@@ -116,4 +134,4 @@ We also implemented exact logit-response marginals by a log-space coefficient DP
 
 ## Interpretation and next computation
 
-The latest candidate has a rigorously evaluated `0.0007628401` full-action deviation gap under the encoded rules. All reported gaps are exact certificates for their saved mixtures, not proofs of global optimality; Game 1 is not yet solved.
+Game 1 now has a zero-gap exact equilibrium certificate under the encoded rules. Game 2 remains unsolved, and the challenge's external rule semantics still need confirmation.

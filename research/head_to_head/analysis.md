@@ -34,13 +34,19 @@ By antisymmetry, this is the maximum profitable pure deviation over the baseline
 
 Restricted-game LP (centered payoffs `G[j,k]=u(s_j,s_k)-7.5`): find `p>=0, sum p=1` maximizing `z` subject to `sum_j p_j G[j,k] >= z` for every restricted opponent action `s_k`. The security value is at least zero due symmetry; the full-game best-response oracle checks all omitted actions.
 
+### Exact equilibrium certificate under the encoded rules
+
+`results/exact-equilibrium-flow-lp.json` gives a legal 194-allocation mixture with integer frequency total 410. Its exact marginal counts are particularly simple (each row totals 410): castle 1 has counts 50 on even soldiers `0..12` and 10 on odd soldiers; castle 2 has 20 on even `0..26` and 10 on odd; castle 3 has count 10 at every soldier count `0..40`; castle 4 has 5 on even `0..54` and 10 on odd; castle 5 has 2 on even `0..68` and 10 on odd. The saved path-flow coupling proves these marginals arise from legal allocations summing to 100.
+
+The exact integer-DP verifier checks every legal opponent allocation and returns best-response score `6150/820 = 7.5`, exploitability `0/820`, and one best response `(12,26,40,22,0)`. Since the game is symmetric and constant-sum 15, the self-play value is 7.5; this zero-gap full-action certificate proves the saved mixture is a Nash equilibrium for the encoded Game 1 rules. Reproduce the audit with `PYTHONPATH=src python3 research/head_to_head/verify_strategy.py research/head_to_head/results/exact-equilibrium-flow-lp.json`.
+
 ## 4. Compact path-flow formulation
 
 The convex hull of legal allocations has an exact layered-network representation. At layer `i`, a node records the soldiers `s` already assigned to the first `i` castles. An arc labeled `x` goes from `(i,s)` to `(i+1,s+x)`, and paths run from `(0,0)` to `(5,100)`. A unit flow in this DAG is exactly a distribution over legal allocations; conversely any allocation mixture induces such a flow. There are only `5 * sum_{s=0}^{100}(101-s) = 25,755` arcs. The marginal probability of assigning `x` to castle `i` is the total flow on arcs in layer `i` labeled `x`.
 
 Both players choose points in this path-flow polytope. Their payoff is a bilinear function of the projected castle marginals, with per-castle payoff matrix `v_i * (1[x>y] + 1/2 1[x=y])`. This avoids enumerating the 4.6 million path vertices when generating strategies. Entropic mirror-prox updates have Gibbs form `Pr(a) proportional to exp(sum_i theta_i[a_i])`; forward/backward sum-product DP computes the marginals and edge flows in `O(5*100^2)` per update. `mirror_prox_flow.cpp` implements this update and `run_mirror_prox_flow.py` decomposes the averaged flow into legal allocations before quantization and exact audit.
 
-The formulation is exact, but the current solver is not yet effective: it uses floating-point updates and a probability floor for stability. Exact-audited candidates had gaps `0.17618056` (1,000 iterations, step 0.03), `4.41000924` (100,000, step 0.03), and `1.00263072` (200,000, step 0.0002), all worse than the incumbent. This demonstrates the compact representation, not a solved optimization; step-size control, convergence, and a useful saddle certificate remain open.
+The earlier mirror-prox implementation used floating-point updates and a probability floor for stability; its tested candidates had positive gaps and did not solve the game. A different cutting-plane LP on the same path-flow polytope has since produced the exact certificate above.
 
 ## 5. Caveats / research questions
 
@@ -48,11 +54,10 @@ The formulation is exact, but the current solver is not yet effective: it uses f
 - Strategies are independently randomized and hidden simultaneously. If the UI/game lets players observe allocations or draws without replacement, the model changes.
 - A distribution that is strong against uniform random compositions is not thereby close to equilibrium.
 - The DP best response finds a pure deviation. That suffices for exploitability against a mixed strategy because a linear objective over a simplex has a pure maximizer.
-- This project has not yet computed an equilibrium. Do not present a guessed allocation as GTO.
+- The saved strategy is an exact equilibrium only for the encoded rules. Confirm those rules against the actual challenge before calling it the challenge's definitive answer.
 
 ## 6. What remains for a full solution
 
-1. Stabilize a first-order saddle solver on the compact path-flow polytope (or use a convergent column-generation LP), and check it against the exact full-action DP gap at every checkpoint.
-2. Turn the positive gap into a true certificate: either drive it to zero with exact rational primal/dual bounds, or report a rigorous epsilon-equilibrium bound. The current best exact gap is `30,514 / 40,000,520`.
-3. Confirm challenge tie and sampling semantics. The current results certify only the encoded rules.
-4. Do not label the current candidate GTO or an exact equilibrium.
+1. Confirm challenge tie and sampling semantics; the proof certifies the rules encoded here.
+2. Preserve the exact mixture, rational marginals, integer path-flow coupling, and full-action verifier output as the reproducible equilibrium certificate.
+3. Game 2 remains unsolved; its multiplayer ranking payoffs do not reduce to this marginal LP.

@@ -1,0 +1,22 @@
+{
+  "strategy_file": "research/head_to_head/results/exact-equilibrium-flow-lp.json",
+  "frequency_total": 410,
+  "support_size": 194,
+  "best_response": [
+    12,
+    26,
+    40,
+    22,
+    0
+  ],
+  "best_response_score_fraction": [
+    6150,
+    820
+  ],
+  "exploitability_fraction": [
+    0,
+    820
+  ],
+  "exploitability": 0.0,
+  "verified_full_action_space": true
+}

@@ -21,7 +21,8 @@ tests/
 ## Shared setup
 
 - Python 3.10+
-- No runtime dependencies
+- No runtime dependencies for the game models and verifiers
+- Optional `research` dependencies (`numpy`, `scipy`) for the marginal-polytope LP and rational-flow certificate generator
 
 ```sh
 python -m pip install -e .
@@ -39,9 +40,9 @@ castle-head-to-head --count
 castle-head-to-head 20,20,20,20,20 --trials 10000 --seed 7
 ```
 
-The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. The current polished candidate at `research/head_to_head/results/polished-full-action-defense-oracle.json` has exact full-action exploitability `30,514 / 40,000,520 ≈ 0.0007628401` points under the encoded rules. Verify it with `PYTHONPATH=src python3 research/head_to_head/verify_strategy.py research/head_to_head/results/polished-full-action-defense-oracle.json`. It remains an approximate strategy, not an exact equilibrium or GTO; methods and ongoing LP work are in `research/head_to_head/computation.md`.
+The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. Game 1 now has an exact symmetric Nash-equilibrium certificate under the encoded rules: `research/head_to_head/results/exact-equilibrium-flow-lp.json` is a legal 194-allocation mixture (frequency total 410) whose exact best-response score is `6150/820 = 7.5` and whose full-action exploitability is exactly zero. Verify it with `PYTHONPATH=src python3 research/head_to_head/verify_strategy.py research/head_to_head/results/exact-equilibrium-flow-lp.json`. The proof covers all 4,598,126 legal allocations; confirm challenge tie and sampling semantics before treating it as the definitive challenge answer. Derivation and reproducibility are in `research/head_to_head/computation.md`.
 
-**Research target:** symmetric Nash equilibrium in this finite two-player constant-sum game. There are `C(104,4) = 4,598,126` legal pure strategies, so restricted-game solving and best-response expansion are natural starting points.
+**Solved under the encoded model:** a symmetric Nash equilibrium in this finite two-player constant-sum game is saved and exactly certified. There are `C(104,4) = 4,598,126` legal pure strategies; the exact dynamic-programming verifier covers them all.
 
 ## Game 2 — Four-Way Battle
 

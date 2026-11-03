@@ -1,0 +1,22 @@
+{
+  "strategy_file": "research/head_to_head/results/marginal-polytope-lp-candidate.json",
+  "frequency_total": 1000000000000,
+  "support_size": 194,
+  "best_response": [
+    0,
+    3,
+    37,
+    48,
+    12
+  ],
+  "best_response_score_fraction": [
+    15000000000062,
+    2000000000000
+  ],
+  "exploitability_fraction": [
+    62,
+    2000000000000
+  ],
+  "exploitability": 3.1e-11,
+  "verified_full_action_space": true
+}

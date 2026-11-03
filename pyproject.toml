@@ -9,6 +9,9 @@ description = "Separate research scaffolds for two castle allocation games"
 requires-python = ">=3.10"
 dependencies = []
 
+[project.optional-dependencies]
+research = ["numpy>=1.26", "scipy>=1.11"]
+
 [project.scripts]
 castle-head-to-head = "castle_challenges.games.head_to_head.cli:main"
 castle-four-way = "castle_challenges.games.four_way.cli:main"
