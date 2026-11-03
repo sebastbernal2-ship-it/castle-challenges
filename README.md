@@ -47,7 +47,7 @@ The evaluator reports performance against a sampled uniform-composition baseline
 
 Four players allocate 100 soldiers each. Each castle's points are awarded to its high bidder(s), split equally in case of a tie. Players are ranked by castle points; players tied in rank split the payouts for the rank slots they occupy, using `(9, 4, 2, 0)`.
 
-Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. `run_exact_full_best_response.py` evaluates the best response over all 4,598,126 legal allocations using exact integer arithmetic for a stated integer-frequency mixture; optional support truncation returns a rigorous payout-range bound for discarded mass. `restricted_two_support_search.py` and `restricted_support3_search.py` search supports through size three and exact-audit candidates, but found no useful full-game approximation. Mixed equilibrium remains unsolved; see `research/four_way/analysis.md` for the method and practical blockers.
+Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. `run_exact_full_best_response.py` evaluates the best response over all 4,598,126 legal allocations using exact integer arithmetic for a stated integer-frequency mixture; optional support truncation returns a rigorous payout-range bound for discarded mass. Numerical support searches through size four exact-audit surviving candidates, but found no useful full-game approximation. Mixed equilibrium remains unsolved; see `research/four_way/analysis.md` for the method and practical blockers.
 
 ```sh
 castle-four-way 20,20,20,20,20 --trials 10000 --seed 7

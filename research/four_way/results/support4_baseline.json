@@ -1,0 +1,9 @@
+{
+  "method": "support-four multistart Newton, restricted-pool check, exact full-action audit",
+  "pool_file": "research/four_way/baseline_population.json",
+  "pool_size": 6,
+  "roots_found": 0,
+  "restricted_equilibria_found": 0,
+  "grid_denominator": 8,
+  "warning": "Numerical multistart search; no support-four restricted equilibrium found. This is not a proof of nonexistence."
+}

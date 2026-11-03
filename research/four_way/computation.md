@@ -18,11 +18,11 @@ The exact integer oracle precomputes each opponent triple's per-castle score inc
 
 A larger 25-action replicator time-average mixture had eight nonzero actions after largest-remainder quantization to `N=1,000,002`. The exact oracle found `(24,30,35,0,11)` with payout `8.999999999785`. Exact total-variation accounting between the decimal input and its rationalized mixture gives a certified original-mixture exploitability interval of `[5.2499919565, 5.25]`; see `results/exact_response_pool25.json`. This confirms the near-9 deviation was not just long-double rounding. Both results are fixed-mixture audits, not population solutions.
 
-## Restricted support search (sizes one through three)
+## Restricted support search (sizes one through four)
 
 `restricted_two_support_search.py` enumerates pure and two-action supports in a finite pool. For a pair `(a,b)`, the indifference condition `g_a(x)=g_b(x)` is cubic in `x=P(a)`; unit-interval roots are isolated numerically, rationalized to integer frequencies, and audited with the exact global response oracle.
 
-`restricted_support3_search.py` builds the small-pool payoff tensor, uses multi-start Newton to find roots of the two indifference equations on each three-action support, checks every omitted pool action, and exact-audits surviving candidates against the whole game. On the six-action baseline it finds a restricted support-three equilibrium, but the exact full-game response `(20,21,21,0,38)` gives exploitability `21/4 = 5.25`. On the diverse 18-action pool, a denominator-8 multistart grid found 181 numerical roots but no restricted equilibrium; this does not prove none exists. Support-two searches on the six-action and 18-action pools find the same minimum gap. This illustrates why restricted equilibria do not certify full-game equilibria.
+`restricted_support3_search.py` builds the small-pool payoff tensor, uses multi-start Newton to find roots of the two indifference equations on each three-action support, checks every omitted pool action, and exact-audits surviving candidates against the whole game. On the six-action baseline it finds a restricted support-three equilibrium, but the exact full-game response `(20,21,21,0,38)` gives exploitability `21/4 = 5.25`. On the diverse 18-action pool, a denominator-8 support-three multistart grid found 181 numerical roots but no restricted equilibrium; this does not prove none exists. A denominator-8 support-four Newton search on the six-action baseline found no roots, also without proving nonexistence. Support-two searches on the six-action and 18-action pools find the same minimum gap. These results illustrate why restricted equilibria do not certify full-game equilibria.
 
 Reproduce these diagnostics with:
 
@@ -39,12 +39,15 @@ PYTHONPATH=src python3 research/four_way/restricted_support3_search.py \
 PYTHONPATH=src python3 research/four_way/restricted_support3_search.py \\
   research/four_way/results/diverse-pool18.json --max-actions 18 \\
   --grid-denominator 8 --output research/four_way/results/support3_diverse18.json
+PYTHONPATH=src python3 research/four_way/restricted_support4_search.py \\
+  research/four_way/baseline_population.json --max-actions 6 \\
+  --grid-denominator 8 --output research/four_way/results/support4_baseline.json
 ```
 
-These are numerical candidate generators, not complete algebraic support solvers; they do not search supports larger than three. Root tolerance and frequency rounding preclude an equilibrium claim, while the reported full-action deviation gap is exact for each rationalized mixture.
+These are numerical candidate generators, not complete algebraic support solvers; they do not search supports larger than four. Root tolerance and frequency rounding preclude an equilibrium claim, while the reported full-action deviation gap is exact for each rationalized mixture.
 
 ## Current status / what remains
 
-No strategic population has been solved. Game 2's payoff depends on the final ranking against three opponents, so castle marginals do not make utility separable as in Game 1. Restricted dynamics, numerical support searches through size three, and exact fixed-mixture response checks exist, but they do not solve the nonlinear symmetric equilibrium conditions robustly. The exact response runner also supports `--max-support K`: it solves against the retained highest-mass actions, computes exact total variation from the supplied rational weights (including quantization/pruning), and reports a two-sided exploitability interval. This helps only when discarded mass is small and the retained-mixture response is low; discarding half the equal six-action baseline's mass yields only the trivial 9-point upper bound. A global deviation bound is needed before any full-game equilibrium claim. Monte Carlo evaluation remains diagnostic only.
+No strategic population has been solved. Game 2's payoff depends on the final ranking against three opponents, so castle marginals do not make utility separable as in Game 1. Restricted dynamics, numerical support searches through size four, and exact fixed-mixture response checks exist, but they do not solve the nonlinear symmetric equilibrium conditions robustly. The exact response runner also supports `--max-support K`: it solves against the retained highest-mass actions, computes exact total variation from the supplied rational weights (including quantization/pruning), and reports a two-sided exploitability interval. This helps only when discarded mass is small and the retained-mixture response is low; discarding half the equal six-action baseline's mass yields only the trivial 9-point upper bound. A global deviation bound is needed before any full-game equilibrium claim. Monte Carlo evaluation remains diagnostic only.
 
-Tests cover multiset aggregation, the constant-sum invariant, support-two cubic roots, support-three derivatives, and the exact response kernel. They do not certify a Game 2 equilibrium.
+Tests cover multiset aggregation, the constant-sum invariant, support-two cubic roots, support-three and support-four derivatives, and the exact response kernel. They do not certify a Game 2 equilibrium.
