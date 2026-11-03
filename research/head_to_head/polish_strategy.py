@@ -10,6 +10,9 @@ convergence guarantee for the non-smooth objective.
 import argparse
 import json
 from pathlib import Path
+import shutil
+import subprocess
+import tempfile
 
 from castle_challenges.games.head_to_head.best_response import (
     best_response_from_counts, top_responses_from_counts,
@@ -18,8 +21,9 @@ from castle_challenges.games.head_to_head.rules import score
 
 
 ALPHAS = (tuple(10.0 ** (power / 4) / 1_000_000
-                for power in range(0, 17))
-          + (2.5e-7, 5e-7, 7.5e-7, 0.0001, 0.0002, 0.0005, 0.001, 0.002))
+                for power in range(0, 25))
+          + (2.5e-7, 5e-7, 7.5e-7, 0.0001, 0.0002, 0.0005, 0.001,
+             0.002, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0))
 
 
 def _histogram(weights: dict[tuple[int, ...], int]) -> list[list[int]]:
@@ -44,6 +48,20 @@ def _quantize(weights: dict[tuple[int, ...], float], total: int) -> dict[tuple[i
 def _restricted_defense_mix(deviations: list[tuple[int, ...]], defenses: list[tuple[int, ...]],
                             rounds: int = 5_000) -> list[float]:
     """Approximate minimax defense over a small response/deviation matrix."""
+    compiler = shutil.which("c++")
+    if compiler:
+        source = Path(__file__).with_name("restricted_matrix_fictitious_play.cpp")
+        with tempfile.TemporaryDirectory(prefix="castle-h2h-matrix-") as tmp:
+            binary = Path(tmp) / "matrix_fp"
+            subprocess.run([compiler, "-O3", "-std=c++17", str(source), "-o", str(binary)],
+                           check=True, stdout=subprocess.DEVNULL)
+            payload = f"{len(deviations)} {len(defenses)} {rounds}\n"
+            payload += "".join(" ".join(map(str, a)) + "\n" for a in deviations)
+            payload += "".join(" ".join(map(str, a)) + "\n" for a in defenses)
+            output = subprocess.run([str(binary)], input=payload, text=True,
+                                    capture_output=True, check=True).stdout.split()
+        return [float(x) for x in output[1:]]
+
     matrix = [[score(b, c) for c in defenses] for b in deviations]
     row_counts = [0] * len(deviations)
     col_counts = [0] * len(defenses)
@@ -62,7 +80,7 @@ def _restricted_defense_mix(deviations: list[tuple[int, ...]], defenses: list[tu
 
 
 def polish(source: Path, steps: int = 20, top_k: int = 10,
-           matrix_rounds: int = 5_000) -> dict:
+           matrix_rounds: int = 5_000, pure_directions: int = 64) -> dict:
     data = json.loads(source.read_text())
     if "row_strategy" in data:
         total = data["rounds"] + data["initial_actions_per_side"]
@@ -90,12 +108,16 @@ def polish(source: Path, steps: int = 20, top_k: int = 10,
 
         defense_probabilities = _restricted_defense_mix(
             [a for a, _ in deviations], directions, matrix_rounds)
-        direction_mixtures = [({a: 1.0}, [a]) for a in directions]
+        ranked_directions = sorted(zip(directions, defense_probabilities),
+                                   key=lambda item: item[1], reverse=True)
+        direction_mixtures = [({a: 1.0}, [a]) for a, p in
+                              ranked_directions[:pure_directions] if p > 0]
         direction_mixtures.append((dict(zip(directions, defense_probabilities)), directions))
 
         best_gap = trace[-1]["gap"]
         best_strategy = None
         best_hist = None
+        best_alpha = None
         for direction_weights, direction_actions in direction_mixtures:
             for alpha in ALPHAS:
                 candidate_weights = {
@@ -113,13 +135,15 @@ def polish(source: Path, steps: int = 20, top_k: int = 10,
                     best_hist = hist
                     best_response_action = response
                     best_direction_weights = direction_weights
+                    best_alpha = alpha
         if best_strategy is None:
             break
         strategy, current_hist = best_strategy, best_hist
-        trace.append({"step": step, "gap": best_gap,
+        trace.append({"step": step, "gap": best_gap, "step_size": best_alpha,
                       "best_response": list(best_response_action),
                       "descent_mixture": [[list(action), probability]
-                                           for action, probability in best_direction_weights.items()]})
+                                           for action, probability in best_direction_weights.items()
+                                           if probability > 0]})
 
     _, numerator, denominator = best_response_from_counts(tuple(current_hist))
     payload = {
@@ -128,6 +152,7 @@ def polish(source: Path, steps: int = 20, top_k: int = 10,
         "frequency_total": total,
         "top_deviations_considered": top_k,
         "restricted_defense_matrix_rounds": matrix_rounds,
+        "pure_direction_candidates": pure_directions,
         "trace": trace,
         "final_gap_fraction": [numerator - 15 * denominator // 2, denominator],
         "final_best_response_score_fraction": [numerator, denominator],
@@ -143,9 +168,11 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=20)
     parser.add_argument("--top-k", type=int, default=10)
     parser.add_argument("--matrix-rounds", type=int, default=5_000)
+    parser.add_argument("--pure-directions", type=int, default=64)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = polish(args.strategy, args.steps, args.top_k, args.matrix_rounds)
+    result = polish(args.strategy, args.steps, args.top_k, args.matrix_rounds,
+                    args.pure_directions)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({k: v for k, v in result.items() if k != "strategy"}, indent=2))
 
