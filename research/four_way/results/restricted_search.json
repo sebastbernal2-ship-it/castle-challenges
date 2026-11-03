@@ -10,5 +10,5 @@
     {"pool_size": 10, "iterations": 10000, "eta": 0.05, "full_game_best_response": [21, 22, 24, 23, 10], "best_response_payout": 9.0},
     {"pool_size": 11, "iterations": 10000, "eta": 0.05, "full_game_best_response": [21, 23, 25, 0, 31], "best_response_payout": 9.0}
   ],
-  "interpretation": "Restricted replicator strategies are highly exploitable. The full-action oracle finds a strategy that earns first-place payout 9 against every sampled opponent triple in each tested mixture. This is a failure diagnostic, not evidence of equilibrium."
+  "interpretation": "Restricted replicator strategies are highly exploitable. The full-action oracle printed 9.0 at floating-point precision; this does not imply a 9-point payout against every triple. See the rational payout audit for an example. This is a failure diagnostic, not evidence of equilibrium."
 }

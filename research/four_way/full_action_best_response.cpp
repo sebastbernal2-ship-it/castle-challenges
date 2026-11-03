@@ -2,7 +2,7 @@
 // Build: c++ -O3 -std=c++17 full_action_best_response.cpp -o /tmp/castle-br4
 // Input: support size, then five soldier counts and a weight per support action.
 // Output: best allocation and expected payout. Computation is exact in action
-// enumeration and scoring; expectation weights use IEEE double arithmetic.
+// enumeration and scoring; probability weights use long double arithmetic.
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -18,10 +18,10 @@ struct OpponentTriple {
     const Allocation* a;
     const Allocation* b;
     const Allocation* c;
-    double probability;
+    long double probability;
 };
 
-static double utility4(const Allocation& me, const Allocation& a,
+static long double utility4(const Allocation& me, const Allocation& a,
                        const Allocation& b, const Allocation& c) {
     const std::array<const Allocation*, 4> players{&me, &a, &b, &c};
     std::array<int, 4> score12{}; // castle score * 12; exact integer units
@@ -46,7 +46,7 @@ static double utility4(const Allocation& me, const Allocation& a,
         for (int place = rank; place < end; ++place) prize_sum += prize4[place];
         const int shared_prize4 = prize_sum / (end - rank);
         for (int place = rank; place < end; ++place)
-            if (order[place] == 0) return shared_prize4 / 4.0;
+            if (order[place] == 0) return shared_prize4 / 4.0L;
         rank = end;
     }
     return 0.0;
@@ -59,8 +59,8 @@ int main() {
         return 2;
     }
     std::vector<Allocation> actions(n);
-    std::vector<double> weights(n);
-    double total = 0.0;
+    std::vector<long double> weights(n);
+    long double total = 0.0L;
     for (int i = 0; i < n; ++i) {
         for (int& x : actions[i]) std::cin >> x;
         std::cin >> weights[i];
@@ -76,7 +76,7 @@ int main() {
         total += weights[i];
     }
     if (total <= 0) { std::cerr << "zero total weight\n"; return 2; }
-    for (double& w : weights) w /= total;
+    for (long double& w : weights) w /= total;
 
     std::vector<OpponentTriple> triples;
     for (int i = 0; i < n; ++i) {
@@ -85,7 +85,7 @@ int main() {
                 int multiplicity = 6;
                 if (i == j && j == k) multiplicity = 1;
                 else if (i == j || j == k) multiplicity = 3;
-                const double p = multiplicity * weights[i] * weights[j] * weights[k];
+                const long double p = multiplicity * weights[i] * weights[j] * weights[k];
                 if (p > 0)
                     triples.push_back({&actions[i], &actions[j], &actions[k], p});
             }
@@ -93,22 +93,22 @@ int main() {
     }
 
     Allocation best{};
-    double best_value = -1.0;
+    long double best_value = -1.0L;
     for (int a = 0; a <= 100; ++a)
         for (int b = 0; b <= 100 - a; ++b)
             for (int c = 0; c <= 100 - a - b; ++c)
                 for (int d = 0; d <= 100 - a - b - c; ++d) {
                     const int e = 100 - a - b - c - d;
                     const Allocation candidate{a, b, c, d, e};
-                    double expected = 0.0;
+                    long double expected = 0.0L;
                     for (const auto& t : triples)
                         expected += t.probability * utility4(candidate, *t.a, *t.b, *t.c);
-                    if (expected > best_value + 1e-13) {
+                    if (expected > best_value) {
                         best = candidate;
                         best_value = expected;
                     }
                 }
-    std::cout << std::setprecision(15) << best[0];
+    std::cout << std::setprecision(21) << best[0];
     for (int i = 1; i < 5; ++i) std::cout << ',' << best[i];
     std::cout << '\t' << best_value << '\t' << triples.size() << '\n';
 }

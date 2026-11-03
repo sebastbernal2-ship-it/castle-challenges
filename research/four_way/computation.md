@@ -2,7 +2,7 @@
 
 ## Exact finite-mixture expected payout
 
-Added `games/four_way/best_response.py`. Given a finite population support of size `K`, it enumerates the `C(K+2,3)` unordered opponent triples, applies the correct multinomial weight for iid draws with replacement, and computes a candidate allocation's expected tournament payout exactly (up to floating point). This is exact only against the supplied mixture. `best_candidate` compares a caller-supplied action set; it is deliberately not called a full-game best-response oracle.
+Added `games/four_way/best_response.py`. Given a finite population support of size `K`, it enumerates the `C(K+2,3)` unordered opponent triples, applies the correct multinomial weight for iid draws with replacement, and numerically computes a candidate's payout against that supplied mixture. `best_candidate` compares a caller-supplied action set; it is deliberately not a full-game best-response oracle. `response_distribution.py` audits a fixed strategy with exact rational arithmetic over decimalized input weights.
 
 A diagnostic population was defined with equal probability on six allocations: `(20,20,20,20,20)` and the five single-castle corners. Exact expected payouts for selected candidate allocations:
 
@@ -15,18 +15,18 @@ A diagnostic population was defined with equal probability on six allocations: `
 | `(0,0,25,25,50)` | 7.513889 |
 | `(5,10,20,30,35)` | 8.048611 |
 
-This population is an intentionally simple diagnostic, not an estimate of applicants and not an equilibrium. The exact full-action search over all 4,598,126 allocations finds `(1,21,21,21,36)`, with expected payout `8.402778` against that mixture. Since symmetric self-play has expected payout 3.75, the diagnostic mixture has an exact pure deviation gain of `4.652778` points. Add this response at equal mass to the six original actions and rerun the full-action search: the next response is `(2,1,22,22,53)`, with payout `8.291545` against the resulting seven-action mixture. This confirms the baseline is extremely far from equilibrium; it does not by itself produce a convergent learning process. Full outputs are in `results/full_action_responses.json`.
+This population is an intentionally simple diagnostic, not an estimate of applicants and not an equilibrium. The exhaustive full-action search over all 4,598,126 allocations finds `(1,21,21,21,36)`, with numerically computed payout `8.402778` against that mixture. Since symmetric self-play has expected payout 3.75, the diagnostic mixture has a pure deviation gain of about `4.652778` points. Add this response at equal mass to the six original actions and rerun the full-action search: the next response is `(2,1,22,22,53)`, with payout `8.291545` against the resulting seven-action mixture. This confirms the baseline is extremely far from equilibrium; it does not by itself produce a convergent learning process. Full outputs are in `results/full_action_responses.json`.
 
 Against four copies of the even allocation, `(20,0,21,21,38)` earns 9 points in that profile, illustrating a profitable response to a pure strategy (not to a mixed equilibrium).
 
 ## Further search and structural result
 
-The follow-up restricted replicator plus full-action oracle experiments are documented in `restricted-search.md`. On 9-, 10-, and 11-action pools, the restricted dynamics produced mixtures for which the exhaustive response search found a pure strategy earning 9.0—the maximum payout—against every opponent triple in the mixture support. These results demonstrate extreme restricted-support exploitability, not progress toward a solved equilibrium.
+The follow-up restricted replicator plus full-action oracle experiments are documented in `restricted-search.md`. On 9-, 10-, and 11-action pools, the restricted dynamics produced mixtures for which the exhaustive response search printed `9.0` at floating-point precision. This does not mean the action earns 9 against every support triple; see the rational payout audit in `restricted-search.md`. These results demonstrate extreme restricted-support exploitability, not progress toward a solved equilibrium.
 
 A pure symmetric allocation cannot be a Nash equilibrium; the direct deviation proof is in `restricted-search.md`. Any equilibrium must genuinely mix.
 
 ## Current status / what remains
 
-The evaluator now supports exact expected payoff against a finite support, but no strategic population has been solved. A full response search remains difficult: unlike Game 1, changing soldiers at one castle changes the player's total castle points and rank against each opponent triple, so the utility is not separable by castle. Restricted-support equilibrium computation and candidate search need to be added, and a global deviation bound is needed before any full-game equilibrium claim. The existing Monte Carlo evaluator is still only a sampling diagnostic.
+The evaluator exhaustively sums profile payouts against a finite support using floating-point mixture weights, but no strategic population has been solved. A full response search remains difficult: unlike Game 1, changing soldiers at one castle changes the player's total castle points and rank against each opponent triple, so the utility is not separable by castle. Restricted-support equilibrium computation and candidate search need to be added, and a global deviation bound is needed before any full-game equilibrium claim. The existing Monte Carlo evaluator is still only a sampling diagnostic.
 
 Tests verify the multiset aggregation against explicit ordered-triple enumeration and verify the constant-sum payout invariant. They do not certify strategy quality.

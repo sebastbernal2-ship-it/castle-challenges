@@ -14,7 +14,14 @@ def main() -> None:
     parser.add_argument("--compiler", default="c++")
     args = parser.parse_args()
     data = json.loads(args.population.read_text())
-    entries = data["population"]
+    if "population" in data:
+        entries = data["population"]
+    else:
+        entries = [
+            {"allocation": action, "weight": weight}
+            for action, weight in zip(data["actions"],
+                                      data["last_half_time_average_probabilities"])
+        ]
     lines = [str(len(entries))]
     for entry in entries:
         allocation = entry["allocation"]
@@ -34,8 +41,10 @@ def main() -> None:
         "unordered_opponent_profiles": int(profile_count),
         "full_legal_action_count": 4_598_126,
         "best_response": [int(x) for x in allocation.split(",")],
-        "exact_expected_payout_against_this_population": float(value),
-        "scope": "Full pure-action best response to supplied mixture only; not an equilibrium result.",
+        "expected_payout": float(value),
+        "expected_payout_text": value,
+        "probability_arithmetic": "long double; profile scoring and action enumeration are exact",
+        "scope": "Full pure-action best response to supplied mixture only; not an equilibrium result."
     }, indent=2))
 
 

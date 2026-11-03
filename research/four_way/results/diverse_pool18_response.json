@@ -25,7 +25,7 @@
     ]
   },
   "full_action_search": {
-    "unordered_opponent_triples": 1104,
+    "unordered_opponent_triples_with_nonunderflowing_long_double_mass": 1140,
     "legal_actions": 4598126,
     "best_response": [
       21,
@@ -34,8 +34,10 @@
       25,
       2
     ],
-    "expected_payout": 9.0,
-    "gain_over_3_75": 5.25
+    "long_double_expected_payout_printed": 9.0,
+    "exact_rational_audit_shortfall_from_9": 2.5242793142649777e-19,
+    "probability_of_payout_below_9": 5.048558628529955e-20,
+    "gain_over_3_75_approximately": 5.25
   },
-  "note": "Result is against this restricted-replicator mixture only; no equilibrium certificate."
+  "note": "The response is not guaranteed first against every support triple. Probability tails make the exact expected payout slightly below 9. This is not an equilibrium certificate."
 }
