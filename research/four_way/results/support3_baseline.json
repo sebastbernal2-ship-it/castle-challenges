@@ -1,0 +1,106 @@
+{
+  "method": "support-three numerical Newton roots + exact full-action audit",
+  "pool_file": "research/four_way/baseline_population.json",
+  "pool_size": 6,
+  "roots_found": 4,
+  "restricted_equilibria_found": 1,
+  "grid_denominator": 8,
+  "frequency_total": 1000002,
+  "best_candidate": {
+    "support": [
+      [
+        [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        522960
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          100,
+          0
+        ],
+        156890
+      ],
+      [
+        [
+          0,
+          0,
+          0,
+          0,
+          100
+        ],
+        320152
+      ]
+    ],
+    "restricted_max_payoff": 3.7500000000000004,
+    "best_response": [
+      20,
+      21,
+      21,
+      0,
+      38
+    ],
+    "exploitability_fraction": [
+      21,
+      4
+    ],
+    "exploitability": 5.25
+  },
+  "candidates": [
+    {
+      "support": [
+        [
+          [
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          522960
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            100,
+            0
+          ],
+          156890
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            100
+          ],
+          320152
+        ]
+      ],
+      "restricted_max_payoff": 3.7500000000000004,
+      "best_response": [
+        20,
+        21,
+        21,
+        0,
+        38
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    }
+  ],
+  "warning": "Roots and restricted inequalities use floating point; the exact exploitability applies only to each rationalized mixture. Supports larger than three are not searched."
+}

@@ -2,36 +2,25 @@
 
 ## Finite-mixture expected payout
 
-Added `games/four_way/best_response.py`. Given a finite population support of size `K`, it enumerates the `C(K+2,3)` unordered opponent triples, applies the correct multinomial weight for iid draws with replacement, and numerically computes a candidate's payout against that supplied mixture. `best_candidate` compares a caller-supplied action set; it is deliberately not a full-game best-response oracle. `response_distribution.py` audits a fixed strategy with exact rational arithmetic over decimalized input weights.
+`games/four_way/best_response.py` enumerates the `C(K+2,3)` unordered opponent triples for a support of size `K`, applies their iid multiplicities, and computes a candidate payout against that supplied mixture. `best_candidate` only compares a caller-supplied action set; it is not a full-game oracle. `response_distribution.py` audits a fixed strategy with exact rational arithmetic.
 
-A diagnostic population was defined with equal probability on six allocations: `(20,20,20,20,20)` and the five single-castle corners. Exact expected payouts for selected candidate allocations:
+A diagnostic population assigns equal probability to the even allocation `(20,20,20,20,20)` and five single-castle corners. Against it, the exhaustive full-action search finds `(1,21,21,21,36)` with payout `8.402778`, a gain of about `4.652778` above the symmetric self-play value 3.75. Adding that response at equal mass yields another profitable response `(2,1,22,22,53)` with payout `8.291545`. This confirms the simple baseline is highly exploitable, not that the expansion process converges. Results are in `results/full_action_responses.json`.
 
-| Candidate allocation | Expected payout against this six-action mixture |
-|---|---:|
-| `(20,20,20,20,20)` | 6.732639 |
-| `(20,0,21,21,38)` | 7.708333 |
-| `(0,0,0,45,55)` | 6.347222 |
-| `(0,0,0,0,100)` | 5.850694 |
-| `(0,0,25,25,50)` | 7.513889 |
-| `(5,10,20,30,35)` | 8.048611 |
-
-This population is an intentionally simple diagnostic, not an estimate of applicants and not an equilibrium. The exhaustive full-action search over all 4,598,126 allocations finds `(1,21,21,21,36)`, with numerically computed payout `8.402778` against that mixture. Since symmetric self-play has expected payout 3.75, the diagnostic mixture has a pure deviation gain of about `4.652778` points. Add this response at equal mass to the six original actions and rerun the full-action search: the next response is `(2,1,22,22,53)`, with payout `8.291545` against the resulting seven-action mixture. This confirms the baseline is extremely far from equilibrium; it does not by itself produce a convergent learning process. Full outputs are in `results/full_action_responses.json`.
-
-Against four copies of the even allocation, `(20,0,21,21,38)` earns 9 points in that profile, illustrating a profitable response to a pure strategy (not to a mixed equilibrium).
+Against four copies of the even allocation, `(20,0,21,21,38)` earns 9, illustrating a profitable response to a pure strategy.
 
 ## Further search and structural result
 
-The follow-up restricted replicator plus full-action oracle experiments are documented in `restricted-search.md`. On 9-, 10-, and 11-action pools, the restricted dynamics produced mixtures for which the exhaustive response search printed `9.0` at floating-point precision. This does not mean the action earns 9 against every support triple; see the rational payout audit in `restricted-search.md`. These results demonstrate extreme restricted-support exploitability, not progress toward a solved equilibrium.
+Restricted replicator plus full-action oracle experiments are documented in `restricted-search.md`. On 9-, 10-, and 11-action pools, the restricted dynamics produced mixtures against which full-action search printed `9.0` at floating-point precision. Exact rational audits show why that is not a guarantee of 9 against every support triple. A pure symmetric allocation cannot be a Nash equilibrium; see the direct deviation proof in `restricted-search.md`.
 
-A pure symmetric allocation cannot be a Nash equilibrium; the direct deviation proof is in `restricted-search.md`. Any equilibrium must genuinely mix.
+A native C++ restricted multiplicative-weights implementation agrees with the Python reference on the six-action pool to within `5.6e-16`. On 24 actions, restricted payoff gaps fell below `1e-14` while a full-action reply still earned 8.8482; the response-expanded pool remained exploitable. See [`double-oracle.md`](double-oracle.md) and `results/double_oracle_chain.json`.
 
-A native C++ restricted multiplicative-weights implementation was added in `restricted_replicator.cpp` with a Python runner. On the six-action diagnostic pool, its 1,000-step probabilities agree with the Python reference to within `5.6e-16`. It enabled a support-expansion stress test: restricted-pool payoff gaps fell below `1e-14` on 24 actions, while the full-action reply was still 8.8482; adding that reply led to another pool with a near-9 deviation. See [`double-oracle.md`](double-oracle.md) and `results/double_oracle_chain.json`. This is a strong failure diagnostic for fixed-pool methods, not an equilibrium computation.
+## Restricted support search (sizes one through three)
 
-## Restricted support-two root search
+`restricted_two_support_search.py` enumerates pure and two-action supports in a finite pool. For a pair `(a,b)`, the indifference condition `g_a(x)=g_b(x)` is cubic in `x=P(a)`; unit-interval roots are isolated numerically, rationalized to integer frequencies, and audited with the exact global response oracle.
 
-`restricted_two_support_search.py` enumerates each pure action and each two-action support in a finite pool. For a pair `(a,b)`, the indifference condition `g_a(x)=g_b(x)` is cubic in `x=P(a)`; all unit-interval roots are isolated numerically, rationalized to integer frequencies, and audited with the exact global response oracle. This is a candidate generator—not an exact algebraic restricted-game solver, and it covers no supports larger than two.
+`restricted_support3_search.py` builds the small-pool payoff tensor, uses multi-start Newton to find roots of the two indifference equations on each three-action support, checks every omitted pool action, and exact-audits surviving candidates against the whole game. On the six-action baseline it finds a restricted support-three equilibrium, but the exact full-game response `(20,21,21,0,38)` gives exploitability `21/4 = 5.25`. Support-two searches on the six-action and 18-action pools find the same minimum gap. This illustrates why restricted equilibria do not certify full-game equilibria.
 
-Reproduce the baseline and diverse-pool diagnostics with:
+Reproduce these diagnostics with:
 
 ```sh
 PYTHONPATH=src python3 research/four_way/restricted_two_support_search.py \
@@ -40,12 +29,15 @@ PYTHONPATH=src python3 research/four_way/restricted_two_support_search.py \
 PYTHONPATH=src python3 research/four_way/restricted_two_support_search.py \
   research/four_way/results/diverse-pool18.json \
   --max-actions 18 --output research/four_way/results/two_support_diverse18.json
+PYTHONPATH=src python3 research/four_way/restricted_support3_search.py \
+  research/four_way/baseline_population.json --max-actions 6 \
+  --grid-denominator 8 --output research/four_way/results/support3_baseline.json
 ```
 
-The strongest candidate in each search has exact global exploitability `21/4 = 5.25`; a support of at most two actions does not approach equilibrium. Numerical root tolerance and frequency rounding mean the root itself is not an exact equilibrium certificate; the reported full-action deviation gap is exact for its rationalized mixture.
+These are numerical candidate generators, not complete algebraic support solvers; they do not search supports larger than three. Root tolerance and frequency rounding preclude an equilibrium claim, while the reported full-action deviation gap is exact for each rationalized mixture.
 
 ## Current status / what remains
 
-The evaluator exhaustively sums profile payouts against finite supports, but no strategic population has been solved. A full response search remains difficult: unlike Game 1, changing soldiers at one castle changes the player's total castle points and rank against each opponent triple, so utility is not separable by castle. Restricted-support dynamics, support-two candidate generation, and exact fixed-mixture response checks now exist, but they do not solve the nonlinear symmetric equilibrium conditions robustly. A global deviation bound is still needed before any full-game equilibrium claim. The existing Monte Carlo evaluator is only a sampling diagnostic.
+No strategic population has been solved. Game 2's payoff depends on the final ranking against three opponents, so castle marginals do not make utility separable as in Game 1. Restricted dynamics, numerical support searches through size three, and exact fixed-mixture response checks exist, but they do not solve the nonlinear symmetric equilibrium conditions robustly. A global deviation bound is needed before any full-game equilibrium claim. Monte Carlo evaluation remains diagnostic only.
 
-Tests verify multiset aggregation, the constant-sum payout invariant, the support-two cubic equation, and the exact response kernel. They do not certify a Game 2 equilibrium.
+Tests cover multiset aggregation, the constant-sum invariant, support-two cubic roots, support-three derivatives, and the exact response kernel. They do not certify a Game 2 equilibrium.
