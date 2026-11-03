@@ -25,7 +25,7 @@ The follow-up restricted replicator plus full-action oracle experiments are docu
 
 A pure symmetric allocation cannot be a Nash equilibrium; the direct deviation proof is in `restricted-search.md`. Any equilibrium must genuinely mix.
 
-A native C++ restricted multiplicative-weights implementation was added in `restricted_replicator.cpp` with a Python runner. On the six-action diagnostic pool, its 1,000-step probabilities agree with the Python reference to within `5.6e-16`. It enabled a support-expansion stress test: restricted-pool payoff gaps fell to roughly `3e-6` on 22 actions, while exhaustive full-action deviations still paid essentially 9. See [`double-oracle.md`](double-oracle.md) and `results/double_oracle_chain.json`. This is a strong failure diagnostic for fixed-pool methods, not an equilibrium computation.
+A native C++ restricted multiplicative-weights implementation was added in `restricted_replicator.cpp` with a Python runner. On the six-action diagnostic pool, its 1,000-step probabilities agree with the Python reference to within `5.6e-16`. It enabled a support-expansion stress test: restricted-pool payoff gaps fell below `1e-14` on 24 actions, while the full-action reply was still 8.8482; adding that reply led to another pool with a near-9 deviation. See [`double-oracle.md`](double-oracle.md) and `results/double_oracle_chain.json`. This is a strong failure diagnostic for fixed-pool methods, not an equilibrium computation.
 
 ## Current status / what remains
 

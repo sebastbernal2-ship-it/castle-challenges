@@ -14,6 +14,9 @@ CASES = [
     ("pool20", "results/replicator_runs/diverse-pool20-response2.json", (6, 26, 30, 32, 6)),
     ("pool21", "results/replicator_runs/diverse-pool21-response3-100k.json", (22, 27, 31, 0, 20)),
     ("pool22", "results/replicator_runs/diverse-pool22-response4-100k.json", (0, 0, 32, 33, 35)),
+    ("pool23", "results/replicator_runs/diverse-pool23-response5-100k.json", (23, 28, 33, 0, 16)),
+    ("pool24", "results/replicator_runs/diverse-pool24-response6-100k.json", (1, 29, 34, 34, 2)),
+    ("pool25", "results/replicator_runs/diverse-pool25-response7-500k.json", (24, 30, 35, 0, 11)),
     ("robust_portfolio", "results/robust_candidate_portfolio.json", (0, 0, 32, 26, 42)),
 ]
 CUTOFFS = [Fraction(0), Fraction(1, 10**8), Fraction(1, 10**12),

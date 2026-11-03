@@ -56,7 +56,37 @@
       "response_audit": "results/double_oracle_round4_audit.json",
       "audited_expected_payout_shortfall_from_9": 8.836586073381301e-55,
       "audited_probability_below_9": 1.163590284290876e-55
+    },
+    {
+      "pool_size": 23,
+      "mixture": "results/replicator_runs/diverse-pool23-response5-100k.json",
+      "iterations": 100000,
+      "restricted_pool_gap_estimate": 2.6645352591003757e-15,
+      "full_action_response": [23, 28, 33, 0, 16],
+      "response_audit": "results/double_oracle_round5_audit.json",
+      "audited_expected_payout": 8.997811132739372,
+      "audited_probability_below_9": 0.0004377734521256131
+    },
+    {
+      "pool_size": 24,
+      "mixture": "results/replicator_runs/diverse-pool24-response6-100k.json",
+      "iterations": 100000,
+      "restricted_pool_gap_estimate": 4.440892098500626e-16,
+      "full_action_response": [1, 29, 34, 34, 2],
+      "response_audit": "results/double_oracle_round6_audit.json",
+      "audited_expected_payout": 8.84818476390958,
+      "audited_probability_below_9": 0.055990834216760314
+    },
+    {
+      "pool_size": 25,
+      "mixture": "results/replicator_runs/diverse-pool25-response7-500k.json",
+      "iterations": 500000,
+      "restricted_pool_gap_estimate": 3.4506051749261246e-07,
+      "full_action_response": [24, 30, 35, 0, 11],
+      "response_audit": "results/double_oracle_round7_audit.json",
+      "audited_expected_payout_shortfall_from_9": 2.0953008455273855e-10,
+      "audited_probability_below_9": 4.190601691054771e-11
     }
   ],
-  "conclusion": "Near-equilibrium behavior inside each restricted pool did not prevent near-certain 9-point deviations in the full game. No equilibrium is certified."
+  "conclusion": "The full-action deviation value is nonmonotone with support expansion: pool 24 had a material reduction, while pool 25 returned to an almost-certain 9-point deviation. No equilibrium is certified."
 }
