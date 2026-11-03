@@ -37,19 +37,28 @@ PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 200
 
 The 2-million-round mixture was further polished by minimizing its convex exploitability objective `f(p)=max_b E[u(b,a)]-7.5`. At each step, the exact DP finds a worst deviation `b`; a second exact DP finds a pure action minimizing `u(b,·)` (equivalently, a best response to pure `b` under the constant-sum identity). We grid-search the mixture step size, quantize back to the fixed integer-frequency denominator, and recertify using integer DP. This is a heuristic Frank–Wolfe/subgradient procedure; it has no guarantee for the nonsmooth objective and stopped when no tested step improved the gap.
 
-The first polishing passes improved the certificate from `38,051 / 4,000,052 = 0.0095126263` through `22,754 / 4,000,052 = 0.0056884261`. A further search accelerated the restricted defense-matrix fictitious play in `restricted_matrix_fictitious_play.cpp` and widened the line-search grid. It used the top 3,000 exact deviations, 100,000 restricted matrix rounds, and the 128 most probable pure defense directions plus the aggregate defense mixture. After one line-search step of size `1.7782794100e-6`, the exact integer-DP certificate improved to `20,694 / 4,000,052 = 0.0051734327` points, about 9% below the earlier 0.0056884 candidate. The new full 15,335-action strategy is `results/polished-top3000-seed1.json`; its starting checkpoint is `results/polished-top2000-checkpoint.json`.
+The first polishing passes improved the certificate from `38,051 / 4,000,052 = 0.0095126263` through `22,754 / 4,000,052 = 0.0056884261`. A further search accelerated the restricted defense-matrix fictitious play in `restricted_matrix_fictitious_play.cpp` and widened the line-search grid. It used the top 3,000 exact deviations and 100,000 restricted matrix rounds. At frequency denominator 2,000,026 it reduced the exact integer-DP gap to `20,694 / 4,000,052 = 0.0051734327`, about 9% below the earlier 0.0056884 candidate. Scaling that mixture's frequencies 10x and adding finer line-search steps produced a further, smaller improvement: `206,792 / 40,000,520 = 0.0051697328` points, with best response `(4,5,3,50,38)`. This is about a 0.07% reduction from the preceding candidate, not a new equilibrium result. The 15,342-action strategy and exact certificate are in `results/polished-frequency10x-seed1.json`; compact checkpoints record the deterministic polishing chain.
 
-Reproduce that final step and certificate with:
+Reproduce the frequency-scaled polishing chain with:
 
 ```sh
 PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
-  research/head_to_head/results/polished-top2000-checkpoint.json \\
+  research/head_to_head/results/polished-frequency10x-checkpoint.json \\
+  --steps 1 --top-k 3000 --matrix-rounds 100000 --pure-directions 512 \\
+  --output /tmp/polish-a.json
+PYTHONPATH=src python3 research/head_to_head/polish_strategy.py /tmp/polish-a.json \\
+  --steps 5 --top-k 3000 --matrix-rounds 100000 --pure-directions 512 \\
+  --output /tmp/polish-b.json
+PYTHONPATH=src python3 research/head_to_head/polish_strategy.py /tmp/polish-b.json \\
   --steps 1 --top-k 3000 --matrix-rounds 100000 --pure-directions 128 \\
-  --output /tmp/polished-check.json
-PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/polished-check.json
+  --output /tmp/polish-c.json
+PYTHONPATH=src python3 research/head_to_head/polish_strategy.py /tmp/polish-c.json \\
+  --steps 5 --top-k 3000 --matrix-rounds 100000 --pure-directions 128 \\
+  --output /tmp/polish-final.json
+PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/polish-final.json
 ```
 
-A follow-up top-4,000 search found no improvement. These are heuristic convex-objective searches, not a global optimality proof; the exact verifier certifies only the saved strategy's full-action deviation gap. The gap remains positive, so Game 1 is still not exactly solved or GTO.
+The saved checkpoints `polished-frequency10x-stage1.json` through `stage3.json` correspond to the successive outputs. Further top-5,000 and 512-direction searches at the unscaled denominator found no improvement; frequency scaling enabled a few single-count gains. These remain heuristic convex-objective searches, not a global optimality proof. The gap is positive, so Game 1 is still not exactly solved or GTO.
 
 ## Regularized-response experiment
 
@@ -57,4 +66,4 @@ We also implemented exact logit-response marginals by a log-space coefficient DP
 
 ## Interpretation and next computation
 
-The latest polished candidate is a rigorously evaluated `0.0051734327`-epsilon strategy under the encoded rules; its exact rational full-action deviation certificate is independently checked by `verify_strategy.py`. The gap remains positive, so this is not exact GTO. Standard fictitious-play convergence is asymptotic; the finite-run and local-polishing results do not identify the exact equilibrium or prove global optimality of the exploitability minimum. Further reductions require stronger optimization (for example, a convergent double-oracle/LP method with exact separation), not just labeling the current candidate equilibrium.
+The latest polished candidate is a rigorously evaluated `0.0051697328`-epsilon strategy under the encoded rules; its exact rational full-action deviation certificate is independently checked by `verify_strategy.py`. The gap remains positive, so this is not exact GTO. Standard fictitious-play convergence is asymptotic; the finite-run and local-polishing results do not identify the exact equilibrium or prove global optimality of the exploitability minimum. Further reductions require stronger optimization (for example, a convergent double-oracle/LP method with exact separation), not just labeling the current candidate equilibrium.

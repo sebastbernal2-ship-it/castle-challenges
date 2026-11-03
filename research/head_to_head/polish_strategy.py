@@ -20,8 +20,8 @@ from castle_challenges.games.head_to_head.best_response import (
 from castle_challenges.games.head_to_head.rules import score
 
 
-ALPHAS = (tuple(10.0 ** (power / 4) / 1_000_000
-                for power in range(0, 25))
+ALPHAS = (tuple(10.0 ** (power / 4) / 100_000_000
+                for power in range(0, 33))
           + (2.5e-7, 5e-7, 7.5e-7, 0.0001, 0.0002, 0.0005, 0.001,
              0.002, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0))
 
