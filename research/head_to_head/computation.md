@@ -33,6 +33,20 @@ PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 100
 PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 2000000 --seed 1
 ```
 
+## Best-response subgradient polishing
+
+The 2-million-round mixture was further polished by minimizing its convex exploitability objective `f(p)=max_b E[u(b,a)]-7.5`. At each step, the exact DP finds a worst deviation `b`; a second exact DP finds a pure action minimizing `u(b,·)` (equivalently, a best response to pure `b` under the constant-sum identity). We grid-search the mixture step size, quantize back to the fixed integer-frequency denominator, and recertify using integer DP. This is a heuristic Frank–Wolfe/subgradient procedure; it has no guarantee for the nonsmooth objective and stopped when no tested step improved the gap.
+
+It improved the exact certificate from `38,051 / 4,000,052 = 0.0095126263` to `33,469 / 4,000,052 = 0.0083671412` points. The full 14,554-action strategy and line-search trace are saved in `results/polished-seed1.json`; reproduce with:
+
+```sh
+PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
+  research/head_to_head/results/fictitious-play-seed-1-rounds-2000000.json \\
+  --steps 200 --output /tmp/polished.json
+```
+
+The strategy remains an epsilon-equilibrium, not exact GTO.
+
 ## Regularized-response experiment
 
 We also implemented exact logit-response marginals by a log-space coefficient DP, exploiting separability. A fixed-point continuation was unstable at lower temperatures; at temperature 0.1 it converged to a mixture with exact full-action gap about 0.1034. Averaging logit responses for 10,000 iterations at temperature 0.1 gave gap 0.1023. This did not improve on long fictitious play. Lower temperatures performed worse in short runs. The method and caveats are in `src/castle_challenges/games/head_to_head/logit_equilibrium.py`; no logit result is presented as an equilibrium.
