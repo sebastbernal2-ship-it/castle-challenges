@@ -22,6 +22,7 @@ import tempfile
 
 import numpy as np
 from scipy.optimize import minimize
+from scipy.sparse import csr_matrix
 
 VALUE = 15.0 / 4.0
 _PAYOFF_FUNCTION = None
@@ -92,22 +93,21 @@ def payoff_and_jacobian(p, triples, multiplicities, tensor):
     j, k, ell = triples.T
     weighted = multiplicities * p[j] * p[k] * p[ell]
     payoff_values = (tensor @ weighted) / 4.0
-    derivative_weights = np.zeros((len(p), len(triples)), dtype=np.float64)
-    for t, (a, b, c) in enumerate(triples):
-        mult = multiplicities[t]
-        if a == b == c:
-            derivative_weights[a, t] = 3 * mult * p[a] * p[a]
-        elif a == b:
-            derivative_weights[a, t] = 2 * mult * p[a] * p[c]
-            derivative_weights[c, t] = mult * p[a] * p[a]
-        elif b == c:
-            derivative_weights[a, t] = mult * p[b] * p[b]
-            derivative_weights[b, t] = 2 * mult * p[a] * p[b]
-        else:
-            derivative_weights[a, t] = mult * p[b] * p[c]
-            derivative_weights[b, t] = mult * p[a] * p[c]
-            derivative_weights[c, t] = mult * p[a] * p[b]
-    jacobian = (tensor @ derivative_weights.T) / 4.0
+
+    # Each unordered triple's derivative touches at most three coordinates.
+    # Keep this matrix sparse: a dense n-by-triple tensor would make the
+    # Jacobian product O(n^2 * number_of_triples) instead of O(n * triples).
+    triple_count = len(triples)
+    rows = np.repeat(np.arange(triple_count, dtype=np.int32), 3)
+    cols = np.column_stack((j, k, ell)).ravel()
+    data = np.column_stack((
+        multiplicities * p[k] * p[ell],
+        multiplicities * p[j] * p[ell],
+        multiplicities * p[j] * p[k],
+    )).ravel()
+    derivative_weights = csr_matrix((data, (rows, cols)),
+                                    shape=(triple_count, len(p)))
+    jacobian = np.asarray(derivative_weights.T @ tensor.T).T / 4.0
     return payoff_values, jacobian
 
 

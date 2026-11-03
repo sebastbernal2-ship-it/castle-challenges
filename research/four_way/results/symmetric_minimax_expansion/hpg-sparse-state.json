@@ -1,0 +1,2319 @@
+{
+  "actions": [
+    [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    [
+      100,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      100,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      100,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      100,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      100
+    ],
+    [
+      5,
+      10,
+      15,
+      25,
+      45
+    ],
+    [
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    [
+      5,
+      15,
+      25,
+      25,
+      30
+    ],
+    [
+      15,
+      15,
+      20,
+      25,
+      25
+    ],
+    [
+      1,
+      21,
+      21,
+      21,
+      36
+    ],
+    [
+      2,
+      1,
+      22,
+      22,
+      53
+    ],
+    [
+      0,
+      1,
+      22,
+      23,
+      54
+    ],
+    [
+      1,
+      2,
+      23,
+      0,
+      74
+    ],
+    [
+      21,
+      22,
+      24,
+      23,
+      10
+    ],
+    [
+      5,
+      16,
+      26,
+      0,
+      53
+    ],
+    [
+      6,
+      23,
+      27,
+      31,
+      13
+    ],
+    [
+      21,
+      24,
+      28,
+      25,
+      2
+    ],
+    [
+      21,
+      25,
+      29,
+      0,
+      25
+    ],
+    [
+      6,
+      26,
+      30,
+      32,
+      6
+    ],
+    [
+      22,
+      27,
+      31,
+      0,
+      20
+    ],
+    [
+      0,
+      0,
+      32,
+      33,
+      35
+    ],
+    [
+      23,
+      28,
+      33,
+      0,
+      16
+    ],
+    [
+      1,
+      29,
+      34,
+      34,
+      2
+    ],
+    [
+      24,
+      30,
+      35,
+      0,
+      11
+    ],
+    [
+      0,
+      10,
+      36,
+      35,
+      19
+    ],
+    [
+      23,
+      28,
+      37,
+      0,
+      12
+    ],
+    [
+      6,
+      1,
+      38,
+      36,
+      19
+    ],
+    [
+      23,
+      28,
+      39,
+      0,
+      10
+    ],
+    [
+      1,
+      2,
+      40,
+      37,
+      20
+    ],
+    [
+      23,
+      28,
+      41,
+      0,
+      8
+    ],
+    [
+      1,
+      11,
+      42,
+      38,
+      8
+    ],
+    [
+      25,
+      31,
+      43,
+      0,
+      1
+    ],
+    [
+      2,
+      2,
+      44,
+      39,
+      13
+    ],
+    [
+      24,
+      29,
+      45,
+      0,
+      2
+    ],
+    [
+      6,
+      3,
+      46,
+      40,
+      5
+    ],
+    [
+      11,
+      31,
+      47,
+      0,
+      11
+    ],
+    [
+      15,
+      32,
+      0,
+      41,
+      12
+    ],
+    [
+      2,
+      33,
+      1,
+      42,
+      22
+    ],
+    [
+      12,
+      34,
+      48,
+      1,
+      5
+    ],
+    [
+      6,
+      0,
+      49,
+      43,
+      2
+    ],
+    [
+      13,
+      35,
+      50,
+      1,
+      1
+    ],
+    [
+      16,
+      35,
+      1,
+      44,
+      4
+    ],
+    [
+      0,
+      0,
+      51,
+      45,
+      4
+    ],
+    [
+      13,
+      35,
+      52,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      53,
+      46,
+      0
+    ],
+    [
+      5,
+      36,
+      54,
+      1,
+      4
+    ],
+    [
+      16,
+      37,
+      0,
+      47,
+      0
+    ],
+    [
+      0,
+      38,
+      1,
+      48,
+      13
+    ],
+    [
+      6,
+      39,
+      55,
+      0,
+      0
+    ],
+    [
+      10,
+      40,
+      1,
+      49,
+      0
+    ],
+    [
+      1,
+      41,
+      2,
+      50,
+      6
+    ],
+    [
+      3,
+      42,
+      3,
+      51,
+      1
+    ],
+    [
+      0,
+      43,
+      0,
+      52,
+      5
+    ],
+    [
+      1,
+      44,
+      2,
+      53,
+      0
+    ],
+    [
+      0,
+      45,
+      0,
+      54,
+      1
+    ],
+    [
+      13,
+      3,
+      3,
+      55,
+      26
+    ],
+    [
+      0,
+      43,
+      0,
+      56,
+      1
+    ],
+    [
+      14,
+      45,
+      27,
+      2,
+      12
+    ],
+    [
+      3,
+      4,
+      34,
+      57,
+      2
+    ],
+    [
+      0,
+      40,
+      0,
+      58,
+      2
+    ],
+    [
+      15,
+      5,
+      4,
+      59,
+      17
+    ],
+    [
+      0,
+      40,
+      0,
+      60,
+      0
+    ],
+    [
+      16,
+      2,
+      1,
+      61,
+      20
+    ],
+    [
+      25,
+      10,
+      3,
+      62,
+      0
+    ],
+    [
+      26,
+      10,
+      0,
+      63,
+      1
+    ],
+    [
+      26,
+      2,
+      3,
+      63,
+      6
+    ],
+    [
+      26,
+      3,
+      3,
+      63,
+      5
+    ],
+    [
+      26,
+      2,
+      3,
+      64,
+      5
+    ],
+    [
+      27,
+      3,
+      0,
+      65,
+      5
+    ],
+    [
+      27,
+      2,
+      0,
+      65,
+      6
+    ],
+    [
+      27,
+      2,
+      0,
+      66,
+      5
+    ],
+    [
+      27,
+      2,
+      1,
+      65,
+      5
+    ],
+    [
+      28,
+      6,
+      5,
+      3,
+      58
+    ],
+    [
+      28,
+      6,
+      5,
+      4,
+      57
+    ],
+    [
+      28,
+      6,
+      5,
+      5,
+      56
+    ],
+    [
+      28,
+      6,
+      5,
+      6,
+      55
+    ],
+    [
+      2,
+      12,
+      6,
+      67,
+      13
+    ],
+    [
+      7,
+      12,
+      6,
+      67,
+      8
+    ],
+    [
+      1,
+      12,
+      6,
+      67,
+      14
+    ],
+    [
+      1,
+      12,
+      6,
+      68,
+      13
+    ],
+    [
+      29,
+      0,
+      1,
+      69,
+      1
+    ],
+    [
+      29,
+      0,
+      0,
+      69,
+      2
+    ],
+    [
+      29,
+      2,
+      0,
+      69,
+      0
+    ],
+    [
+      29,
+      1,
+      0,
+      69,
+      1
+    ],
+    [
+      7,
+      16,
+      5,
+      70,
+      2
+    ],
+    [
+      7,
+      16,
+      6,
+      70,
+      1
+    ],
+    [
+      7,
+      15,
+      6,
+      70,
+      2
+    ],
+    [
+      0,
+      16,
+      0,
+      70,
+      14
+    ],
+    [
+      7,
+      17,
+      56,
+      4,
+      16
+    ],
+    [
+      8,
+      17,
+      56,
+      4,
+      15
+    ],
+    [
+      8,
+      17,
+      56,
+      5,
+      14
+    ],
+    [
+      8,
+      17,
+      57,
+      4,
+      14
+    ],
+    [
+      0,
+      29,
+      0,
+      71,
+      0
+    ],
+    [
+      2,
+      26,
+      1,
+      71,
+      0
+    ],
+    [
+      22,
+      0,
+      7,
+      71,
+      0
+    ],
+    [
+      0,
+      26,
+      1,
+      71,
+      2
+    ],
+    [
+      2,
+      34,
+      58,
+      5,
+      1
+    ],
+    [
+      2,
+      34,
+      58,
+      6,
+      0
+    ],
+    [
+      2,
+      35,
+      58,
+      5,
+      0
+    ],
+    [
+      1,
+      34,
+      58,
+      6,
+      1
+    ],
+    [
+      7,
+      11,
+      8,
+      72,
+      2
+    ],
+    [
+      7,
+      7,
+      8,
+      72,
+      6
+    ],
+    [
+      6,
+      16,
+      0,
+      72,
+      6
+    ],
+    [
+      7,
+      16,
+      0,
+      72,
+      5
+    ],
+    [
+      16,
+      0,
+      9,
+      73,
+      2
+    ],
+    [
+      1,
+      46,
+      9,
+      7,
+      37
+    ],
+    [
+      17,
+      0,
+      9,
+      73,
+      1
+    ],
+    [
+      17,
+      1,
+      9,
+      73,
+      0
+    ],
+    [
+      7,
+      4,
+      10,
+      74,
+      5
+    ],
+    [
+      7,
+      3,
+      10,
+      74,
+      6
+    ],
+    [
+      7,
+      11,
+      0,
+      74,
+      8
+    ],
+    [
+      7,
+      7,
+      10,
+      74,
+      2
+    ],
+    [
+      10,
+      47,
+      35,
+      8,
+      0
+    ],
+    [
+      12,
+      0,
+      11,
+      75,
+      2
+    ],
+    [
+      11,
+      1,
+      11,
+      75,
+      2
+    ],
+    [
+      11,
+      0,
+      11,
+      75,
+      3
+    ],
+    [
+      13,
+      17,
+      59,
+      9,
+      2
+    ],
+    [
+      13,
+      16,
+      59,
+      9,
+      3
+    ],
+    [
+      14,
+      16,
+      59,
+      9,
+      2
+    ],
+    [
+      13,
+      17,
+      59,
+      8,
+      3
+    ],
+    [
+      0,
+      22,
+      2,
+      76,
+      0
+    ],
+    [
+      2,
+      22,
+      0,
+      76,
+      0
+    ],
+    [
+      1,
+      22,
+      1,
+      76,
+      0
+    ],
+    [
+      0,
+      22,
+      0,
+      76,
+      2
+    ],
+    [
+      17,
+      0,
+      6,
+      77,
+      0
+    ],
+    [
+      15,
+      0,
+      6,
+      77,
+      2
+    ],
+    [
+      16,
+      0,
+      5,
+      77,
+      2
+    ],
+    [
+      16,
+      0,
+      6,
+      77,
+      1
+    ],
+    [
+      0,
+      18,
+      2,
+      78,
+      2
+    ],
+    [
+      2,
+      18,
+      0,
+      78,
+      2
+    ],
+    [
+      0,
+      18,
+      1,
+      78,
+      3
+    ],
+    [
+      1,
+      18,
+      1,
+      78,
+      2
+    ],
+    [
+      2,
+      24,
+      60,
+      10,
+      4
+    ],
+    [
+      15,
+      0,
+      6,
+      79,
+      0
+    ],
+    [
+      2,
+      28,
+      60,
+      10,
+      0
+    ],
+    [
+      2,
+      22,
+      60,
+      10,
+      6
+    ]
+  ],
+  "probabilities": [
+    0.009294769680026925,
+    1.81641143296737e-15,
+    0.0,
+    1.052977709258889e-15,
+    0.0,
+    0.21316550745203852,
+    0.025157660486431938,
+    5.556238436068076e-17,
+    5.950540989343785e-16,
+    7.579977034705059e-16,
+    7.059879535430089e-16,
+    0.023475328708368704,
+    0.0,
+    8.15065288426196e-17,
+    0.01207080231539816,
+    0.011215582408771515,
+    0.0,
+    0.021462579735688388,
+    0.0,
+    0.0017245001967198898,
+    0.01555574495593134,
+    0.012037917805095884,
+    2.7626488378949396e-16,
+    0.0,
+    0.0,
+    3.695166224468447e-16,
+    2.2057694318918208e-16,
+    0.0,
+    5.53366183718571e-16,
+    0.0,
+    0.014478138137100608,
+    0.0,
+    8.311056020990209e-16,
+    3.972662976427851e-17,
+    0.027938229705688444,
+    1.2252527474734615e-17,
+    0.0,
+    0.014520287696300807,
+    0.0,
+    0.002097378273260134,
+    1.7243597383879905e-16,
+    1.23656040968314e-16,
+    9.750804307929115e-16,
+    0.0,
+    0.03181652639116334,
+    1.8040941006751778e-16,
+    0.0,
+    0.011155013482490084,
+    4.031605306207939e-16,
+    0.0,
+    0.03713110472653856,
+    0.0,
+    0.012946117277941474,
+    0.013058979783725935,
+    3.031364545782333e-16,
+    1.6436047354759906e-16,
+    2.677985759928367e-16,
+    0.01977534168290493,
+    1.85518788524826e-16,
+    7.754195188731122e-16,
+    5.488181451280566e-18,
+    0.0,
+    0.0047939428169552715,
+    0.0,
+    0.024393048379261525,
+    1.1859348901992017e-17,
+    8.128652942307381e-17,
+    0.012145270155702926,
+    3.3116603050107724e-16,
+    0.005092915991904971,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.08286220642953045,
+    0.0,
+    2.759515704730151e-16,
+    9.564671881176373e-17,
+    0.0,
+    3.9935909803069317e-17,
+    0.0,
+    1.6459153366646964e-16,
+    0.0,
+    0.0,
+    0.01739632906016309,
+    0.0,
+    7.199413387440141e-16,
+    0.0,
+    0.0,
+    3.7300926512574897e-16,
+    0.0,
+    0.0,
+    0.0,
+    1.1702910614046849e-17,
+    3.129599760946564e-16,
+    0.0,
+    0.0,
+    1.596660547643615e-16,
+    0.0,
+    2.1986972773125348e-16,
+    1.782363643078109e-16,
+    0.0,
+    5.349172201514584e-17,
+    4.1463305441358495e-16,
+    8.446615311271167e-16,
+    1.0974794710954108e-16,
+    0.0,
+    0.053970559598036726,
+    0.0,
+    0.0,
+    0.0,
+    0.0011280976532704755,
+    0.0,
+    0.0,
+    0.0630272558364323,
+    0.0,
+    0.0,
+    0.0,
+    1.1385768038821777e-16,
+    3.3819473660946475e-16,
+    0.07167985655436526,
+    0.0,
+    0.0,
+    2.603829237449844e-16,
+    0.0,
+    1.6077565146808705e-16,
+    0.0,
+    0.0,
+    5.3515719851843835e-17,
+    0.0,
+    0.06802744416616303,
+    0.0,
+    0.06540556245661197,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "history": [
+    {
+      "iteration": 0,
+      "pool_size": 66,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000213,
+      "optimizer_success": true,
+      "restricted_support_size": 18,
+      "quantized_support_size": 18,
+      "full_action_best_response": [
+        26,
+        10,
+        0,
+        63,
+        1
+      ],
+      "full_action_payout": 6.449216054564634,
+      "certified_gap_lower": 2.6992160320588545,
+      "certified_gap_upper": 2.6992160770704148,
+      "added_response_actions": [
+        [
+          26,
+          10,
+          0,
+          63,
+          1
+        ],
+        [
+          26,
+          2,
+          3,
+          63,
+          6
+        ],
+        [
+          26,
+          3,
+          3,
+          63,
+          5
+        ],
+        [
+          26,
+          2,
+          3,
+          64,
+          5
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000213,
+          "optimizer_success": true,
+          "quantized_support_size": 18,
+          "best_response": [
+            26,
+            10,
+            0,
+            63,
+            1
+          ],
+          "full_action_payout": 6.449216054564634,
+          "certified_gap_lower": 2.6992160320588545,
+          "certified_gap_upper": 2.6992160770704148
+        }
+      ],
+      "best_gap_so_far": 2.5847540714416306
+    },
+    {
+      "iteration": 1,
+      "pool_size": 70,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.750000000000027,
+      "optimizer_success": true,
+      "restricted_support_size": 16,
+      "quantized_support_size": 16,
+      "full_action_best_response": [
+        27,
+        3,
+        0,
+        65,
+        5
+      ],
+      "full_action_payout": 6.092979899171112,
+      "certified_gap_lower": 2.342979882461952,
+      "certified_gap_upper": 2.3429799158802727,
+      "added_response_actions": [
+        [
+          27,
+          3,
+          0,
+          65,
+          5
+        ],
+        [
+          27,
+          2,
+          0,
+          65,
+          6
+        ],
+        [
+          27,
+          2,
+          0,
+          66,
+          5
+        ],
+        [
+          27,
+          2,
+          1,
+          65,
+          5
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.750000000000027,
+          "optimizer_success": true,
+          "quantized_support_size": 16,
+          "best_response": [
+            27,
+            3,
+            0,
+            65,
+            5
+          ],
+          "full_action_payout": 6.092979899171112,
+          "certified_gap_lower": 2.342979882461952,
+          "certified_gap_upper": 2.3429799158802727
+        }
+      ],
+      "best_gap_so_far": 2.3429799158802727
+    },
+    {
+      "iteration": 2,
+      "pool_size": 74,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.750000000000012,
+      "optimizer_success": true,
+      "restricted_support_size": 15,
+      "quantized_support_size": 15,
+      "full_action_best_response": [
+        28,
+        6,
+        5,
+        3,
+        58
+      ],
+      "full_action_payout": 6.268551934033961,
+      "certified_gap_lower": 2.5185519162096988,
+      "certified_gap_upper": 2.5185519518582224,
+      "added_response_actions": [
+        [
+          28,
+          6,
+          5,
+          3,
+          58
+        ],
+        [
+          28,
+          6,
+          5,
+          4,
+          57
+        ],
+        [
+          28,
+          6,
+          5,
+          5,
+          56
+        ],
+        [
+          28,
+          6,
+          5,
+          6,
+          55
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.750000000000012,
+          "optimizer_success": true,
+          "quantized_support_size": 15,
+          "best_response": [
+            28,
+            6,
+            5,
+            3,
+            58
+          ],
+          "full_action_payout": 6.268551934033961,
+          "certified_gap_lower": 2.5185519162096988,
+          "certified_gap_upper": 2.5185519518582224
+        }
+      ],
+      "best_gap_so_far": 2.3429799158802727
+    },
+    {
+      "iteration": 3,
+      "pool_size": 78,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7499999999999916,
+      "optimizer_success": true,
+      "restricted_support_size": 22,
+      "quantized_support_size": 22,
+      "full_action_best_response": [
+        2,
+        12,
+        6,
+        67,
+        13
+      ],
+      "full_action_payout": 6.473261241899595,
+      "certified_gap_lower": 2.723261212778272,
+      "certified_gap_upper": 2.7232612710209194,
+      "added_response_actions": [
+        [
+          2,
+          12,
+          6,
+          67,
+          13
+        ],
+        [
+          7,
+          12,
+          6,
+          67,
+          8
+        ],
+        [
+          1,
+          12,
+          6,
+          67,
+          14
+        ],
+        [
+          1,
+          12,
+          6,
+          68,
+          13
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7499999999999916,
+          "optimizer_success": true,
+          "quantized_support_size": 22,
+          "best_response": [
+            2,
+            12,
+            6,
+            67,
+            13
+          ],
+          "full_action_payout": 6.473261241899595,
+          "certified_gap_lower": 2.723261212778272,
+          "certified_gap_upper": 2.7232612710209194
+        }
+      ],
+      "best_gap_so_far": 2.3429799158802727
+    },
+    {
+      "iteration": 0,
+      "pool_size": 82,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.750000000000036,
+      "optimizer_success": true,
+      "restricted_support_size": 18,
+      "quantized_support_size": 18,
+      "full_action_best_response": [
+        29,
+        0,
+        1,
+        69,
+        1
+      ],
+      "full_action_payout": 5.971136842928227,
+      "certified_gap_lower": 2.2211368169625345,
+      "certified_gap_upper": 2.2211368688939195,
+      "added_response_actions": [
+        [
+          29,
+          0,
+          1,
+          69,
+          1
+        ],
+        [
+          29,
+          0,
+          0,
+          69,
+          2
+        ],
+        [
+          29,
+          2,
+          0,
+          69,
+          0
+        ],
+        [
+          29,
+          1,
+          0,
+          69,
+          1
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.750000000000036,
+          "optimizer_success": true,
+          "quantized_support_size": 18,
+          "best_response": [
+            29,
+            0,
+            1,
+            69,
+            1
+          ],
+          "full_action_payout": 5.971136842928227,
+          "certified_gap_lower": 2.2211368169625345,
+          "certified_gap_upper": 2.2211368688939195
+        }
+      ],
+      "best_gap_so_far": 2.2211368688939195
+    },
+    {
+      "iteration": 1,
+      "pool_size": 86,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.750000000000043,
+      "optimizer_success": true,
+      "restricted_support_size": 22,
+      "quantized_support_size": 22,
+      "full_action_best_response": [
+        7,
+        16,
+        5,
+        70,
+        2
+      ],
+      "full_action_payout": 5.971380044690989,
+      "certified_gap_lower": 2.2213800232855365,
+      "certified_gap_upper": 2.2213800660964407,
+      "added_response_actions": [
+        [
+          7,
+          16,
+          5,
+          70,
+          2
+        ],
+        [
+          7,
+          16,
+          6,
+          70,
+          1
+        ],
+        [
+          7,
+          15,
+          6,
+          70,
+          2
+        ],
+        [
+          0,
+          16,
+          0,
+          70,
+          14
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.750000000000043,
+          "optimizer_success": true,
+          "quantized_support_size": 22,
+          "best_response": [
+            7,
+            16,
+            5,
+            70,
+            2
+          ],
+          "full_action_payout": 5.971380044690989,
+          "certified_gap_lower": 2.2213800232855365,
+          "certified_gap_upper": 2.2213800660964407
+        }
+      ],
+      "best_gap_so_far": 2.2211368688939195
+    },
+    {
+      "iteration": 2,
+      "pool_size": 90,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000333,
+      "optimizer_success": true,
+      "restricted_support_size": 19,
+      "quantized_support_size": 19,
+      "full_action_best_response": [
+        7,
+        17,
+        56,
+        4,
+        16
+      ],
+      "full_action_payout": 5.868390534798796,
+      "certified_gap_lower": 2.1183905151693425,
+      "certified_gap_upper": 2.1183905544282493,
+      "added_response_actions": [
+        [
+          7,
+          17,
+          56,
+          4,
+          16
+        ],
+        [
+          8,
+          17,
+          56,
+          4,
+          15
+        ],
+        [
+          8,
+          17,
+          56,
+          5,
+          14
+        ],
+        [
+          8,
+          17,
+          57,
+          4,
+          14
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000333,
+          "optimizer_success": true,
+          "quantized_support_size": 19,
+          "best_response": [
+            7,
+            17,
+            56,
+            4,
+            16
+          ],
+          "full_action_payout": 5.868390534798796,
+          "certified_gap_lower": 2.1183905151693425,
+          "certified_gap_upper": 2.1183905544282493
+        }
+      ],
+      "best_gap_so_far": 2.1183905544282493
+    },
+    {
+      "iteration": 3,
+      "pool_size": 94,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000235,
+      "optimizer_success": true,
+      "restricted_support_size": 30,
+      "quantized_support_size": 30,
+      "full_action_best_response": [
+        0,
+        29,
+        0,
+        71,
+        0
+      ],
+      "full_action_payout": 5.817077317136259,
+      "certified_gap_lower": 2.0670772812793756,
+      "certified_gap_upper": 2.0670773529931417,
+      "added_response_actions": [
+        [
+          0,
+          29,
+          0,
+          71,
+          0
+        ],
+        [
+          2,
+          26,
+          1,
+          71,
+          0
+        ],
+        [
+          22,
+          0,
+          7,
+          71,
+          0
+        ],
+        [
+          0,
+          26,
+          1,
+          71,
+          2
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000235,
+          "optimizer_success": true,
+          "quantized_support_size": 30,
+          "best_response": [
+            0,
+            29,
+            0,
+            71,
+            0
+          ],
+          "full_action_payout": 5.817077317136259,
+          "certified_gap_lower": 2.0670772812793756,
+          "certified_gap_upper": 2.0670773529931417
+        }
+      ],
+      "best_gap_so_far": 2.0670773529931417
+    },
+    {
+      "iteration": 4,
+      "pool_size": 98,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000346,
+      "optimizer_success": true,
+      "restricted_support_size": 25,
+      "quantized_support_size": 25,
+      "full_action_best_response": [
+        2,
+        34,
+        58,
+        5,
+        1
+      ],
+      "full_action_payout": 5.77465200606313,
+      "certified_gap_lower": 2.0246519830188454,
+      "certified_gap_upper": 2.0246520291074157,
+      "added_response_actions": [
+        [
+          2,
+          34,
+          58,
+          5,
+          1
+        ],
+        [
+          2,
+          34,
+          58,
+          6,
+          0
+        ],
+        [
+          2,
+          35,
+          58,
+          5,
+          0
+        ],
+        [
+          1,
+          34,
+          58,
+          6,
+          1
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000346,
+          "optimizer_success": true,
+          "quantized_support_size": 25,
+          "best_response": [
+            2,
+            34,
+            58,
+            5,
+            1
+          ],
+          "full_action_payout": 5.77465200606313,
+          "certified_gap_lower": 2.0246519830188454,
+          "certified_gap_upper": 2.0246520291074157
+        }
+      ],
+      "best_gap_so_far": 2.0246520291074157
+    },
+    {
+      "iteration": 5,
+      "pool_size": 102,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000644,
+      "optimizer_success": true,
+      "restricted_support_size": 28,
+      "quantized_support_size": 28,
+      "full_action_best_response": [
+        7,
+        11,
+        8,
+        72,
+        2
+      ],
+      "full_action_payout": 5.578580208511382,
+      "certified_gap_lower": 1.8285801743674863,
+      "certified_gap_upper": 1.8285802426552773,
+      "added_response_actions": [
+        [
+          7,
+          11,
+          8,
+          72,
+          2
+        ],
+        [
+          7,
+          7,
+          8,
+          72,
+          6
+        ],
+        [
+          6,
+          16,
+          0,
+          72,
+          6
+        ],
+        [
+          7,
+          16,
+          0,
+          72,
+          5
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000644,
+          "optimizer_success": true,
+          "quantized_support_size": 28,
+          "best_response": [
+            7,
+            11,
+            8,
+            72,
+            2
+          ],
+          "full_action_payout": 5.578580208511382,
+          "certified_gap_lower": 1.8285801743674863,
+          "certified_gap_upper": 1.8285802426552773
+        }
+      ],
+      "best_gap_so_far": 1.8285802426552773
+    },
+    {
+      "iteration": 6,
+      "pool_size": 106,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000666,
+      "optimizer_success": true,
+      "restricted_support_size": 27,
+      "quantized_support_size": 27,
+      "full_action_best_response": [
+        16,
+        0,
+        9,
+        73,
+        2
+      ],
+      "full_action_payout": 5.465783616244329,
+      "certified_gap_lower": 1.7157835840769027,
+      "certified_gap_upper": 1.7157836484117568,
+      "added_response_actions": [
+        [
+          16,
+          0,
+          9,
+          73,
+          2
+        ],
+        [
+          1,
+          46,
+          9,
+          7,
+          37
+        ],
+        [
+          17,
+          0,
+          9,
+          73,
+          1
+        ],
+        [
+          17,
+          1,
+          9,
+          73,
+          0
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000666,
+          "optimizer_success": true,
+          "quantized_support_size": 27,
+          "best_response": [
+            16,
+            0,
+            9,
+            73,
+            2
+          ],
+          "full_action_payout": 5.465783616244329,
+          "certified_gap_lower": 1.7157835840769027,
+          "certified_gap_upper": 1.7157836484117568
+        }
+      ],
+      "best_gap_so_far": 1.7157836484117568
+    },
+    {
+      "iteration": 7,
+      "pool_size": 110,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000333,
+      "optimizer_success": true,
+      "restricted_support_size": 35,
+      "quantized_support_size": 35,
+      "full_action_best_response": [
+        7,
+        4,
+        10,
+        74,
+        5
+      ],
+      "full_action_payout": 5.449948844186679,
+      "certified_gap_lower": 1.6999488071313729,
+      "certified_gap_upper": 1.699948881241985,
+      "added_response_actions": [
+        [
+          7,
+          4,
+          10,
+          74,
+          5
+        ],
+        [
+          7,
+          3,
+          10,
+          74,
+          6
+        ],
+        [
+          7,
+          11,
+          0,
+          74,
+          8
+        ],
+        [
+          7,
+          7,
+          10,
+          74,
+          2
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000333,
+          "optimizer_success": true,
+          "quantized_support_size": 35,
+          "best_response": [
+            7,
+            4,
+            10,
+            74,
+            5
+          ],
+          "full_action_payout": 5.449948844186679,
+          "certified_gap_lower": 1.6999488071313729,
+          "certified_gap_upper": 1.699948881241985
+        }
+      ],
+      "best_gap_so_far": 1.699948881241985
+    },
+    {
+      "iteration": 8,
+      "pool_size": 114,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000795,
+      "optimizer_success": true,
+      "restricted_support_size": 40,
+      "quantized_support_size": 40,
+      "full_action_best_response": [
+        10,
+        47,
+        35,
+        8,
+        0
+      ],
+      "full_action_payout": 5.516056401448722,
+      "certified_gap_lower": 1.7660563488154404,
+      "certified_gap_upper": 1.7660564540820038,
+      "added_response_actions": [
+        [
+          10,
+          47,
+          35,
+          8,
+          0
+        ],
+        [
+          12,
+          0,
+          11,
+          75,
+          2
+        ],
+        [
+          11,
+          1,
+          11,
+          75,
+          2
+        ],
+        [
+          11,
+          0,
+          11,
+          75,
+          3
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000795,
+          "optimizer_success": true,
+          "quantized_support_size": 40,
+          "best_response": [
+            10,
+            47,
+            35,
+            8,
+            0
+          ],
+          "full_action_payout": 5.516056401448722,
+          "certified_gap_lower": 1.7660563488154404,
+          "certified_gap_upper": 1.7660564540820038
+        }
+      ],
+      "best_gap_so_far": 1.699948881241985
+    },
+    {
+      "iteration": 0,
+      "pool_size": 118,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000626,
+      "optimizer_success": true,
+      "restricted_support_size": 30,
+      "quantized_support_size": 30,
+      "full_action_best_response": [
+        13,
+        17,
+        59,
+        9,
+        2
+      ],
+      "full_action_payout": 5.505704139942863,
+      "certified_gap_lower": 1.7557041067317594,
+      "certified_gap_upper": 1.7557041731539675,
+      "added_response_actions": [
+        [
+          13,
+          17,
+          59,
+          9,
+          2
+        ],
+        [
+          13,
+          16,
+          59,
+          9,
+          3
+        ],
+        [
+          14,
+          16,
+          59,
+          9,
+          2
+        ],
+        [
+          13,
+          17,
+          59,
+          8,
+          3
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000626,
+          "optimizer_success": true,
+          "quantized_support_size": 30,
+          "best_response": [
+            13,
+            17,
+            59,
+            9,
+            2
+          ],
+          "full_action_payout": 5.505704139942863,
+          "certified_gap_lower": 1.7557041067317594,
+          "certified_gap_upper": 1.7557041731539675
+        }
+      ],
+      "best_gap_so_far": 1.699948881241985
+    },
+    {
+      "iteration": 1,
+      "pool_size": 122,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.75000000000005,
+      "optimizer_success": true,
+      "restricted_support_size": 35,
+      "quantized_support_size": 35,
+      "full_action_best_response": [
+        0,
+        22,
+        2,
+        76,
+        0
+      ],
+      "full_action_payout": 5.422276409421345,
+      "certified_gap_lower": 1.6722763674040082,
+      "certified_gap_upper": 1.6722764514386819,
+      "added_response_actions": [
+        [
+          0,
+          22,
+          2,
+          76,
+          0
+        ],
+        [
+          2,
+          22,
+          0,
+          76,
+          0
+        ],
+        [
+          1,
+          22,
+          1,
+          76,
+          0
+        ],
+        [
+          0,
+          22,
+          0,
+          76,
+          2
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.75000000000005,
+          "optimizer_success": true,
+          "quantized_support_size": 35,
+          "best_response": [
+            0,
+            22,
+            2,
+            76,
+            0
+          ],
+          "full_action_payout": 5.422276409421345,
+          "certified_gap_lower": 1.6722763674040082,
+          "certified_gap_upper": 1.6722764514386819
+        }
+      ],
+      "best_gap_so_far": 1.6722764514386819
+    },
+    {
+      "iteration": 2,
+      "pool_size": 126,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000324,
+      "optimizer_success": true,
+      "restricted_support_size": 33,
+      "quantized_support_size": 33,
+      "full_action_best_response": [
+        17,
+        0,
+        6,
+        77,
+        0
+      ],
+      "full_action_payout": 5.506302594384078,
+      "certified_gap_lower": 1.7563025540310067,
+      "certified_gap_upper": 1.7563026347371484,
+      "added_response_actions": [
+        [
+          17,
+          0,
+          6,
+          77,
+          0
+        ],
+        [
+          15,
+          0,
+          6,
+          77,
+          2
+        ],
+        [
+          16,
+          0,
+          5,
+          77,
+          2
+        ],
+        [
+          16,
+          0,
+          6,
+          77,
+          1
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000324,
+          "optimizer_success": true,
+          "quantized_support_size": 33,
+          "best_response": [
+            17,
+            0,
+            6,
+            77,
+            0
+          ],
+          "full_action_payout": 5.506302594384078,
+          "certified_gap_lower": 1.7563025540310067,
+          "certified_gap_upper": 1.7563026347371484
+        }
+      ],
+      "best_gap_so_far": 1.6722764514386819
+    },
+    {
+      "iteration": 3,
+      "pool_size": 130,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.750000000000066,
+      "optimizer_success": true,
+      "restricted_support_size": 36,
+      "quantized_support_size": 36,
+      "full_action_best_response": [
+        0,
+        18,
+        2,
+        78,
+        2
+      ],
+      "full_action_payout": 5.269503532016373,
+      "certified_gap_lower": 1.5195034916347898,
+      "certified_gap_upper": 1.519503572397956,
+      "added_response_actions": [
+        [
+          0,
+          18,
+          2,
+          78,
+          2
+        ],
+        [
+          2,
+          18,
+          0,
+          78,
+          2
+        ],
+        [
+          0,
+          18,
+          1,
+          78,
+          3
+        ],
+        [
+          1,
+          18,
+          1,
+          78,
+          2
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.750000000000066,
+          "optimizer_success": true,
+          "quantized_support_size": 36,
+          "best_response": [
+            0,
+            18,
+            2,
+            78,
+            2
+          ],
+          "full_action_payout": 5.269503532016373,
+          "certified_gap_lower": 1.5195034916347898,
+          "certified_gap_upper": 1.519503572397956
+        }
+      ],
+      "best_gap_so_far": 1.519503572397956
+    },
+    {
+      "iteration": 4,
+      "pool_size": 134,
+      "distinct_restricted_equilibria_audited": 1,
+      "restricted_best_payoff": 3.7500000000000435,
+      "optimizer_success": true,
+      "restricted_support_size": 32,
+      "quantized_support_size": 32,
+      "full_action_best_response": [
+        2,
+        24,
+        60,
+        10,
+        4
+      ],
+      "full_action_payout": 5.295941153955401,
+      "certified_gap_lower": 1.5459411127144036,
+      "certified_gap_upper": 1.5459411951963988,
+      "added_response_actions": [
+        [
+          2,
+          24,
+          60,
+          10,
+          4
+        ],
+        [
+          15,
+          0,
+          6,
+          79,
+          0
+        ],
+        [
+          2,
+          28,
+          60,
+          10,
+          0
+        ],
+        [
+          2,
+          22,
+          60,
+          10,
+          6
+        ]
+      ],
+      "candidate_equilibria": [
+        {
+          "restricted_best_payoff": 3.7500000000000435,
+          "optimizer_success": true,
+          "quantized_support_size": 32,
+          "best_response": [
+            2,
+            24,
+            60,
+            10,
+            4
+          ],
+          "full_action_payout": 5.295941153955401,
+          "certified_gap_lower": 1.5459411127144036,
+          "certified_gap_upper": 1.5459411951963988
+        }
+      ],
+      "best_gap_so_far": 1.519503572397956
+    }
+  ],
+  "best_gap": 1.519503572397956
+}

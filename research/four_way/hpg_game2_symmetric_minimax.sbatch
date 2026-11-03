@@ -16,8 +16,8 @@ export MKL_NUM_THREADS=1
 
 python3 research/four_way/symmetric_minimax_expansion.py \
   research/four_way/results/replicator_runs/diverse-pool25-response7-500k.json \
-  --output-dir research/four_way/results/hpg_symmetric_minimax_multistart \
-  --state research/four_way/results/hpg_symmetric_minimax_multistart/state.json \
+  --output-dir research/four_way/results/hpg_symmetric_minimax_sparse \
+  --state research/four_way/results/hpg_symmetric_minimax_sparse/state.json \
   --resume \
   --max-rounds 30 \
   --restarts 6 \
