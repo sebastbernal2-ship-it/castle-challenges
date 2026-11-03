@@ -86,7 +86,7 @@ PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
 PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/hpg-candidate-0.json
 ```
 
-The eight-configuration sweep (`49312405`) is complete. Task 0 produced the previous incumbent; tasks 1–7 have exact-audited gaps between `0.0007687400` and `0.0007688900`. All tasks started from the earlier `0.0007690650` strategy. The subsequent three-step refinement job (`49349592`) started from task 0's result and improved it to the current strategy. `hpg_polish_array.sbatch` and `hpg_polish_refine.sbatch` preserve the search configurations and write full-action certificates.
+The eight-configuration sweep (`49312405`) is complete. Task 0 produced the previous incumbent; tasks 1–7 have exact-audited gaps between `0.0007687400` and `0.0007688900`. All tasks started from the earlier `0.0007690650` strategy. Three-step refinement job `49349592` improved task 0's result to the current strategy. A further three-step refinement (`49363145`) is running from this new exact-audited incumbent. `hpg_polish_array.sbatch` and `hpg_polish_refine.sbatch` preserve the search configurations and write full-action certificates.
 
 The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a stronger certified strategy, but Game 1 is not fully solved or GTO.
 
