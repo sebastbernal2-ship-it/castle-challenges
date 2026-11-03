@@ -78,6 +78,29 @@ def _certified_payout_upper_bound(retained_payout: Fraction, tail: Fraction) -> 
     return min(Fraction(9), (1 - tail) * retained_payout + 9 * tail)
 
 
+def _input_exploitability_bounds(retained_payout: Fraction, tv: Fraction
+                                 ) -> tuple[Fraction, Fraction]:
+    response_lower = max(Fraction(0), retained_payout - 9 * tv)
+    response_upper = min(Fraction(9), retained_payout + 9 * tv)
+    exploitability_lower = max(Fraction(0), response_lower - Fraction(15, 4))
+    exploitability_upper = response_upper - Fraction(15, 4)
+    return exploitability_lower, exploitability_upper
+
+
+def _input_total_variation(actions: list[tuple[int, ...]], weights: list[Fraction],
+                           retained: dict[tuple[int, ...], int]) -> Fraction:
+    input_mass = sum(weights)
+    input_prob: dict[tuple[int, ...], Fraction] = {}
+    for action, weight in zip(actions, weights):
+        input_prob[action] = input_prob.get(action, Fraction(0)) + weight / input_mass
+    retained_mass = sum(retained.values())
+    retained_prob = {action: Fraction(count, retained_mass)
+                     for action, count in retained.items()}
+    all_actions = input_prob.keys() | retained_prob.keys()
+    return sum((abs(input_prob.get(action, 0) - retained_prob.get(action, 0))
+                for action in all_actions), Fraction(0)) / 2
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("population", type=Path)
@@ -114,6 +137,11 @@ def main() -> None:
     payout_upper_bound = _certified_payout_upper_bound(exact_retained_payout,
                                                         tail_fraction)
     exploitability_upper_bound = payout_upper_bound - Fraction(15, 4)
+    input_tv = _input_total_variation(actions, weights, retained)
+    (input_exploitability_lower_bound,
+     input_exploitability_upper_bound) = _input_exploitability_bounds(
+        exact_retained_payout, input_tv
+    )
     report = {
         "population_file": str(args.population),
         "original_support_size": len(actions),
@@ -125,6 +153,12 @@ def main() -> None:
         "certified_global_best_response_upper_bound_fraction": [payout_upper_bound.numerator, payout_upper_bound.denominator],
         "certified_exploitability_upper_bound_fraction": [exploitability_upper_bound.numerator, exploitability_upper_bound.denominator],
         "certified_exploitability_upper_bound": float(exploitability_upper_bound),
+        "input_to_oracle_total_variation_fraction": [input_tv.numerator, input_tv.denominator],
+        "input_to_oracle_total_variation": float(input_tv),
+        "input_mixture_certified_exploitability_lower_bound_fraction": [input_exploitability_lower_bound.numerator, input_exploitability_lower_bound.denominator],
+        "input_mixture_certified_exploitability_lower_bound": float(input_exploitability_lower_bound),
+        "input_mixture_certified_exploitability_upper_bound_fraction": [input_exploitability_upper_bound.numerator, input_exploitability_upper_bound.denominator],
+        "input_mixture_certified_exploitability_upper_bound": float(input_exploitability_upper_bound),
         "distribution_quantization": "largest-remainder integer frequencies; all response arithmetic is exact for this rationalized mixture",
         "best_response": [int(x) for x in allocation.split(",")],
         "exact_expected_payout_fraction_on_oracle_mixture": f"{numerator}/{denominator}",

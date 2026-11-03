@@ -27,6 +27,16 @@ class ExactFullActionOracleTests(unittest.TestCase):
         self.assertEqual(tail, 20)
         upper = RUNNER._certified_payout_upper_bound(Fraction(8), Fraction(tail, 100))
         self.assertEqual(upper, Fraction(41, 5))
+        tv = RUNNER._input_total_variation(actions[:2],
+                                           [Fraction(1, 2), Fraction(1, 2)],
+                                           retained)
+        self.assertEqual(tv, Fraction(1, 2))
+        lower, upper = RUNNER._input_exploitability_bounds(Fraction(8), tv)
+        self.assertEqual((lower, upper), (Fraction(0), Fraction(21, 4)))
+        self.assertEqual(
+            RUNNER._input_exploitability_bounds(Fraction(17, 2), Fraction(0)),
+            (Fraction(19, 4), Fraction(19, 4)),
+        )
 
     def test_pure_population_matches_profile_rules(self):
         source = (Path(__file__).parents[2] / "research" / "four_way"

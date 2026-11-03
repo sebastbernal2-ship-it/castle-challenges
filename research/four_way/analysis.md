@@ -28,7 +28,7 @@ For a rationalized mixture `p`, retain a subset of support mass `1-delta` and re
 
 `BR(p) <= (1-delta) BR(p_R) + 9 delta`.
 
-Thus an exact full-action oracle on a small retained support plus the discarded mass gives a rigorous upper bound for the original mixture, without pretending the truncated best response is exact for it. `run_exact_full_best_response.py --max-support K` implements this certificate. It helps only when the discarded mass is very small and `BR(p_R)` is itself low; on the equal six-action baseline, retaining half the mass only recovers the trivial upper bound 9.
+Thus an exact full-action oracle on a small retained support plus the discarded mass gives a rigorous upper bound for the original mixture, without pretending the truncated best response is exact for it. More generally, for the exact input distribution `p` and the retained oracle distribution `r`, compute their exact total variation distance `tau`; then `max(0, BR(r)-9*tau-3.75) <= exploitability(p) <= min(9, BR(r)+9*tau)-3.75`. The runner reports this interval, accounting for both probability quantization and support pruning. It is useful only when `tau` is small and `BR(r)` is itself low; on the equal six-action baseline, retaining half the mass only recovers the trivial bound.
 
 ## 4. Structure and useful invariants
 
