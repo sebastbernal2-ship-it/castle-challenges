@@ -41,6 +41,9 @@ class ExactFullActionOracleTests(unittest.TestCase):
             {"allocation": action, "frequency": 1000},
         ])
         self.assertEqual(result["oracle_frequency_total"], 1000)
+        exact_payout = Fraction(*result["certified_global_best_response_upper_bound_fraction"])
+        exact_gap = Fraction(*result["certified_exploitability_upper_bound_fraction"])
+        self.assertEqual(exact_gap, exact_payout - Fraction(15, 4))
 
     def test_truncation_has_a_rigorous_total_variation_bound(self):
         actions = [(1, 1, 1, 1, 96), (2, 2, 2, 2, 92), (3, 3, 3, 3, 88)]

@@ -202,6 +202,10 @@ def run(args):
         warm = np.asarray(state["probabilities"], dtype=float)
         history = state.get("history", [])
         best_gap = float(state.get("best_gap", 9.0))
+        previous_best = args.output_dir / "best.json"
+        if previous_best.exists():
+            previous_audit = json.loads(previous_best.read_text())["exact_oracle_audit"]
+            best_gap = min(best_gap, previous_audit["certified_exploitability_upper_bound"])
     else:
         actions = load_actions(args.pool)
         warm = None
@@ -235,15 +239,16 @@ def run(args):
             audited.append((solution, audit))
         solution, audit = min(
             audited,
-            key=lambda pair: pair[1]["input_mixture_certified_exploitability_upper_bound"],
+            key=lambda pair: pair[1]["certified_exploitability_upper_bound"],
         )
-        round_best_gap = audit["input_mixture_certified_exploitability_upper_bound"]
+        round_best_gap = audit["certified_exploitability_upper_bound"]
+        input_gap_upper = audit["input_mixture_certified_exploitability_upper_bound"]
         response = tuple(audit["best_response"])
         novel_responses = []
         # Add responses from several distinct restricted equilibria so the pool
         # is not steered by a single local basin. This is a search heuristic.
         for other_solution, other_audit in sorted(
-                audited, key=lambda pair: pair[1]["input_mixture_certified_exploitability_upper_bound"]):
+                audited, key=lambda pair: pair[1]["certified_exploitability_upper_bound"]):
             for response_record in other_audit["top_responses"]:
                 action = tuple(response_record["allocation"])
                 if action not in actions and action not in novel_responses:
@@ -262,6 +267,7 @@ def run(args):
                 "full_action_payout": other_audit["expected_payout_decimal_on_oracle_mixture"],
                 "certified_gap_lower": other_audit["input_mixture_certified_exploitability_lower_bound"],
                 "certified_gap_upper": other_audit["input_mixture_certified_exploitability_upper_bound"],
+                "rationalized_strategy_exact_gap": other_audit["certified_exploitability_upper_bound"],
             })
         record = {
             "iteration": iteration, "pool_size": len(actions),
@@ -273,7 +279,9 @@ def run(args):
             "full_action_best_response": list(response),
             "full_action_payout": audit["expected_payout_decimal_on_oracle_mixture"],
             "certified_gap_lower": audit["input_mixture_certified_exploitability_lower_bound"],
-            "certified_gap_upper": audit["input_mixture_certified_exploitability_upper_bound"],
+            "certified_gap_upper": input_gap_upper,
+            "rationalized_strategy_exact_gap": round_best_gap,
+            "rationalized_strategy_exact_gap_fraction": audit["certified_exploitability_upper_bound_fraction"],
             "added_response_actions": [list(a) for a in novel_responses],
             "candidate_equilibria": candidate_summaries,
         }
@@ -283,7 +291,8 @@ def run(args):
                 "pool_actions": [list(a) for a in actions],
                 "pool_probabilities": [float(p) for p in solution["probabilities"]],
                 "exact_oracle_audit": audit,
-                "certified_gap_upper": best_gap,
+                "rationalized_strategy_exact_gap": best_gap,
+                "optimizer_input_gap_upper": input_gap_upper,
             }, indent=2) + "\n")
         record["best_gap_so_far"] = best_gap
         history.append(record)
