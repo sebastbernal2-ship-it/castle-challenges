@@ -174,6 +174,10 @@ def main() -> None:
         "oracle_support_size": len(retained),
         "frequency_total": args.frequency_total,
         "oracle_frequency_total": sum(retained.values()),
+        "oracle_strategy": [
+            {"allocation": list(action), "frequency": count}
+            for action, count in sorted(retained.items())
+        ],
         "oracle_threads": args.threads,
         "oracle_top_k": args.top_k,
         "top_responses": responses,

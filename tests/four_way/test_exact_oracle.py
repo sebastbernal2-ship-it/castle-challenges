@@ -1,8 +1,10 @@
 from fractions import Fraction
 import importlib.util
+import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -19,6 +21,27 @@ RUNNER_SPEC.loader.exec_module(RUNNER)
 
 @unittest.skipUnless(shutil.which("c++"), "C++ compiler is required for oracle test")
 class ExactFullActionOracleTests(unittest.TestCase):
+    def test_runner_records_the_exact_rationalized_strategy(self):
+        action = [20, 20, 20, 20, 20]
+        with tempfile.TemporaryDirectory(prefix="four-way-runner-test-") as temp:
+            population = Path(temp) / "population.json"
+            report = Path(temp) / "report.json"
+            population.write_text(json.dumps({
+                "actions": [action],
+                "last_half_time_average_probabilities": [1.0],
+            }))
+            subprocess.run(
+                [sys.executable, str(RUNNER_PATH), str(population),
+                 "--frequency-total", "1000", "--threads", "4",
+                 "--output", str(report)],
+                check=True, capture_output=True, text=True,
+            )
+            result = json.loads(report.read_text())
+        self.assertEqual(result["oracle_strategy"], [
+            {"allocation": action, "frequency": 1000},
+        ])
+        self.assertEqual(result["oracle_frequency_total"], 1000)
+
     def test_truncation_has_a_rigorous_total_variation_bound(self):
         actions = [(1, 1, 1, 1, 96), (2, 2, 2, 2, 92), (3, 3, 3, 3, 88)]
         counts = dict(zip(actions, (80, 15, 5)))

@@ -17,7 +17,7 @@ using U128 = unsigned __int128;
 using ScenarioScores = std::array<std::array<std::array<std::uint8_t, 4>, 101>, 5>;
 
 struct OpponentTriple {
-    U128 weighted_multiplicity;
+    std::array<U128, 37> weighted_payout{};
     ScenarioScores score_increment{}; // castle, own count, player (self first)
 };
 
@@ -140,7 +140,8 @@ int main(int argc, char** argv) {
                                     * weights[i] * weights[j] * weights[k];
                 if (!weighted) continue;
                 OpponentTriple scenario{};
-                scenario.weighted_multiplicity = weighted;
+                for (int payout = 0; payout <= 36; ++payout)
+                    scenario.weighted_payout[payout] = weighted * payout;
                 precompute_scenario(scenario, actions[i], actions[j], actions[k]);
                 triples.push_back(std::move(scenario));
             }
@@ -169,8 +170,8 @@ int main(int argc, char** argv) {
                                     for (int player = 0; player < 4; ++player)
                                         score12[player] += inc[player];
                                 }
-                                numerator += scenario.weighted_multiplicity
-                                           * payout_quarters(score12);
+                                numerator += scenario.weighted_payout[
+                                    payout_quarters(score12)];
                             }
                             Candidate scored{candidate, numerator};
                             if (static_cast<int>(result.size()) < top_k || better(scored, result.back()))
