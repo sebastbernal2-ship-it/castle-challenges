@@ -60,19 +60,23 @@ A stronger direction oracle then produced a substantial further gain. For the to
 | 50,000 | 1,000,000 | 0.0009021633 |
 | 10,000 | 3,000,000 | 0.0007770149 |
 | 10,000 | 3,000,000 | 0.0007742399 |
-| 50,000 | 1,000,000 | **0.0007730400** |
+| 50,000 | 1,000,000 | 0.0007730400 |
+| 50,000 | 1,000,000 | 0.0007702150 |
+| 50,000 | 1,000,000 | **0.0007690650** |
 
-Each accepted strategy was checked against all legal attacker actions using the integer-DP verifier. The latest 61,478-action mixture is `results/polished-full-action-defense-oracle.json`, with exact exploitability `30,922 / 40,000,520`, and full-action best response `(12,24,5,2,57)`. Its immediate predecessor checkpoint is `results/full-column-top10000-3m-checkpoint.json`.
+Each accepted strategy was checked against all legal attacker actions using the integer-DP verifier. The latest 64,914-action mixture is `results/polished-full-action-defense-oracle.json`, with exact exploitability `30,763 / 40,000,520`, and full-action best response `(10,26,5,2,57)`. Its immediate predecessor checkpoint is `results/full-column-recent-checkpoint.json`.
 
 Reproduce the final accepted step (the oracle run takes about 11 minutes on the recorded machine):
 
 ```sh
 PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
-  research/head_to_head/results/full-column-top10000-3m-checkpoint.json \\
+  research/head_to_head/results/full-column-recent-checkpoint.json \\
   --steps 1 --top-k 50000 --oracle-iterations 1000000 \\
   --pure-directions 128 --output /tmp/latest.json
 PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/latest.json
 ```
+
+An eight-configuration Slurm sweep is running on HiPerGator (job array `49312405`, four tasks concurrently), using this exact full-action-audited strategy as its starting point. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets. It writes a full-action certificate beside every candidate.
 
 The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a materially stronger certified strategy, but Game 1 is not fully solved or GTO.
 
@@ -82,4 +86,4 @@ We also implemented exact logit-response marginals by a log-space coefficient DP
 
 ## Interpretation and next computation
 
-The latest candidate has a rigorously evaluated `0.0007730400` full-action deviation gap under the encoded rules; its exact rational certificate is independently checked by `verify_strategy.py`. The gap remains positive, so this is not an exact equilibrium. The new direction oracle substantially improved the result, but finite fictitious play over a restricted attacker set and heuristic line-search steps do not prove global optimality. Further work should strengthen the attacker-side separation/optimization and establish a convergent full-game saddle-point certificate.
+The latest candidate has a rigorously evaluated `0.0007690650` full-action deviation gap under the encoded rules; its exact rational certificate is independently checked by `verify_strategy.py`. The gap remains positive, so this is not an exact equilibrium. The new direction oracle substantially improved the result, but finite fictitious play over a restricted attacker set and heuristic line-search steps do not prove global optimality. Further work should strengthen the attacker-side separation/optimization and establish a convergent full-game saddle-point certificate.

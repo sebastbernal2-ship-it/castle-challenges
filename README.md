@@ -39,7 +39,7 @@ castle-head-to-head --count
 castle-head-to-head 20,20,20,20,20 --trials 10000 --seed 7
 ```
 
-The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. For full-action computation and exact deviation checks, run `PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 2000000 --seed 1`; results and interpretation are in `research/head_to_head/computation.md`. The current polished candidate has a certified full-action exploitability of about 0.000773 points under the encoded rules. It remains an approximate strategy, not an exact equilibrium or GTO.
+The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. For full-action computation and exact deviation checks, run `PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 2000000 --seed 1`; results and interpretation are in `research/head_to_head/computation.md`. The current polished candidate has a certified full-action exploitability of about 0.000769 points under the encoded rules. It remains an approximate strategy, not an exact equilibrium or GTO.
 
 **Research target:** symmetric Nash equilibrium in this finite two-player constant-sum game. There are `C(104,4) = 4,598,126` legal pure strategies, so restricted-game solving and best-response expansion are natural starting points.
 
