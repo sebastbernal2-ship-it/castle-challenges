@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+"""Compile/run the exact Game 2 action-space response search for a JSON mixture."""
+
+import argparse
+import json
+from pathlib import Path
+import subprocess
+import tempfile
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("population", type=Path)
+    parser.add_argument("--compiler", default="c++")
+    args = parser.parse_args()
+    data = json.loads(args.population.read_text())
+    entries = data["population"]
+    lines = [str(len(entries))]
+    for entry in entries:
+        allocation = entry["allocation"]
+        if len(allocation) != 5 or sum(allocation) != 100:
+            parser.error(f"invalid allocation in {args.population}: {allocation}")
+        lines.append(" ".join(map(str, allocation)) + " " + str(entry["weight"]))
+    source = Path(__file__).with_name("full_action_best_response.cpp")
+    with tempfile.TemporaryDirectory(prefix="castle-br4-") as temp:
+        binary = Path(temp) / "best_response"
+        subprocess.run([args.compiler, "-O3", "-std=c++17", str(source), "-o", str(binary)], check=True)
+        result = subprocess.run([str(binary)], input="\n".join(lines) + "\n",
+                                text=True, capture_output=True, check=True)
+    allocation, value, profile_count = result.stdout.strip().split("\t")
+    print(json.dumps({
+        "population_file": str(args.population),
+        "support_size": len(entries),
+        "unordered_opponent_profiles": int(profile_count),
+        "full_legal_action_count": 4_598_126,
+        "best_response": [int(x) for x in allocation.split(",")],
+        "exact_expected_payout_against_this_population": float(value),
+        "scope": "Full pure-action best response to supplied mixture only; not an equilibrium result.",
+    }, indent=2))
+
+
+if __name__ == "__main__":
+    main()

@@ -47,7 +47,7 @@ The evaluator reports performance against a sampled uniform-composition baseline
 
 Four players allocate 100 soldiers each. Each castle's points are awarded to its high bidder(s), split equally in case of a tie. Players are ranked by castle points; players tied in rank split the payouts for the rank slots they occupy, using `(9, 4, 2, 0)`.
 
-Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and a solver plan are in `research/four_way/analysis.md`.
+Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. A C++ full-action best-response search against a finite support can be run with `python3 research/four_way/run_full_best_response.py research/four_way/baseline_population.json`; this certifies deviations only against the supplied mixture, not equilibrium.
 
 ```sh
 castle-four-way 20,20,20,20,20 --trials 10000 --seed 7

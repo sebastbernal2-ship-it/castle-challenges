@@ -1,0 +1,11 @@
+{
+  "description": "Diagnostic mixture only: equal probability on the even allocation and five pure corners.",
+  "population": [
+    {"allocation": [20, 20, 20, 20, 20], "weight": 1},
+    {"allocation": [100, 0, 0, 0, 0], "weight": 1},
+    {"allocation": [0, 100, 0, 0, 0], "weight": 1},
+    {"allocation": [0, 0, 100, 0, 0], "weight": 1},
+    {"allocation": [0, 0, 0, 100, 0], "weight": 1},
+    {"allocation": [0, 0, 0, 0, 100], "weight": 1}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "method": "Enumerate every legal allocation and compute expected payout over all unordered iid opponent triples in the finite support; exact scoring, floating probability arithmetic.",
+  "full_legal_action_count": 4598126,
+  "baseline_population": {
+    "support": "uniform over even allocation and five single-castle corners",
+    "support_size": 6,
+    "unordered_opponent_triples": 56,
+    "symmetric_self_play_payoff": 3.75,
+    "best_response": [1, 21, 21, 21, 36],
+    "best_response_expected_payout": 8.40277777777778,
+    "deviation_gain": 4.65277777777778
+  },
+  "after_adding_one_best_response_at_equal_mass": {
+    "support_size": 7,
+    "unordered_opponent_triples": 84,
+    "best_response": [2, 1, 22, 22, 53],
+    "best_response_expected_payout": 8.29154518950437,
+    "deviation_gain_over_symmetric_value": 4.54154518950437
+  },
+  "interpretation": "Both mixtures are strongly exploitable; this is a full-action deviation oracle, not an equilibrium computation."
+}

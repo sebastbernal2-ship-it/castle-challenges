@@ -15,7 +15,9 @@ A diagnostic population was defined with equal probability on six allocations: `
 | `(0,0,25,25,50)` | 7.513889 |
 | `(5,10,20,30,35)` | 8.048611 |
 
-This population is an intentionally simple diagnostic, not an estimate of applicants and not an equilibrium. These values show why a generic/even allocation can be exploited by structured opponents; they do not identify a tournament-optimal or equilibrium strategy. Against four copies of the even allocation, `(20,0,21,21,38)` earns 9 points in that profile, illustrating a profitable response to a pure strategy (not to a mixed equilibrium).
+This population is an intentionally simple diagnostic, not an estimate of applicants and not an equilibrium. The exact full-action search over all 4,598,126 allocations finds `(1,21,21,21,36)`, with expected payout `8.402778` against that mixture. Since symmetric self-play has expected payout 3.75, the diagnostic mixture has an exact pure deviation gain of `4.652778` points. Add this response at equal mass to the six original actions and rerun the full-action search: the next response is `(2,1,22,22,53)`, with payout `8.291545` against the resulting seven-action mixture. This confirms the baseline is extremely far from equilibrium; it does not by itself produce a convergent learning process. Full outputs are in `results/full_action_responses.json`.
+
+Against four copies of the even allocation, `(20,0,21,21,38)` earns 9 points in that profile, illustrating a profitable response to a pure strategy (not to a mixed equilibrium).
 
 ## Current status / what remains
 
