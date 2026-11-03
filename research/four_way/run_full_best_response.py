@@ -17,10 +17,15 @@ def main() -> None:
     if "population" in data:
         entries = data["population"]
     else:
+        probabilities = data.get(
+            "last_half_time_average_probabilities_decimal",
+            data["last_half_time_average_probabilities"],
+        )
+        if len(data["actions"]) != len(probabilities):
+            raise ValueError("action and probability arrays must have the same length")
         entries = [
             {"allocation": action, "weight": weight}
-            for action, weight in zip(data["actions"],
-                                      data["last_half_time_average_probabilities"])
+            for action, weight in zip(data["actions"], probabilities)
         ]
     lines = [str(len(entries))]
     for entry in entries:

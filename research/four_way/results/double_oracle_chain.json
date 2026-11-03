@@ -1,0 +1,62 @@
+{
+  "method": "restricted symmetric multiplicative weights plus exhaustive full-action response",
+  "eta": 0.02,
+  "notes": [
+    "Restricted-pool gaps are numerical max pure-action payoff minus 3.75, evaluated against the saved time-average mixture.",
+    "Full-action search enumerates 4,598,126 allocations and uses long-double probabilities; the fixed-response audit uses exact fractions of stored decimal weights.",
+    "The exact audit certifies each listed action's expected payout against its saved mixture, not its exact-rational optimality among all actions."
+  ],
+  "rounds": [
+    {
+      "pool_size": 18,
+      "mixture": "results/replicator_runs/diverse-pool18.json",
+      "iterations": 10000,
+      "restricted_pool_gap_estimate": 0.003359137652439337,
+      "full_action_response": [21, 24, 28, 25, 2],
+      "response_audit": "results/response_profile_audit.json",
+      "audited_expected_payout_shortfall_from_9": 2.5242793142649777e-19,
+      "audited_probability_below_9": 5.048558628529955e-20
+    },
+    {
+      "pool_size": 19,
+      "mixture": "results/replicator_runs/diverse-pool19-response1.json",
+      "iterations": 10000,
+      "restricted_pool_gap_estimate": 1.191660103927461e-10,
+      "full_action_response": [21, 25, 29, 0, 25],
+      "response_audit": "results/double_oracle_round1_audit.json",
+      "audited_expected_payout": 8.919072608999207,
+      "audited_probability_below_9": 0.016185478200158598
+    },
+    {
+      "pool_size": 20,
+      "mixture": "results/replicator_runs/diverse-pool20-response2.json",
+      "iterations": 10000,
+      "restricted_pool_gap_estimate": 3.684428965033959e-05,
+      "full_action_response": [6, 26, 30, 32, 6],
+      "response_audit": "results/double_oracle_round2_audit.json",
+      "audited_expected_payout": 8.999999999598376,
+      "audited_probability_below_9": 1.2683891210821827e-10
+    },
+    {
+      "pool_size": 21,
+      "mixture": "results/replicator_runs/diverse-pool21-response3-100k.json",
+      "iterations": 100000,
+      "restricted_pool_gap_estimate": 5.735996492006734e-06,
+      "full_action_response": [22, 27, 31, 0, 20],
+      "response_audit": "results/double_oracle_round3_audit.json",
+      "audited_expected_payout": 8.99999999102311,
+      "audited_probability_below_9": 1.7953781272256718e-09
+    },
+    {
+      "pool_size": 22,
+      "mixture": "results/replicator_runs/diverse-pool22-response4-100k.json",
+      "iterations": 100000,
+      "restricted_pool_gap_estimate": 3.113541853672075e-06,
+      "full_action_response": [0, 0, 32, 33, 35],
+      "response_audit": "results/double_oracle_round4_audit.json",
+      "audited_expected_payout_shortfall_from_9": 8.836586073381301e-55,
+      "audited_probability_below_9": 1.163590284290876e-55
+    }
+  ],
+  "conclusion": "Near-equilibrium behavior inside each restricted pool did not prevent near-certain 9-point deviations in the full game. No equilibrium is certified."
+}

@@ -8,4 +8,6 @@ Suggested progression:
 3. Implement reproducible group simulation and sampled deviation search.
 4. Track uncertainty, population assumptions, and best-response gaps.
 
+Latest findings and solver limitations: [`restricted-search.md`](restricted-search.md), [`double-oracle.md`](double-oracle.md), and [`computation.md`](computation.md). The native restricted replicator can be run with `run_native_restricted_replicator.py`; it is faster than the Python reference but remains a restricted-support heuristic. Fixed-response exact-rational audits use `response_distribution.py`.
+
 Do not put head-to-head matrix-game analyses here.

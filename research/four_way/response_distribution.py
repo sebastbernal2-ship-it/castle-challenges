@@ -24,7 +24,11 @@ def load_population(path: Path) -> tuple[list[tuple[int, ...]], list[Fraction]]:
         weights = [Fraction(entry["weight"]) for entry in entries]
     else:
         actions = [tuple(a) for a in data["actions"]]
-        weights = [Fraction(w) for w in data["last_half_time_average_probabilities"]]
+        decimal_weights = data.get(
+            "last_half_time_average_probabilities_decimal",
+            data["last_half_time_average_probabilities"],
+        )
+        weights = [Fraction(w) for w in decimal_weights]
     total = sum(weights)
     if total <= 0:
         raise ValueError("population has no positive probability mass")
