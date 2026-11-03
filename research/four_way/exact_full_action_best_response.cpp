@@ -1,6 +1,6 @@
 // Exact-rational full-action Game 2 response oracle.
 // Input: support size, then allocations (five counts) and integer frequencies.
-// Output: maximizing legal action and its exact expected-payout fraction.
+// Output: the top K legal actions and their exact expected-payout fractions.
 // Frequencies must sum to <=1e12 so weighted numerators fit unsigned __int128.
 #include <algorithm>
 #include <array>
@@ -20,6 +20,23 @@ struct OpponentTriple {
     U128 weighted_multiplicity;
     ScenarioScores score_increment{}; // castle, own count, player (self first)
 };
+
+struct Candidate {
+    Allocation action{};
+    U128 numerator = 0;
+};
+
+static bool better(const Candidate& a, const Candidate& b) {
+    return a.numerator != b.numerator ? a.numerator > b.numerator
+                                      : a.action < b.action;
+}
+
+static void insert_top(std::vector<Candidate>& top, const Candidate& candidate, int limit) {
+    auto position = std::lower_bound(top.begin(), top.end(), candidate, better);
+    if (position == top.end() && static_cast<int>(top.size()) >= limit) return;
+    top.insert(position, candidate);
+    if (static_cast<int>(top.size()) > limit) top.pop_back();
+}
 
 static int payout_quarters(const std::array<int, 4>& score12) {
     int above = 0;
@@ -78,8 +95,9 @@ static std::string to_string_u128(U128 n) {
 
 int main(int argc, char** argv) {
     const int thread_count = argc > 1 ? std::stoi(argv[1]) : 1;
-    if (thread_count < 1 || thread_count > 256) {
-        std::cerr << "thread count must be in 1..256\n";
+    const int top_k = argc > 2 ? std::stoi(argv[2]) : 1;
+    if (thread_count < 1 || thread_count > 256 || top_k < 1 || top_k > 1000) {
+        std::cerr << "thread count must be in 1..256 and top_k in 1..1000\n";
         return 2;
     }
     int n;
@@ -129,9 +147,8 @@ int main(int argc, char** argv) {
         }
     }
 
-    struct ThreadResult { Allocation action{}; U128 numerator = 0; bool present = false; };
     const int workers = std::min(thread_count, 101);
-    std::vector<ThreadResult> results(workers);
+    std::vector<std::vector<Candidate>> results(workers);
     std::vector<std::thread> threads;
     threads.reserve(workers);
     for (int tid = 0; tid < workers; ++tid) {
@@ -155,32 +172,24 @@ int main(int argc, char** argv) {
                                 numerator += scenario.weighted_multiplicity
                                            * payout_quarters(score12);
                             }
-                            if (!result.present || numerator > result.numerator ||
-                                (numerator == result.numerator && candidate < result.action)) {
-                                result.action = candidate;
-                                result.numerator = numerator;
-                                result.present = true;
-                            }
+                            Candidate scored{candidate, numerator};
+                            if (static_cast<int>(result.size()) < top_k || better(scored, result.back()))
+                                insert_top(result, scored, top_k);
                         }
         });
     }
     for (auto& thread : threads) thread.join();
 
-    Allocation best{};
-    U128 best_numerator = 0;
-    bool have_best = false;
-    for (const auto& result : results) {
-        if (result.present && (!have_best || result.numerator > best_numerator ||
-            (result.numerator == best_numerator && result.action < best))) {
-            best = result.action;
-            best_numerator = result.numerator;
-            have_best = true;
-        }
-    }
+    std::vector<Candidate> global;
+    for (const auto& local : results)
+        for (const auto& candidate : local)
+            insert_top(global, candidate, top_k);
     const U128 denominator = 4 * total * total * total;
-    std::cout << best[0];
-    for (int i = 1; i < 5; ++i) std::cout << ',' << best[i];
-    std::cout << '\t' << to_string_u128(best_numerator)
-              << '\t' << to_string_u128(denominator)
-              << '\t' << triples.size() << '\n';
+    for (const auto& best : global) {
+        std::cout << best.action[0];
+        for (int i = 1; i < 5; ++i) std::cout << ',' << best.action[i];
+        std::cout << '\t' << to_string_u128(best.numerator)
+                  << '\t' << to_string_u128(denominator)
+                  << '\t' << triples.size() << '\n';
+    }
 }

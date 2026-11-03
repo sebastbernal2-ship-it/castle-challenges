@@ -1,0 +1,331 @@
+{
+  "method": "restricted symmetric minimax nonlinear program",
+  "pool_actions": [
+    [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    [
+      100,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      100,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      100,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      100,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      100
+    ],
+    [
+      5,
+      10,
+      15,
+      25,
+      45
+    ],
+    [
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    [
+      5,
+      15,
+      25,
+      25,
+      30
+    ],
+    [
+      15,
+      15,
+      20,
+      25,
+      25
+    ],
+    [
+      1,
+      21,
+      21,
+      21,
+      36
+    ],
+    [
+      2,
+      1,
+      22,
+      22,
+      53
+    ],
+    [
+      0,
+      1,
+      22,
+      23,
+      54
+    ],
+    [
+      1,
+      2,
+      23,
+      0,
+      74
+    ],
+    [
+      21,
+      22,
+      24,
+      23,
+      10
+    ],
+    [
+      5,
+      16,
+      26,
+      0,
+      53
+    ],
+    [
+      6,
+      23,
+      27,
+      31,
+      13
+    ],
+    [
+      21,
+      24,
+      28,
+      25,
+      2
+    ],
+    [
+      21,
+      25,
+      29,
+      0,
+      25
+    ],
+    [
+      6,
+      26,
+      30,
+      32,
+      6
+    ],
+    [
+      22,
+      27,
+      31,
+      0,
+      20
+    ],
+    [
+      0,
+      0,
+      32,
+      33,
+      35
+    ],
+    [
+      23,
+      28,
+      33,
+      0,
+      16
+    ],
+    [
+      1,
+      29,
+      34,
+      34,
+      2
+    ],
+    [
+      24,
+      30,
+      35,
+      0,
+      11
+    ],
+    [
+      0,
+      10,
+      36,
+      35,
+      19
+    ],
+    [
+      23,
+      28,
+      37,
+      0,
+      12
+    ],
+    [
+      6,
+      1,
+      38,
+      36,
+      19
+    ],
+    [
+      23,
+      28,
+      39,
+      0,
+      10
+    ],
+    [
+      1,
+      2,
+      40,
+      37,
+      20
+    ],
+    [
+      23,
+      28,
+      41,
+      0,
+      8
+    ],
+    [
+      1,
+      11,
+      42,
+      38,
+      8
+    ],
+    [
+      25,
+      31,
+      43,
+      0,
+      1
+    ]
+  ],
+  "pool_probabilities": [
+    0.0,
+    0.0,
+    0.0,
+    4.2465124444369054e-16,
+    0.015369094540109303,
+    0.24691210000112424,
+    0.0031081273526079554,
+    0.024994710213473235,
+    0.004226728319194643,
+    0.0,
+    0.0,
+    5.258119780500589e-16,
+    0.0,
+    0.03305703830893128,
+    4.9704561437236454e-17,
+    5.633163244143505e-16,
+    0.0,
+    0.007815677518244166,
+    0.0,
+    9.258659181016318e-16,
+    0.0,
+    4.131119324785356e-16,
+    0.012895782522932475,
+    6.532955158722243e-17,
+    0.0,
+    1.2483749161128203e-16,
+    2.3028828031763085e-16,
+    1.8985889331368039e-16,
+    0.0,
+    8.130791192349389e-16,
+    0.0,
+    9.144410429585495e-17,
+    0.27775101521932755,
+    0.3738697260040507
+  ],
+  "exact_oracle_audit": {
+    "population_file": "/tmp/game2-minimax-audit-9p919acs/mixture.json",
+    "original_support_size": 34,
+    "quantized_support_size": 10,
+    "oracle_support_size": 10,
+    "frequency_total": 1000000000,
+    "oracle_frequency_total": 1000000000,
+    "oracle_threads": 8,
+    "discarded_frequency_fraction": [
+      0,
+      1
+    ],
+    "certified_global_best_response_upper_bound_fraction": [
+      882103222556640835957447941,
+      100000000000000000000000000
+    ],
+    "certified_exploitability_upper_bound_fraction": [
+      507103222556640835957447941,
+      100000000000000000000000000
+    ],
+    "certified_exploitability_upper_bound": 5.071032225566408,
+    "input_to_oracle_total_variation_fraction": [
+      5541851776274744918394423947419,
+      3906249999999999862107028461380250000000
+    ],
+    "input_to_oracle_total_variation": 1.4187140547263347e-09,
+    "input_mixture_certified_exploitability_lower_bound_fraction": [
+      2641162610832282129180720477108049119432701245980891174087,
+      520833333333333314947603794850700000000000000000000000000
+    ],
+    "input_mixture_certified_exploitability_lower_bound": 5.071032212797982,
+    "input_mixture_certified_exploitability_upper_bound_fraction": [
+      2641162624132726392240108281254666593238301245980891174087,
+      520833333333333314947603794850700000000000000000000000000
+    ],
+    "input_mixture_certified_exploitability_upper_bound": 5.071032238334835,
+    "distribution_quantization": "largest-remainder integer frequencies; all response arithmetic is exact for this rationalized mixture",
+    "best_response": [
+      2,
+      2,
+      44,
+      39,
+      13
+    ],
+    "exact_expected_payout_fraction_on_oracle_mixture": "35284128902265633438297917640/4000000000000000000000000000",
+    "expected_payout_decimal_on_oracle_mixture": 8.821032225566409,
+    "discard_bound": "A discarded mass delta changes any action's expected payout by at most 9*delta; retained probabilities are renormalized and globally best-responded exactly.",
+    "unordered_opponent_triples": 220,
+    "full_legal_action_count": 4598126,
+    "scope": "Exact full-action best response to the stated integer-frequency mixture; not an equilibrium claim."
+  },
+  "warning": "SLSQP is a local nonconvex candidate solver. Only the exact oracle audit is a full-action deviation certificate; a positive gap is not equilibrium."
+}

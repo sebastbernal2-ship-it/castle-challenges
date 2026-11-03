@@ -1,0 +1,1084 @@
+{
+  "actions": [
+    [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    [
+      100,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      100,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      100,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      100,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      100
+    ],
+    [
+      5,
+      10,
+      15,
+      25,
+      45
+    ],
+    [
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    [
+      5,
+      15,
+      25,
+      25,
+      30
+    ],
+    [
+      15,
+      15,
+      20,
+      25,
+      25
+    ],
+    [
+      1,
+      21,
+      21,
+      21,
+      36
+    ],
+    [
+      2,
+      1,
+      22,
+      22,
+      53
+    ],
+    [
+      0,
+      1,
+      22,
+      23,
+      54
+    ],
+    [
+      1,
+      2,
+      23,
+      0,
+      74
+    ],
+    [
+      21,
+      22,
+      24,
+      23,
+      10
+    ],
+    [
+      5,
+      16,
+      26,
+      0,
+      53
+    ],
+    [
+      6,
+      23,
+      27,
+      31,
+      13
+    ],
+    [
+      21,
+      24,
+      28,
+      25,
+      2
+    ],
+    [
+      21,
+      25,
+      29,
+      0,
+      25
+    ],
+    [
+      6,
+      26,
+      30,
+      32,
+      6
+    ],
+    [
+      22,
+      27,
+      31,
+      0,
+      20
+    ],
+    [
+      0,
+      0,
+      32,
+      33,
+      35
+    ],
+    [
+      23,
+      28,
+      33,
+      0,
+      16
+    ],
+    [
+      1,
+      29,
+      34,
+      34,
+      2
+    ],
+    [
+      24,
+      30,
+      35,
+      0,
+      11
+    ],
+    [
+      0,
+      10,
+      36,
+      35,
+      19
+    ],
+    [
+      23,
+      28,
+      37,
+      0,
+      12
+    ],
+    [
+      6,
+      1,
+      38,
+      36,
+      19
+    ],
+    [
+      23,
+      28,
+      39,
+      0,
+      10
+    ],
+    [
+      1,
+      2,
+      40,
+      37,
+      20
+    ],
+    [
+      23,
+      28,
+      41,
+      0,
+      8
+    ],
+    [
+      1,
+      11,
+      42,
+      38,
+      8
+    ],
+    [
+      25,
+      31,
+      43,
+      0,
+      1
+    ],
+    [
+      2,
+      2,
+      44,
+      39,
+      13
+    ],
+    [
+      24,
+      29,
+      45,
+      0,
+      2
+    ],
+    [
+      6,
+      3,
+      46,
+      40,
+      5
+    ],
+    [
+      11,
+      31,
+      47,
+      0,
+      11
+    ],
+    [
+      15,
+      32,
+      0,
+      41,
+      12
+    ],
+    [
+      2,
+      33,
+      1,
+      42,
+      22
+    ],
+    [
+      12,
+      34,
+      48,
+      1,
+      5
+    ],
+    [
+      6,
+      0,
+      49,
+      43,
+      2
+    ],
+    [
+      13,
+      35,
+      50,
+      1,
+      1
+    ],
+    [
+      16,
+      35,
+      1,
+      44,
+      4
+    ],
+    [
+      0,
+      0,
+      51,
+      45,
+      4
+    ],
+    [
+      13,
+      35,
+      52,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      53,
+      46,
+      0
+    ],
+    [
+      5,
+      36,
+      54,
+      1,
+      4
+    ],
+    [
+      16,
+      37,
+      0,
+      47,
+      0
+    ],
+    [
+      0,
+      38,
+      1,
+      48,
+      13
+    ],
+    [
+      6,
+      39,
+      55,
+      0,
+      0
+    ],
+    [
+      10,
+      40,
+      1,
+      49,
+      0
+    ],
+    [
+      1,
+      41,
+      2,
+      50,
+      6
+    ],
+    [
+      3,
+      42,
+      3,
+      51,
+      1
+    ],
+    [
+      0,
+      43,
+      0,
+      52,
+      5
+    ],
+    [
+      1,
+      44,
+      2,
+      53,
+      0
+    ],
+    [
+      0,
+      45,
+      0,
+      54,
+      1
+    ],
+    [
+      13,
+      3,
+      3,
+      55,
+      26
+    ],
+    [
+      0,
+      43,
+      0,
+      56,
+      1
+    ],
+    [
+      14,
+      45,
+      27,
+      2,
+      12
+    ],
+    [
+      3,
+      4,
+      34,
+      57,
+      2
+    ],
+    [
+      0,
+      40,
+      0,
+      58,
+      2
+    ],
+    [
+      15,
+      5,
+      4,
+      59,
+      17
+    ],
+    [
+      0,
+      40,
+      0,
+      60,
+      0
+    ],
+    [
+      16,
+      2,
+      1,
+      61,
+      20
+    ],
+    [
+      25,
+      10,
+      3,
+      62,
+      0
+    ],
+    [
+      26,
+      10,
+      0,
+      63,
+      1
+    ]
+  ],
+  "probabilities": [
+    1.5076324027614068e-16,
+    1.806531901197886e-16,
+    1.8288395915685519e-16,
+    1.3014402145903628e-16,
+    0.0,
+    0.21179591263026298,
+    0.005319563792641019,
+    0.0,
+    3.17438311980816e-17,
+    5.472559616917844e-16,
+    0.014596080223179486,
+    0.022960309279496105,
+    0.0,
+    0.0544534747826947,
+    0.0,
+    2.895411183539309e-16,
+    0.003117717824773242,
+    9.179935376393141e-17,
+    1.6464102808360165e-16,
+    3.9740937813322847e-17,
+    0.0,
+    3.172966939695596e-16,
+    0.04536729536787284,
+    6.247337656907669e-16,
+    2.7883874806192686e-16,
+    6.917839566421132e-17,
+    0.02033545774778667,
+    2.5863150005457995e-17,
+    2.4685980317342434e-16,
+    1.0912987685239467e-16,
+    1.9102484893283756e-16,
+    0.0,
+    0.0,
+    0.037112746391200296,
+    0.02217843462137516,
+    0.0,
+    0.0,
+    4.713022146985462e-16,
+    1.368854524679729e-16,
+    3.391638552807295e-17,
+    0.013357847164221476,
+    2.2087440936514109e-16,
+    0.0055853037331484315,
+    1.924718441274359e-16,
+    0.0,
+    0.0,
+    3.108366265855807e-16,
+    0.0007493938889869218,
+    0.0,
+    2.5863150005407508e-17,
+    0.17434391862149545,
+    8.098164366103698e-16,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.012991599678260477,
+    2.6178554273835267e-16,
+    0.0,
+    0.0764638237993069,
+    5.115857232789607e-16,
+    1.368854524680234e-16,
+    5.4847113439914607e-17,
+    1.4151846992368728e-16,
+    0.032329833398040846,
+    0.24694128705524998,
+    0.0
+  ],
+  "history": [
+    {
+      "iteration": 0,
+      "pool_size": 40,
+      "restricted_best_payoff": 3.7500000000000084,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 8,
+      "quantized_support_size": 8,
+      "full_action_best_response": [
+        12,
+        34,
+        48,
+        1,
+        5
+      ],
+      "full_action_payout": 8.3874910002586,
+      "certified_gap_lower": 4.6374909926265335,
+      "certified_gap_upper": 4.637491007890664,
+      "response_is_new": true
+    },
+    {
+      "iteration": 1,
+      "pool_size": 41,
+      "restricted_best_payoff": 3.750000000000027,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 7,
+      "quantized_support_size": 7,
+      "full_action_best_response": [
+        6,
+        0,
+        49,
+        43,
+        2
+      ],
+      "full_action_payout": 9.0,
+      "certified_gap_lower": 5.249999996730742,
+      "certified_gap_upper": 5.25,
+      "response_is_new": true
+    },
+    {
+      "iteration": 2,
+      "pool_size": 42,
+      "restricted_best_payoff": 3.7500000000000133,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 13,
+      "quantized_support_size": 13,
+      "full_action_best_response": [
+        13,
+        35,
+        50,
+        1,
+        1
+      ],
+      "full_action_payout": 8.70708441569823,
+      "certified_gap_lower": 4.957084397773099,
+      "certified_gap_upper": 4.957084433623359,
+      "response_is_new": true
+    },
+    {
+      "iteration": 3,
+      "pool_size": 43,
+      "restricted_best_payoff": 3.7500000000000315,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 9,
+      "quantized_support_size": 9,
+      "full_action_best_response": [
+        16,
+        35,
+        1,
+        44,
+        4
+      ],
+      "full_action_payout": 8.961697511561965,
+      "certified_gap_lower": 5.2116975024490735,
+      "certified_gap_upper": 5.211697520674857,
+      "response_is_new": true
+    },
+    {
+      "iteration": 4,
+      "pool_size": 44,
+      "restricted_best_payoff": 3.75,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 14,
+      "quantized_support_size": 14,
+      "full_action_best_response": [
+        0,
+        0,
+        51,
+        45,
+        4
+      ],
+      "full_action_payout": 8.165867716690089,
+      "certified_gap_lower": 4.4158676994731545,
+      "certified_gap_upper": 4.415867733907023,
+      "response_is_new": true
+    },
+    {
+      "iteration": 5,
+      "pool_size": 45,
+      "restricted_best_payoff": 3.7500000000000036,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 15,
+      "quantized_support_size": 15,
+      "full_action_best_response": [
+        13,
+        35,
+        52,
+        0,
+        0
+      ],
+      "full_action_payout": 8.652032332962092,
+      "certified_gap_lower": 4.902032309070306,
+      "certified_gap_upper": 4.9020323568538755,
+      "response_is_new": true
+    },
+    {
+      "iteration": 6,
+      "pool_size": 46,
+      "restricted_best_payoff": 3.7500000000000036,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 14,
+      "quantized_support_size": 14,
+      "full_action_best_response": [
+        0,
+        1,
+        53,
+        46,
+        0
+      ],
+      "full_action_payout": 8.480541400945992,
+      "certified_gap_lower": 4.730541386852449,
+      "certified_gap_upper": 4.730541415039535,
+      "response_is_new": true
+    },
+    {
+      "iteration": 7,
+      "pool_size": 47,
+      "restricted_best_payoff": 3.750000000000008,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 13,
+      "quantized_support_size": 13,
+      "full_action_best_response": [
+        5,
+        36,
+        54,
+        1,
+        4
+      ],
+      "full_action_payout": 8.528715291851185,
+      "certified_gap_lower": 4.778715279672577,
+      "certified_gap_upper": 4.7787153040297925,
+      "response_is_new": true
+    },
+    {
+      "iteration": 8,
+      "pool_size": 48,
+      "restricted_best_payoff": 3.750000000000015,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 12,
+      "quantized_support_size": 12,
+      "full_action_best_response": [
+        16,
+        37,
+        0,
+        47,
+        0
+      ],
+      "full_action_payout": 8.805814815311388,
+      "certified_gap_lower": 5.055814801851136,
+      "certified_gap_upper": 5.055814828771641,
+      "response_is_new": true
+    },
+    {
+      "iteration": 9,
+      "pool_size": 49,
+      "restricted_best_payoff": 3.750000000000002,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 16,
+      "quantized_support_size": 16,
+      "full_action_best_response": [
+        0,
+        38,
+        1,
+        48,
+        13
+      ],
+      "full_action_payout": 7.63577747007804,
+      "certified_gap_lower": 3.885777452786498,
+      "certified_gap_upper": 3.8857774873695807,
+      "response_is_new": true
+    },
+    {
+      "iteration": 10,
+      "pool_size": 50,
+      "restricted_best_payoff": 3.7500000000000036,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 11,
+      "quantized_support_size": 11,
+      "full_action_best_response": [
+        6,
+        39,
+        55,
+        0,
+        0
+      ],
+      "full_action_payout": 8.357873710610315,
+      "certified_gap_lower": 4.607873698653031,
+      "certified_gap_upper": 4.6078737225676,
+      "response_is_new": true
+    },
+    {
+      "iteration": 11,
+      "pool_size": 51,
+      "restricted_best_payoff": 3.7500000000000155,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 9,
+      "quantized_support_size": 9,
+      "full_action_best_response": [
+        10,
+        40,
+        1,
+        49,
+        0
+      ],
+      "full_action_payout": 8.826542338598777,
+      "certified_gap_lower": 5.0765423274440415,
+      "certified_gap_upper": 5.076542349753514,
+      "response_is_new": true
+    },
+    {
+      "iteration": 12,
+      "pool_size": 52,
+      "restricted_best_payoff": 3.750000000000013,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 15,
+      "quantized_support_size": 15,
+      "full_action_best_response": [
+        1,
+        41,
+        2,
+        50,
+        6
+      ],
+      "full_action_payout": 7.989573719620366,
+      "certified_gap_lower": 4.239573699809163,
+      "certified_gap_upper": 4.239573739431569,
+      "response_is_new": true
+    },
+    {
+      "iteration": 13,
+      "pool_size": 53,
+      "restricted_best_payoff": 3.7500000000000067,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 17,
+      "quantized_support_size": 17,
+      "full_action_best_response": [
+        3,
+        42,
+        3,
+        51,
+        1
+      ],
+      "full_action_payout": 7.950860993154198,
+      "certified_gap_lower": 4.200860975521951,
+      "certified_gap_upper": 4.200861010786445,
+      "response_is_new": true
+    },
+    {
+      "iteration": 14,
+      "pool_size": 54,
+      "restricted_best_payoff": 3.749999999999992,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 13,
+      "quantized_support_size": 13,
+      "full_action_best_response": [
+        0,
+        43,
+        0,
+        52,
+        5
+      ],
+      "full_action_payout": 8.213067834155613,
+      "certified_gap_lower": 4.463067818749492,
+      "certified_gap_upper": 4.463067849561734,
+      "response_is_new": true
+    },
+    {
+      "iteration": 15,
+      "pool_size": 55,
+      "restricted_best_payoff": 3.74999999999999,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 16,
+      "quantized_support_size": 16,
+      "full_action_best_response": [
+        1,
+        44,
+        2,
+        53,
+        0
+      ],
+      "full_action_payout": 7.6450840571611005,
+      "certified_gap_lower": 3.895084039489281,
+      "certified_gap_upper": 3.89508407483292,
+      "response_is_new": true
+    },
+    {
+      "iteration": 16,
+      "pool_size": 56,
+      "restricted_best_payoff": 3.749999999999991,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 15,
+      "quantized_support_size": 15,
+      "full_action_best_response": [
+        0,
+        45,
+        0,
+        54,
+        1
+      ],
+      "full_action_payout": 7.882328154208395,
+      "certified_gap_lower": 4.132328135996011,
+      "certified_gap_upper": 4.132328172420778,
+      "response_is_new": true
+    },
+    {
+      "iteration": 17,
+      "pool_size": 57,
+      "restricted_best_payoff": 3.750000000000012,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 16,
+      "quantized_support_size": 16,
+      "full_action_best_response": [
+        13,
+        3,
+        3,
+        55,
+        26
+      ],
+      "full_action_payout": 6.9519309332933465,
+      "certified_gap_lower": 3.201930916733855,
+      "certified_gap_upper": 3.2019309498528377,
+      "response_is_new": true
+    },
+    {
+      "iteration": 18,
+      "pool_size": 58,
+      "restricted_best_payoff": 3.7500000000000324,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 14,
+      "quantized_support_size": 14,
+      "full_action_best_response": [
+        0,
+        43,
+        0,
+        56,
+        1
+      ],
+      "full_action_payout": 8.522320105039926,
+      "certified_gap_lower": 4.772320090871746,
+      "certified_gap_upper": 4.772320119208107,
+      "response_is_new": true
+    },
+    {
+      "iteration": 19,
+      "pool_size": 59,
+      "restricted_best_payoff": 3.7499999999999902,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 15,
+      "quantized_support_size": 15,
+      "full_action_best_response": [
+        14,
+        45,
+        27,
+        2,
+        12
+      ],
+      "full_action_payout": 6.989310232293249,
+      "certified_gap_lower": 3.2393102176899307,
+      "certified_gap_upper": 3.2393102468965687,
+      "response_is_new": true
+    },
+    {
+      "iteration": 20,
+      "pool_size": 60,
+      "restricted_best_payoff": 3.7500000000000004,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 18,
+      "quantized_support_size": 18,
+      "full_action_best_response": [
+        3,
+        4,
+        34,
+        57,
+        2
+      ],
+      "full_action_payout": 7.088193878540039,
+      "certified_gap_lower": 3.3381938605622707,
+      "certified_gap_upper": 3.3381938965178075,
+      "response_is_new": true
+    },
+    {
+      "iteration": 21,
+      "pool_size": 61,
+      "restricted_best_payoff": 3.7499999999999964,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 18,
+      "quantized_support_size": 18,
+      "full_action_best_response": [
+        0,
+        40,
+        0,
+        58,
+        2
+      ],
+      "full_action_payout": 7.19839884110022,
+      "certified_gap_lower": 3.448398818660949,
+      "certified_gap_upper": 3.4483988635394907,
+      "response_is_new": true
+    },
+    {
+      "iteration": 22,
+      "pool_size": 62,
+      "restricted_best_payoff": 3.7500000000000058,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 19,
+      "quantized_support_size": 19,
+      "full_action_best_response": [
+        15,
+        5,
+        4,
+        59,
+        17
+      ],
+      "full_action_payout": 6.888064864160829,
+      "certified_gap_lower": 3.1380648406054257,
+      "certified_gap_upper": 3.1380648877162325,
+      "response_is_new": true
+    },
+    {
+      "iteration": 23,
+      "pool_size": 63,
+      "restricted_best_payoff": 3.750000000000021,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 18,
+      "quantized_support_size": 18,
+      "full_action_best_response": [
+        0,
+        40,
+        0,
+        60,
+        0
+      ],
+      "full_action_payout": 8.019324560714175,
+      "certified_gap_lower": 4.2693245389919605,
+      "certified_gap_upper": 4.269324582436388,
+      "response_is_new": true
+    },
+    {
+      "iteration": 24,
+      "pool_size": 64,
+      "restricted_best_payoff": 3.7500000000000218,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 19,
+      "quantized_support_size": 19,
+      "full_action_best_response": [
+        16,
+        2,
+        1,
+        61,
+        20
+      ],
+      "full_action_payout": 6.66248305590321,
+      "certified_gap_lower": 2.9124830335383676,
+      "certified_gap_upper": 2.912483078268053,
+      "response_is_new": true
+    },
+    {
+      "iteration": 25,
+      "pool_size": 65,
+      "restricted_best_payoff": 3.7500000000000018,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 17,
+      "quantized_support_size": 17,
+      "full_action_best_response": [
+        25,
+        10,
+        3,
+        62,
+        0
+      ],
+      "full_action_payout": 6.334754055027688,
+      "certified_gap_lower": 2.5847540386137466,
+      "certified_gap_upper": 2.5847540714416306,
+      "response_is_new": true
+    },
+    {
+      "iteration": 26,
+      "pool_size": 66,
+      "restricted_best_payoff": 3.750000000000006,
+      "optimizer_success": true,
+      "optimizer_message": "Optimization terminated successfully",
+      "restricted_support_size": 18,
+      "quantized_support_size": 18,
+      "full_action_best_response": [
+        26,
+        10,
+        0,
+        63,
+        1
+      ],
+      "full_action_payout": 6.449216054564634,
+      "certified_gap_lower": 2.699216032058846,
+      "certified_gap_upper": 2.6992160770704237,
+      "response_is_new": true
+    }
+  ]
+}

@@ -54,8 +54,17 @@ class ExactFullActionOracleTests(unittest.TestCase):
                 [str(binary), "4"], input="1\n20 20 20 20 20 1\n", text=True,
                 capture_output=True, check=True,
             ).stdout.strip()
+            top_result = subprocess.run(
+                [str(binary), "4", "5"], input="1\n20 20 20 20 20 1\n", text=True,
+                capture_output=True, check=True,
+            ).stdout.strip().splitlines()
 
         self.assertEqual(parallel_result, result)
+        self.assertEqual(len(top_result), 5)
+        self.assertEqual(top_result[0], result)
+        scores = [int(line.split("\t")[1]) for line in top_result]
+        self.assertEqual(scores, sorted(scores, reverse=True))
+        self.assertEqual(len({line.split("\t")[0] for line in top_result}), 5)
         allocation, numerator, denominator, triple_count = result.split("\t")
         response = tuple(map(int, allocation.split(",")))
         opponent = (20, 20, 20, 20, 20)

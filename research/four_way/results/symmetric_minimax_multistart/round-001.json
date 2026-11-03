@@ -1,0 +1,589 @@
+{
+  "method": "multistart restricted symmetric minimax plus exact full-action response expansion",
+  "pool_actions": [
+    [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    [
+      100,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      100,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      100,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      100,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      100
+    ],
+    [
+      5,
+      10,
+      15,
+      25,
+      45
+    ],
+    [
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    [
+      5,
+      15,
+      25,
+      25,
+      30
+    ],
+    [
+      15,
+      15,
+      20,
+      25,
+      25
+    ],
+    [
+      1,
+      21,
+      21,
+      21,
+      36
+    ],
+    [
+      2,
+      1,
+      22,
+      22,
+      53
+    ],
+    [
+      0,
+      1,
+      22,
+      23,
+      54
+    ],
+    [
+      1,
+      2,
+      23,
+      0,
+      74
+    ],
+    [
+      21,
+      22,
+      24,
+      23,
+      10
+    ],
+    [
+      5,
+      16,
+      26,
+      0,
+      53
+    ],
+    [
+      6,
+      23,
+      27,
+      31,
+      13
+    ],
+    [
+      21,
+      24,
+      28,
+      25,
+      2
+    ],
+    [
+      21,
+      25,
+      29,
+      0,
+      25
+    ],
+    [
+      6,
+      26,
+      30,
+      32,
+      6
+    ],
+    [
+      22,
+      27,
+      31,
+      0,
+      20
+    ],
+    [
+      0,
+      0,
+      32,
+      33,
+      35
+    ],
+    [
+      23,
+      28,
+      33,
+      0,
+      16
+    ],
+    [
+      1,
+      29,
+      34,
+      34,
+      2
+    ],
+    [
+      24,
+      30,
+      35,
+      0,
+      11
+    ],
+    [
+      0,
+      10,
+      36,
+      35,
+      19
+    ],
+    [
+      23,
+      28,
+      37,
+      0,
+      12
+    ],
+    [
+      6,
+      1,
+      38,
+      36,
+      19
+    ],
+    [
+      23,
+      28,
+      39,
+      0,
+      10
+    ],
+    [
+      1,
+      2,
+      40,
+      37,
+      20
+    ],
+    [
+      23,
+      28,
+      41,
+      0,
+      8
+    ],
+    [
+      1,
+      11,
+      42,
+      38,
+      8
+    ],
+    [
+      25,
+      31,
+      43,
+      0,
+      1
+    ],
+    [
+      2,
+      2,
+      44,
+      39,
+      13
+    ],
+    [
+      24,
+      29,
+      45,
+      0,
+      2
+    ],
+    [
+      6,
+      3,
+      46,
+      40,
+      5
+    ],
+    [
+      11,
+      31,
+      47,
+      0,
+      11
+    ],
+    [
+      15,
+      32,
+      0,
+      41,
+      12
+    ],
+    [
+      2,
+      33,
+      1,
+      42,
+      22
+    ],
+    [
+      12,
+      34,
+      48,
+      1,
+      5
+    ],
+    [
+      6,
+      0,
+      49,
+      43,
+      2
+    ],
+    [
+      6,
+      0,
+      49,
+      44,
+      1
+    ],
+    [
+      6,
+      0,
+      49,
+      45,
+      0
+    ],
+    [
+      6,
+      0,
+      50,
+      43,
+      1
+    ]
+  ],
+  "pool_probabilities": [
+    1.0531073521420505e-16,
+    4.475712918603004e-16,
+    4.239216198352025e-16,
+    1.4410793766999212e-15,
+    0.08853788077230122,
+    0.2963525485227599,
+    2.120051959611509e-16,
+    0.08385828478680848,
+    0.0,
+    0.0,
+    0.0,
+    0.021495639181871258,
+    4.932441105035266e-16,
+    5.027895482187431e-16,
+    0.0,
+    0.005721293292933904,
+    0.0006448636941145936,
+    2.8743953939668675e-16,
+    2.698412210061429e-16,
+    1.0444800066986316e-16,
+    0.0,
+    0.0,
+    0.0,
+    0.013650351119968906,
+    0.0,
+    0.006316714964384521,
+    3.945458594878596e-16,
+    4.0685079008248473e-16,
+    5.470500928800232e-16,
+    0.0,
+    3.1163414437436545e-16,
+    4.355122934651671e-17,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.454201497095479e-16,
+    0.0022352289762980005,
+    0.0015112402076358621,
+    1.5996598181076646e-16,
+    0.08179864131958219,
+    0.0,
+    0.0,
+    0.21737092204011693,
+    0.18050639112121708
+  ],
+  "exact_oracle_audit": {
+    "population_file": "/tmp/game2-minimax-audit-x9m6an8a/mixture.json",
+    "original_support_size": 45,
+    "quantized_support_size": 13,
+    "oracle_support_size": 13,
+    "frequency_total": 1000000000,
+    "oracle_frequency_total": 1000000000,
+    "oracle_threads": 8,
+    "oracle_top_k": 10,
+    "top_responses": [
+      {
+        "allocation": [
+          13,
+          35,
+          51,
+          1,
+          0
+        ],
+        "expected_payout_fraction": [
+          8743051701193407999638421123,
+          1000000000000000000000000000
+        ],
+        "expected_payout": 8.743051701193409,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          13,
+          35,
+          51,
+          0,
+          1
+        ],
+        "expected_payout_fraction": [
+          17464877420097735296976357171,
+          2000000000000000000000000000
+        ],
+        "expected_payout": 8.732438710048868,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          13,
+          35,
+          52,
+          0,
+          0
+        ],
+        "expected_payout_fraction": [
+          17464877420097735296976357171,
+          2000000000000000000000000000
+        ],
+        "expected_payout": 8.732438710048868,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          13,
+          36,
+          51,
+          0,
+          0
+        ],
+        "expected_payout_fraction": [
+          17464877420097735296976357171,
+          2000000000000000000000000000
+        ],
+        "expected_payout": 8.732438710048868,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          14,
+          35,
+          51,
+          0,
+          0
+        ],
+        "expected_payout_fraction": [
+          17464877420097735296976357171,
+          2000000000000000000000000000
+        ],
+        "expected_payout": 8.732438710048868,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          12,
+          35,
+          51,
+          1,
+          1
+        ],
+        "expected_payout_fraction": [
+          8597900171660953314184876053,
+          1000000000000000000000000000
+        ],
+        "expected_payout": 8.597900171660953,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          12,
+          35,
+          51,
+          2,
+          0
+        ],
+        "expected_payout_fraction": [
+          8597900171660953314184876053,
+          1000000000000000000000000000
+        ],
+        "expected_payout": 8.597900171660953,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          12,
+          35,
+          52,
+          1,
+          0
+        ],
+        "expected_payout_fraction": [
+          8597900171660953314184876053,
+          1000000000000000000000000000
+        ],
+        "expected_payout": 8.597900171660953,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          12,
+          36,
+          51,
+          1,
+          0
+        ],
+        "expected_payout_fraction": [
+          8597900171660953314184876053,
+          1000000000000000000000000000
+        ],
+        "expected_payout": 8.597900171660953,
+        "unordered_opponent_triples": 455
+      },
+      {
+        "allocation": [
+          12,
+          35,
+          51,
+          0,
+          2
+        ],
+        "expected_payout_fraction": [
+          17174574361032825926069267031,
+          2000000000000000000000000000
+        ],
+        "expected_payout": 8.587287180516412,
+        "unordered_opponent_triples": 455
+      }
+    ],
+    "discarded_frequency_fraction": [
+      0,
+      1
+    ],
+    "certified_global_best_response_upper_bound_fraction": [
+      8743051701193407999638421123,
+      1000000000000000000000000000
+    ],
+    "certified_exploitability_upper_bound_fraction": [
+      4993051701193407999638421123,
+      1000000000000000000000000000
+    ],
+    "certified_exploitability_upper_bound": 4.993051701193408,
+    "input_to_oracle_total_variation_fraction": [
+      128333320932194252203233868780703,
+      99999999999999984186888705730661000000000
+    ],
+    "input_to_oracle_total_variation": 1.2833332093219427e-09,
+    "input_mixture_certified_exploitability_lower_bound_fraction": [
+      499305168964340832618411593458678311393676706345924131152303,
+      99999999999999984186888705730661000000000000000000000000000
+    ],
+    "input_mixture_certified_exploitability_lower_bound": 4.993051689643409,
+    "input_mixture_certified_exploitability_upper_bound_fraction": [
+      499305171274340609397908133116887949446330706345924131152303,
+      99999999999999984186888705730661000000000000000000000000000
+    ],
+    "input_mixture_certified_exploitability_upper_bound": 4.993051712743407,
+    "distribution_quantization": "largest-remainder integer frequencies; all response arithmetic is exact for this rationalized mixture",
+    "best_response": [
+      13,
+      35,
+      51,
+      1,
+      0
+    ],
+    "exact_expected_payout_fraction_on_oracle_mixture": "8743051701193407999638421123/1000000000000000000000000000",
+    "expected_payout_decimal_on_oracle_mixture": 8.743051701193409,
+    "discard_bound": "A discarded mass delta changes any action's expected payout by at most 9*delta; retained probabilities are renormalized and globally best-responded exactly.",
+    "unordered_opponent_triples": 455,
+    "full_legal_action_count": 4598126,
+    "scope": "Exact full-action best response to the stated integer-frequency mixture; not an equilibrium claim."
+  },
+  "candidate_equilibria_audited": [
+    {
+      "restricted_best_payoff": 3.7500000000000178,
+      "optimizer_success": true,
+      "quantized_support_size": 13,
+      "best_response": [
+        13,
+        35,
+        51,
+        1,
+        0
+      ],
+      "full_action_payout": 8.743051701193409,
+      "certified_gap_lower": 4.993051689643409,
+      "certified_gap_upper": 4.993051712743407
+    }
+  ],
+  "warning": "The restricted nonlinear optimizer is local. Only exact full-action response bounds certify a candidate; positive gaps are not equilibria."
+}

@@ -3,7 +3,7 @@
 
 Input mixtures are converted to an explicit integer-frequency distribution;
 for that rational distribution the C++ oracle compares every legal action with
-128-bit integer numerators and emits an exact payout fraction.
+128-bit integer numerators and emits exact payouts for the top K responses.
 """
 
 import argparse
@@ -110,6 +110,8 @@ def main() -> None:
                         help="keep the largest integer frequencies; add a rigorous 9*tail-mass BR bound")
     parser.add_argument("--threads", type=int, default=1,
                         help="parallel full-action scan workers")
+    parser.add_argument("--top-k", type=int, default=1,
+                        help="emit the top K legal responses (exact ranking)")
     parser.add_argument("--compiler", default="c++")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
@@ -117,6 +119,8 @@ def main() -> None:
         parser.error("frequency total must be in 1..1e12")
     if not 1 <= args.threads <= 256:
         parser.error("threads must be in 1..256")
+    if not 1 <= args.top_k <= 1000:
+        parser.error("top-k must be in 1..1000")
 
     data = json.loads(args.population.read_text(), parse_float=Fraction)
     actions, weights = _load_entries(data)
@@ -134,11 +138,26 @@ def main() -> None:
         subprocess.run([args.compiler, "-O3", "-std=c++17", "-pthread",
                         str(source), "-o", str(binary)],
                        check=True, stdout=subprocess.DEVNULL)
-        result = subprocess.run([str(binary), str(args.threads)],
+        result = subprocess.run([str(binary), str(args.threads), str(args.top_k)],
                                 input="\n".join(lines) + "\n",
                                 text=True, capture_output=True, check=True).stdout.strip()
-    allocation, numerator, denominator, profile_count = result.split("\t")
-    exact_retained_payout = Fraction(int(numerator), int(denominator))
+    responses = []
+    for line in result.splitlines():
+        allocation, numerator, denominator, profile_count = line.split("\t")
+        exact = Fraction(int(numerator), int(denominator))
+        responses.append({
+            "allocation": [int(x) for x in allocation.split(",")],
+            "expected_payout_fraction": [exact.numerator, exact.denominator],
+            "expected_payout": float(exact),
+            "unordered_opponent_triples": int(profile_count),
+        })
+    if not responses:
+        raise RuntimeError("exact response oracle emitted no response")
+    allocation = ",".join(map(str, responses[0]["allocation"]))
+    exact_retained_payout = Fraction(*responses[0]["expected_payout_fraction"])
+    numerator = str(exact_retained_payout.numerator)
+    denominator = str(exact_retained_payout.denominator)
+    profile_count = str(responses[0]["unordered_opponent_triples"])
     tail_fraction = Fraction(tail_mass, args.frequency_total)
     payout_upper_bound = _certified_payout_upper_bound(exact_retained_payout,
                                                         tail_fraction)
@@ -156,6 +175,8 @@ def main() -> None:
         "frequency_total": args.frequency_total,
         "oracle_frequency_total": sum(retained.values()),
         "oracle_threads": args.threads,
+        "oracle_top_k": args.top_k,
+        "top_responses": responses,
         "discarded_frequency_fraction": [tail_fraction.numerator, tail_fraction.denominator],
         "certified_global_best_response_upper_bound_fraction": [payout_upper_bound.numerator, payout_upper_bound.denominator],
         "certified_exploitability_upper_bound_fraction": [exploitability_upper_bound.numerator, exploitability_upper_bound.denominator],
