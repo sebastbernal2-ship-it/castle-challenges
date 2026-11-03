@@ -14,6 +14,12 @@ A more strategic restricted search used multiplicative-weights/replicator dynami
 
 These are negative results about the attempted restricted solver—not equilibrium estimates. They also reveal a serious support-generation challenge: best responses to small, artificial pools can exploit their structural holes spectacularly.
 
+## Diversified support expansion
+
+To test whether the failure was caused only by the corner-heavy initial pool, I built an 18-action pool containing the even allocation, all five corners, five hand-designed spreads, and seven actions discovered by prior exact response searches. Restricted multiplicative-weights dynamics ran for 10,000 iterations at `eta=0.02`. Its time-average mixture still had a full-action best response `(21,24,28,25,2)` earning the maximum payout 9.0 across 1,104 unordered opponent triples.
+
+The complete 18-action pool, dynamics output, and response summary are saved in `results/diverse-pool18.json`, `results/replicator_runs/diverse-pool18.json`, and `results/diverse_pool18_response.json`. The response was independently checked by the Python exact finite-mixture evaluator. This broader-pool test still fails to approach equilibrium; support diversity alone is not enough.
+
 ## Structural proof: no pure symmetric equilibrium
 
 No allocation can be a symmetric pure Nash equilibrium.

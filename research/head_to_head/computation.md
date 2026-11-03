@@ -37,16 +37,16 @@ PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 200
 
 The 2-million-round mixture was further polished by minimizing its convex exploitability objective `f(p)=max_b E[u(b,a)]-7.5`. At each step, the exact DP finds a worst deviation `b`; a second exact DP finds a pure action minimizing `u(b,·)` (equivalently, a best response to pure `b` under the constant-sum identity). We grid-search the mixture step size, quantize back to the fixed integer-frequency denominator, and recertify using integer DP. This is a heuristic Frank–Wolfe/subgradient procedure; it has no guarantee for the nonsmooth objective and stopped when no tested step improved the gap.
 
-The first polishing pass improved the certificate from `38,051 / 4,000,052 = 0.0095126263` to `33,469 / 4,000,052 = 0.0083671412`. A stronger pass uses the top 100 exact deviations to generate descent directions and solves a 100-by-100 restricted defense matrix by fictitious play before full-action line search. The final exact integer-DP certificate is `22,834 / 4,000,052 = 0.0057084258` points. The full 14,762-action mixture and trace are saved in `results/polished-seed1.json`; reproduce the final run with:
+The first polishing pass improved the certificate from `38,051 / 4,000,052 = 0.0095126263` to `33,469 / 4,000,052 = 0.0083671412`. A stronger pass uses the top 100 exact deviations to generate descent directions and solves a 100-by-100 restricted defense matrix by fictitious play before full-action line search. The final exact integer-DP certificate is `22,754 / 4,000,052 = 0.0056884261` points. Expanding to the top 150 deviations and continuing the restricted defense-mixture line search reduced the gap slightly further; a top-300 search found no improving step from that point. The full 14,778-action mixture and search trace are saved in `results/polished-seed1.json`. Independently reproduce its full-action certificate with:
 
 ```sh
-PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
-  research/head_to_head/results/fictitious-play-seed-1-rounds-2000000.json \\
-  --steps 15 --top-k 100 --matrix-rounds 10000 \\
-  --output /tmp/polished.json
+PYTHONPATH=src python3 research/head_to_head/verify_strategy.py \\
+  research/head_to_head/results/polished-seed1.json
 ```
 
-This is a certified approximate epsilon-equilibrium, not exact GTO. The current local line-search run stopped with no tested descent step; that is not a global optimality proof.
+The heuristic search used a chain of top-deviation pools (100, then 150, then 300) and restricted defense-mixture fictitious play; the saved trace records the final stage. The certificate verifier does not depend on that search path.
+
+This is a certified approximate epsilon-equilibrium, not exact GTO. The local searches stopped with no improving tested descent step; that is not a global optimality proof.
 
 ## Regularized-response experiment
 
@@ -54,4 +54,4 @@ We also implemented exact logit-response marginals by a log-space coefficient DP
 
 ## Interpretation and next computation
 
-Fictitious play now provides a rigorously evaluated `0.009513`-epsilon candidate with an exact rational full-action deviation certificate, but the gap remains positive. Standard convergence theory guarantees asymptotic convergence in the finite zero-sum game, not a finite round count for exact equilibrium. Reducing the gap further needs either much longer runs or a faster method (e.g. restricted LP plus exact DP separation / double oracle). The 2-million-round distribution is not “GTO”; only claim an epsilon-equilibrium with the measured epsilon, subject to the stated floating-point precision.
+The polished candidate is a rigorously evaluated `0.0056884261`-epsilon strategy under the encoded rules; its exact rational full-action deviation certificate is in the report and is independently checked by `verify_strategy.py`. The gap remains positive, so this is not exact GTO. Standard fictitious-play convergence is asymptotic; the finite-run and local-polishing results do not identify the exact equilibrium or prove global optimality of the exploitability minimum. Further reductions require stronger optimization (for example, a convergent double-oracle/LP method with exact separation), not just labeling the current candidate equilibrium.
