@@ -3,6 +3,7 @@ import unittest
 from castle_challenges.common.allocation import allocations
 from castle_challenges.games.head_to_head.best_response import (
     best_response, best_response_from_counts, best_response_from_marginals,
+    top_responses_from_counts,
 )
 from castle_challenges.games.head_to_head.evaluation import evaluate
 from castle_challenges.games.head_to_head.fictitious_play import solve
@@ -37,6 +38,11 @@ class HeadToHeadTests(unittest.TestCase):
             tuple([int(x) for x in row] for row in marginals), soldiers=3)
         self.assertEqual(response, exact_response)
         self.assertAlmostEqual(numerator / denominator, value)
+        top = top_responses_from_counts(tuple([int(x) for x in row] for row in marginals), k=3,
+                                        soldiers=3)
+        self.assertEqual(top[0][0], exact_response)
+        self.assertEqual(top[0][1], numerator)
+        self.assertEqual(len({action for action, _ in top}), len(top))
         brute = max(sum(weight * score(candidate, other, soldiers=3) for other, weight in opponent.items()) / 3
                     for candidate in allocations(3))
         self.assertAlmostEqual(value, brute)

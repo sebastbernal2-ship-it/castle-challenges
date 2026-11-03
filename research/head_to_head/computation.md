@@ -37,15 +37,16 @@ PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 200
 
 The 2-million-round mixture was further polished by minimizing its convex exploitability objective `f(p)=max_b E[u(b,a)]-7.5`. At each step, the exact DP finds a worst deviation `b`; a second exact DP finds a pure action minimizing `u(b,·)` (equivalently, a best response to pure `b` under the constant-sum identity). We grid-search the mixture step size, quantize back to the fixed integer-frequency denominator, and recertify using integer DP. This is a heuristic Frank–Wolfe/subgradient procedure; it has no guarantee for the nonsmooth objective and stopped when no tested step improved the gap.
 
-It improved the exact certificate from `38,051 / 4,000,052 = 0.0095126263` to `33,469 / 4,000,052 = 0.0083671412` points. The full 14,554-action strategy and line-search trace are saved in `results/polished-seed1.json`; reproduce with:
+The first polishing pass improved the certificate from `38,051 / 4,000,052 = 0.0095126263` to `33,469 / 4,000,052 = 0.0083671412`. A stronger pass uses the top 100 exact deviations to generate descent directions and solves a 100-by-100 restricted defense matrix by fictitious play before full-action line search. The final exact integer-DP certificate is `22,834 / 4,000,052 = 0.0057084258` points. The full 14,762-action mixture and trace are saved in `results/polished-seed1.json`; reproduce the final run with:
 
 ```sh
 PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
   research/head_to_head/results/fictitious-play-seed-1-rounds-2000000.json \\
-  --steps 200 --output /tmp/polished.json
+  --steps 15 --top-k 100 --matrix-rounds 10000 \\
+  --output /tmp/polished.json
 ```
 
-The strategy remains an epsilon-equilibrium, not exact GTO.
+This is a certified approximate epsilon-equilibrium, not exact GTO. The current local line-search run stopped with no tested descent step; that is not a global optimality proof.
 
 ## Regularized-response experiment
 

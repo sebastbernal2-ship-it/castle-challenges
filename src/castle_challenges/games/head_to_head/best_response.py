@@ -57,6 +57,34 @@ def best_response(opponent: Mapping[Allocation, float], soldiers: int = SOLDIERS
     return _solve_tables(payoff_tables(opponent, soldiers), soldiers)
 
 
+def top_responses_from_counts(counts: tuple[list[int], ...], k: int = 10,
+                              soldiers: int = SOLDIERS
+                              ) -> list[tuple[Allocation, int]]:
+    """Return the top-k pure responses with exact integer score numerators."""
+    if k < 1 or len(counts) != 5 or soldiers > 100 or soldiers < 0:
+        raise ValueError("invalid k, histograms, or soldier count")
+    totals = [sum(row) for row in counts]
+    if not totals[0] or any(total != totals[0] for total in totals):
+        raise ValueError("each marginal must have the same positive total count")
+    dp: list[list[list[tuple[int, Allocation]]]] = [
+        [[] for _ in range(soldiers + 1)] for _ in range(6)]
+    dp[0][0] = [(0, ())]
+    for castle in range(5):
+        cumulative = 0
+        q = []
+        for mass in counts[castle]:
+            q.append((castle + 1) * (2 * cumulative + mass))
+            cumulative += mass
+        for used in range(soldiers + 1):
+            candidates = []
+            for x in range(used + 1):
+                for score, prefix in dp[castle][used - x]:
+                    candidates.append((score + q[x], prefix + (x,)))
+            candidates.sort(key=lambda item: (-item[0], item[1]))
+            dp[castle + 1][used] = candidates[:k]
+    return [(allocation, score) for score, allocation in dp[5][soldiers]]
+
+
 def best_response_from_counts(counts: tuple[list[int], ...], soldiers: int = SOLDIERS
                               ) -> tuple[Allocation, int, int]:
     """Exact-integer best response to integer opponent marginal frequencies.
