@@ -86,7 +86,14 @@ int main() {
     U128 total = 0;
     for (int i = 0; i < n; ++i) {
         int sum = 0;
-        for (int& x : actions[i]) { std::cin >> x; sum += x; }
+        for (int& x : actions[i]) {
+            std::cin >> x;
+            if (x < 0 || x > 100) {
+                std::cerr << "soldier counts must be in 0..100\n";
+                return 2;
+            }
+            sum += x;
+        }
         std::cin >> weights[i];
         if (sum != 100 || weights[i] == 0) {
             std::cerr << "invalid allocation or nonpositive frequency\n";
