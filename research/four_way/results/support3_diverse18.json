@@ -1,0 +1,9 @@
+{
+  "method": "support-three multi-start Newton with restricted-pool checks",
+  "pool_file": "research/four_way/results/diverse-pool18.json",
+  "pool_size": 18,
+  "roots_found": 181,
+  "restricted_equilibria_found": 0,
+  "grid_denominator": 8,
+  "warning": "Numerical multi-start search; no support-three restricted equilibrium was found. Supports larger than three are not searched."
+}

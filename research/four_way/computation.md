@@ -22,7 +22,7 @@ A larger 25-action replicator time-average mixture had eight nonzero actions aft
 
 `restricted_two_support_search.py` enumerates pure and two-action supports in a finite pool. For a pair `(a,b)`, the indifference condition `g_a(x)=g_b(x)` is cubic in `x=P(a)`; unit-interval roots are isolated numerically, rationalized to integer frequencies, and audited with the exact global response oracle.
 
-`restricted_support3_search.py` builds the small-pool payoff tensor, uses multi-start Newton to find roots of the two indifference equations on each three-action support, checks every omitted pool action, and exact-audits surviving candidates against the whole game. On the six-action baseline it finds a restricted support-three equilibrium, but the exact full-game response `(20,21,21,0,38)` gives exploitability `21/4 = 5.25`. Support-two searches on the six-action and 18-action pools find the same minimum gap. This illustrates why restricted equilibria do not certify full-game equilibria.
+`restricted_support3_search.py` builds the small-pool payoff tensor, uses multi-start Newton to find roots of the two indifference equations on each three-action support, checks every omitted pool action, and exact-audits surviving candidates against the whole game. On the six-action baseline it finds a restricted support-three equilibrium, but the exact full-game response `(20,21,21,0,38)` gives exploitability `21/4 = 5.25`. On the diverse 18-action pool, a denominator-8 multistart grid found 181 numerical roots but no restricted equilibrium; this does not prove none exists. Support-two searches on the six-action and 18-action pools find the same minimum gap. This illustrates why restricted equilibria do not certify full-game equilibria.
 
 Reproduce these diagnostics with:
 
@@ -36,6 +36,9 @@ PYTHONPATH=src python3 research/four_way/restricted_two_support_search.py \
 PYTHONPATH=src python3 research/four_way/restricted_support3_search.py \
   research/four_way/baseline_population.json --max-actions 6 \
   --grid-denominator 8 --output research/four_way/results/support3_baseline.json
+PYTHONPATH=src python3 research/four_way/restricted_support3_search.py \\
+  research/four_way/results/diverse-pool18.json --max-actions 18 \\
+  --grid-denominator 8 --output research/four_way/results/support3_diverse18.json
 ```
 
 These are numerical candidate generators, not complete algebraic support solvers; they do not search supports larger than three. Root tolerance and frequency rounding preclude an equilibrium claim, while the reported full-action deviation gap is exact for each rationalized mixture.
