@@ -15,3 +15,6 @@ castle-four-way = "castle_challenges.games.four_way.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+castle_challenges = ["games/head_to_head/fast_dp.cpp"]

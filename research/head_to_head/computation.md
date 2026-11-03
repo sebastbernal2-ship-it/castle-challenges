@@ -12,19 +12,31 @@ For each final mixture, a fresh exact DP computes the best pure deviation agains
 | 1 | 1,000 | 329 | 7.990741 | 0.490741 |
 | 1 | 10,000 | 1,003 | 7.635049 | 0.135049 |
 | 1 | 20,000 | 1,401 | 7.595101 | 0.095101 |
+| 1 | 30,000 | 1,695 | 7.575851 | 0.075851 |
+| 1 | 80,000 | 2,776 | 7.545217 | 0.045217 |
+| 1 | 500,000 | 7,100 | 7.518204 | 0.018204 |
+| 1 | 700,000 | 8,407 | 7.515319 | 0.015319 |
+| 1 | 1,000,000 | 10,102 | 7.512992 | 0.012992 |
+| 1 | 2,000,000 | 14,544 | 7.5095126263 | 0.0095126263 |
 | 2 | 10,000 | 955 | 7.633702 | 0.133702 |
+| 2 | 500,000 | 7,112 | 7.518088 | 0.018088 |
 | 3 | 10,000 | 992 | 7.640884 | 0.140884 |
 
-The three independent 10,000-round runs have similar exploitability (about 0.134–0.141 castle points), providing evidence of numerical stability at this scale, not an equilibrium certificate. The 20,000-round run improves the gap for seed 1. The strategy mean soldier counts vary slightly by seed; for the 20,000-round seed-1 mixture they are approximately `(6.36, 13.09, 19.91, 26.68, 33.95)`. This mean is descriptive, not a recommendation for a pure allocation: the mixed strategy's support and allocation correlations matter.
+At 500,000 rounds, two independent seeds give closely matching exploitability gaps (0.018204 and 0.018088), suggesting the trend is not a seed artifact. For the 2,000,000-round seed-1 strategy, I reconstructed the empirical integer frequencies and reran the final best-response DP using integer arithmetic. It returned score `30,038,441 / 4,000,052`; subtracting the game value `15/2` gives the exact exploitability `38,051 / 4,000,052 = 0.00951262633585781` points. This is an exact certificate for the saved finite mixture under the encoded rules (not a certificate that the mixture is an exact Nash equilibrium). Earlier rows use floating-point DP. The residual is small but strictly positive. For the 20,000-round seed-1 mixture, mean soldier counts are approximately `(6.36, 13.09, 19.91, 26.68, 33.95)`. This is descriptive, not a pure recommendation: support and allocation correlations matter.
 
-Full mixed distributions, initialization seeds, exact deviations, and machine-readable metadata are saved as JSON beside this report. Reproduce from the repository root:
+Full mixed distributions, initialization seeds, exact deviations, and machine-readable metadata are saved as JSON beside this report. A compiled C++ DP kernel and incremental marginal histograms make longer runs practical; the solver falls back to Python if no compiler is available. Reproduce from the repository root:
 
 ```sh
 PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 20000 --seed 1
 PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 10000 --seed 2
 PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 10000 --seed 3
+PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 2000000 --seed 1
 ```
+
+## Regularized-response experiment
+
+We also implemented exact logit-response marginals by a log-space coefficient DP, exploiting separability. A fixed-point continuation was unstable at lower temperatures; at temperature 0.1 it converged to a mixture with exact full-action gap about 0.1034. Averaging logit responses for 10,000 iterations at temperature 0.1 gave gap 0.1023. This did not improve on long fictitious play. Lower temperatures performed worse in short runs. The method and caveats are in `src/castle_challenges/games/head_to_head/logit_equilibrium.py`; no logit result is presented as an equilibrium.
 
 ## Interpretation and next computation
 
-This is substantially stronger than random-composition Monte Carlo: it searches the full legal action space for deviations at every step and for final verification. Yet a 0.095-point profitable deviation remains after 20,000 rounds, so the current mixture is not a GTO solution at useful precision. Fictitious play convergence can be slow. Next steps are acceleration (restricted matrix equilibrium / sequence methods), longer runs and more seeds, convergence traces, and independent oracle/property tests. Report current strategies as approximate low-exploitability candidates only.
+Fictitious play now provides a rigorously evaluated `0.009513`-epsilon candidate with an exact rational full-action deviation certificate, but the gap remains positive. Standard convergence theory guarantees asymptotic convergence in the finite zero-sum game, not a finite round count for exact equilibrium. Reducing the gap further needs either much longer runs or a faster method (e.g. restricted LP plus exact DP separation / double oracle). The 2-million-round distribution is not “GTO”; only claim an epsilon-equilibrium with the measured epsilon, subject to the stated floating-point precision.

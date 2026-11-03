@@ -1,0 +1,14 @@
+{
+  "restricted_equal_weight_response_expansion": [
+    {"support_size": 6, "opponent_triples": 56, "best_response": [1, 21, 21, 21, 36], "expected_payout": 8.40277777777778},
+    {"support_size": 7, "opponent_triples": 84, "best_response": [2, 1, 22, 22, 53], "expected_payout": 8.29154518950437},
+    {"support_size": 8, "opponent_triples": 120, "best_response": [0, 1, 22, 23, 54], "expected_payout": 8.2705078125},
+    {"support_size": 9, "opponent_triples": 165, "best_response": [3, 22, 23, 24, 28], "expected_payout": 8.29218106995886}
+  ],
+  "restricted_replicator_plus_full_action_oracle": [
+    {"pool_size": 9, "iterations": 5000, "eta": 0.05, "full_game_best_response": [1, 2, 23, 0, 74], "best_response_payout": 9.0},
+    {"pool_size": 10, "iterations": 10000, "eta": 0.05, "full_game_best_response": [21, 22, 24, 23, 10], "best_response_payout": 9.0},
+    {"pool_size": 11, "iterations": 10000, "eta": 0.05, "full_game_best_response": [21, 23, 25, 0, 31], "best_response_payout": 9.0}
+  ],
+  "interpretation": "Restricted replicator strategies are highly exploitable. The full-action oracle finds a strategy that earns first-place payout 9 against every sampled opponent triple in each tested mixture. This is a failure diagnostic, not evidence of equilibrium."
+}

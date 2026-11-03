@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import random
 
 from ...common.allocation import Allocation, SOLDIERS
-from .best_response import best_response
+from .best_response import best_response_from_counts, best_response_from_marginals
 
 
 @dataclass(frozen=True)
@@ -17,6 +17,8 @@ class Result:
     column_deviation_score: float
     row_response: Allocation
     column_response: Allocation
+    row_deviation_fraction: tuple[int, int]
+    column_deviation_fraction: tuple[int, int]
 
 
 def solve(rounds: int = 1_000, seed: int = 1, soldiers: int = SOLDIERS) -> Result:
@@ -35,21 +37,45 @@ def solve(rounds: int = 1_000, seed: int = 1, soldiers: int = SOLDIERS) -> Resul
     initial.extend(_random_allocation(soldiers, rng) for _ in range(20))
     row_counts: Counter[Allocation] = Counter(initial)
     col_counts: Counter[Allocation] = Counter(initial)
+    row_marginals = _marginals(row_counts, soldiers)
+    col_marginals = _marginals(col_counts, soldiers)
+    row_total = col_total = len(initial)
 
     for _ in range(rounds):
-        row_action, _ = best_response(col_counts, soldiers)
-        col_action, _ = best_response(row_counts, soldiers)
+        row_action, _ = best_response_from_marginals(col_marginals, col_total, soldiers)
+        col_action, _ = best_response_from_marginals(row_marginals, row_total, soldiers)
         row_counts[row_action] += 1
         col_counts[col_action] += 1
+        _add_to_marginals(row_marginals, row_action, 1.0)
+        _add_to_marginals(col_marginals, col_action, 1.0)
+        row_total += 1
+        col_total += 1
 
     row_total = sum(row_counts.values())
     col_total = sum(col_counts.values())
     row_mix = {a: n / row_total for a, n in row_counts.items()}
     col_mix = {a: n / col_total for a, n in col_counts.items()}
-    row_response, row_score = best_response(col_mix, soldiers)
-    col_response, col_score = best_response(row_mix, soldiers)
+    row_response, row_num, row_den = best_response_from_counts(
+        tuple([int(x) for x in row] for row in col_marginals), soldiers)
+    col_response, col_num, col_den = best_response_from_counts(
+        tuple([int(x) for x in row] for row in row_marginals), soldiers)
+    row_score, col_score = row_num / row_den, col_num / col_den
     return Result(rounds, row_mix, col_mix, row_score, col_score,
-                  row_response, col_response)
+                  row_response, col_response, (row_num, row_den), (col_num, col_den))
+
+
+def _marginals(counts: Counter[Allocation], soldiers: int) -> list[list[float]]:
+    result = [[0.0] * (soldiers + 1) for _ in range(5)]
+    for allocation, count in counts.items():
+        for castle, number in enumerate(allocation):
+            result[castle][number] += count
+    return result
+
+
+def _add_to_marginals(marginals: list[list[float]], allocation: Allocation,
+                      weight: float) -> None:
+    for castle, number in enumerate(allocation):
+        marginals[castle][number] += weight
 
 
 def _random_allocation(soldiers: int, rng: random.Random) -> Allocation:

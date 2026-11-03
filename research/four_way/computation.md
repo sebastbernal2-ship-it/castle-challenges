@@ -19,6 +19,12 @@ This population is an intentionally simple diagnostic, not an estimate of applic
 
 Against four copies of the even allocation, `(20,0,21,21,38)` earns 9 points in that profile, illustrating a profitable response to a pure strategy (not to a mixed equilibrium).
 
+## Further search and structural result
+
+The follow-up restricted replicator plus full-action oracle experiments are documented in `restricted-search.md`. On 9-, 10-, and 11-action pools, the restricted dynamics produced mixtures for which the exhaustive response search found a pure strategy earning 9.0—the maximum payout—against every opponent triple in the mixture support. These results demonstrate extreme restricted-support exploitability, not progress toward a solved equilibrium.
+
+A pure symmetric allocation cannot be a Nash equilibrium; the direct deviation proof is in `restricted-search.md`. Any equilibrium must genuinely mix.
+
 ## Current status / what remains
 
 The evaluator now supports exact expected payoff against a finite support, but no strategic population has been solved. A full response search remains difficult: unlike Game 1, changing soldiers at one castle changes the player's total castle points and rank against each opponent triple, so the utility is not separable by castle. Restricted-support equilibrium computation and candidate search need to be added, and a global deviation bound is needed before any full-game equilibrium claim. The existing Monte Carlo evaluator is still only a sampling diagnostic.

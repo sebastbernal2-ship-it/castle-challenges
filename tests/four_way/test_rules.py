@@ -32,6 +32,15 @@ class FourWayTests(unittest.TestCase):
         self.assertAlmostEqual(expected_payout(strategy, population), expected)
         self.assertAlmostEqual(expected_payout(strategy, {strategy: 1.0}), 3.75)
 
+    def test_pure_symmetric_profiles_are_exploitable(self):
+        flat = (20, 20, 20, 20, 20)
+        deviation = (0, 0, 0, 0, 100)
+        self.assertEqual(payout((deviation, flat, flat, flat)), (9.0, 2.0, 2.0, 2.0))
+        corner = (0, 0, 0, 0, 100)
+        castle_four = (0, 0, 0, 100, 0)
+        self.assertEqual(payout((castle_four, corner, corner, corner)),
+                         (9.0, 2.0, 2.0, 2.0))
+
     def test_rank_tie_averages_payout_positions(self):
         players = ((100, 0, 0, 0, 0), (0, 100, 0, 0, 0),
                    (0, 0, 100, 0, 0), (0, 0, 0, 100, 0))
