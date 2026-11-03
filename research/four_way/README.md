@@ -8,6 +8,6 @@ Suggested progression:
 3. Implement reproducible group simulation and sampled deviation search.
 4. Track uncertainty, population assumptions, and best-response gaps.
 
-Latest findings and solver limitations: [`restricted-search.md`](restricted-search.md), [`double-oracle.md`](double-oracle.md), [`robust-portfolio.md`](robust-portfolio.md), and [`computation.md`](computation.md). The native restricted replicator can be run with `run_native_restricted_replicator.py`; it is faster than the Python reference but remains a restricted-support heuristic. Fixed-response exact-rational audits use `response_distribution.py`.
+Latest findings and solver limitations: [`analysis.md`](analysis.md), [`restricted-search.md`](restricted-search.md), [`double-oracle.md`](double-oracle.md), [`robust-portfolio.md`](robust-portfolio.md), and [`computation.md`](computation.md). The native restricted replicator can be run with `run_native_restricted_replicator.py`; it remains a restricted-support heuristic. `run_exact_full_best_response.py` now provides an exact integer-arithmetic best response over all legal allocations for an explicitly quantized, finite-support mixture (practical for small supports). Fixed-response exact-rational payout audits use `response_distribution.py`.
 
 Do not put head-to-head matrix-game analyses here.

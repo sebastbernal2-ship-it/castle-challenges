@@ -30,16 +30,32 @@ This is exact but cubic in support size per deviation. Cache opponent triples an
 - A player's allocation affects both the castle points it wins and the point totals/rank order against three opponents. There is no independent-per-castle additive utility or simple marginal DP analogous to Game 1.
 - With iid opponents from `p`, the objective is a symmetric four-player constant-sum game. Its symmetric equilibrium payoff is fixed at 3.75, but its strategy is not fixed by that fact.
 
-## 5. Solver research plan
+## 5. Complete symmetric double-oracle method
 
-1. Lock down actual tie rule, group sampling (with/without replacement), and whether all applicants are exchangeable.
-2. Build exact profile scoring with rational comparisons and exhaustive small-instance tests.
-3. Implement support-based expected payoff calculation and exact opponent-triple aggregation.
-4. Generate candidate actions using structural search (local soldier transfers, multistart search, evolutionary proposals, and perhaps constraint/MIP formulations); use them to discover deviations, not certify absence of deviations.
-5. For restricted support games, solve symmetric equilibrium conditions / regret minimization and add discovered deviations. A finite restricted-game equilibrium alone says nothing about actions outside its support.
-6. Pursue a full-game deviation certificate (branch-and-bound, integer optimization, or rigorous upper bounds). If unavailable, report an empirical best-response gap and clearly label it uncertified.
-7. Validate candidate populations on independent seeds and broader deviation search; separate equilibrium claims from performance against an estimated applicant field.
+Game 2 is not a two-player zero-sum LP, but a mathematically complete finite-game method is available in principle: a **symmetric Nash double oracle**, with an exact solver for each restricted game and an exact global best-response oracle.
 
-## 6. Status
+For a finite action pool `P`, define the exact payoff tensor `T[i,j,k,l] = U(a_i,a_j,a_k,a_l)`. Against a symmetric mixed strategy `p` on `P`, the payoff to pure action `a_i` is the cubic polynomial
 
-No equilibrium has been computed. Current Monte Carlo baseline code is a smoke-test and benchmark helper only. It is not evidence for GTO play.
+`g_i(p) = sum_{j,k,l in P} T[i,j,k,l] p_j p_k p_l`.
+
+Since every realized profile distributes the 15-point pool and the game is symmetric, a symmetric equilibrium has payoff `15/4`. Its complementarity conditions are
+
+- `p_i >= 0`, `sum_i p_i = 1`;
+- `g_i(p) <= 15/4` for every action in `P`;
+- `p_i * (15/4 - g_i(p)) = 0` for every `i`.
+
+A complete restricted-game solver can enumerate supports `S subset P`, solve `g_i(p)=15/4` for `i in S` together with normalization, and certify positivity and all off-support inequalities. The equations have rational coefficients (the implemented payout rule has exact quarter-point payouts); a real-algebraic solver such as CAD/root isolation can, in principle, certify all required real solutions. Numerical homotopy or nonlinear optimization is useful for finding candidates but is not by itself a completeness certificate.
+
+For each restricted equilibrium `p`, run a **full-action** best-response oracle against the three independent draws from `p`. If a pure response earns more than `15/4`, add it to `P` and solve the expanded restricted game. A profitable full-game response cannot already be in `P`, because `p` is a restricted equilibrium. Thus the pool strictly grows on every unsuccessful exact iteration; because the action set is finite, this procedure terminates in at most `|A|` additions. When the global oracle finds no profitable deviation, the restricted equilibrium is a full-game symmetric Nash equilibrium. The worst case is intractable—the method can require millions of actions and solving high-degree systems—but it is a genuine complete algorithm, unlike restricted replicator dynamics.
+
+The exact best-response oracle can enumerate all 4,598,126 allocations and evaluate each against the unordered opponent triples with multiplicities 1/3/6. For a rational frequency strategy, use integer triple weights and quarter-point utilities (arbitrary-precision integers if needed), so response comparisons are exact. With support size `K`, the straightforward cost is `O(|A| K^3)`; reducing this cost or deriving certified branch-and-bound upper bounds is the central computational obstacle. Any approximate early stop must report a rigorous global upper bound on deviation payoff, not just the best response found.
+
+## 6. Implementation status and next work
+
+- `rules.py` scores a realized profile with exact integer score comparisons and quarter-point rank payouts.
+- `full_action_best_response.cpp` is the long-double candidate generator. The new `exact_full_action_best_response.cpp` enumerates all 4,598,126 actions and compares expected payouts with exact integer numerators for an integer-frequency mixture; `run_exact_full_best_response.py` performs probability quantization and invokes it. With frequency total at most `10^12`, the numerator is bounded by `36 N^3`, which fits unsigned 128-bit arithmetic. Complexity is `O(|A| K^3)`, so it is useful for small support but not yet for the large mixtures found by population search.
+- `response_distribution.py` gives exact rational audits of the payout distribution for a **supplied response**. It does not prove that response is globally optimal.
+- The exact oracle was checked on the six-action baseline with equal frequencies (`N=1,000,002`): it returns `(1,21,21,21,36)` with exact expected payout `33611312778181111380 / 4000024000048000032 = 8.402777777...`. This is a fixed-mixture global best-response calculation, not an equilibrium certificate.
+- Restricted pools, replicator dynamics, and robust portfolios remain diagnostics. The next implementation step is an exact/numerically certified restricted symmetric-equilibrium solver, then the expanding-pool loop above. The exact oracle's cubic support cost is the immediate bottleneck; certified branch-and-bound or payoff-equivalent profile aggregation will be needed for broad supports.
+
+No Game 2 equilibrium has been computed. The complete method is specified, and an exact response-oracle component now exists, but its restricted polynomial solver and scalable full-game oracle have not yet been implemented. Do not label current results GTO.
