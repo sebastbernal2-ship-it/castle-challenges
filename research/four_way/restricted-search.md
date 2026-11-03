@@ -20,6 +20,12 @@ To test whether the failure was caused only by the corner-heavy initial pool, I 
 
 The complete 18-action pool, dynamics output, and response summary are saved in `results/diverse-pool18.json`, `results/replicator_runs/diverse-pool18.json`, and `results/diverse_pool18_response.json`. The response was independently checked by the Python exact finite-mixture evaluator. This broader-pool test still fails to approach equilibrium; support diversity alone is not enough.
 
+## Response-chain stress test
+
+I mixed the first 9-point response into that 18-action mixture at 1%, 10%, and 30%, then exhaustively searched all legal responses. The same counter-strategy `(21,25,29,0,25)` remained worth 8.9989–9.0000. Adding successive responses with equal 10% mass (while retaining 70–80% of the base mixture) increased support to 20 and 21; the best replies `(22,26,30,0,22)` and `(23,27,31,0,19)` still earned 8.9994 and 8.9985. The calculations are saved in `results/response_chain.json`.
+
+This shows why naively adding one pure response is ineffective: it creates another exploitable response cycle and barely reduces the maximum payoff. The restricted mixture remains far from equilibrium by over five payout points.
+
 ## Structural proof: no pure symmetric equilibrium
 
 No allocation can be a symmetric pure Nash equilibrium.

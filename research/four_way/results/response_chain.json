@@ -1,0 +1,95 @@
+{
+  "base_support_size": 18,
+  "base_support": "research/four_way/results/replicator_runs/diverse-pool18.json",
+  "updates": [
+    {
+      "mix": "99% base + 1% first response",
+      "support_size": 19,
+      "best_response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "payout": 8.99999799188998
+    },
+    {
+      "mix": "90% base + 10% first response",
+      "support_size": 19,
+      "best_response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "payout": 8.99983977950795
+    },
+    {
+      "mix": "70% base + 30% first response",
+      "support_size": 19,
+      "best_response": [
+        21,
+        25,
+        29,
+        0,
+        25
+      ],
+      "payout": 8.99888963196201
+    },
+    {
+      "mix": "80% base + 10% each of first and second responses",
+      "support_size": 20,
+      "best_response": [
+        22,
+        26,
+        30,
+        0,
+        22
+      ],
+      "payout": 8.99936531643936
+    },
+    {
+      "mix": "70% base + 10% each of first, second, third responses",
+      "support_size": 21,
+      "best_response": [
+        23,
+        27,
+        31,
+        0,
+        19
+      ],
+      "payout": 8.99852759182282
+    }
+  ],
+  "first_response": [
+    21,
+    24,
+    28,
+    25,
+    2
+  ],
+  "second_response": [
+    21,
+    25,
+    29,
+    0,
+    25
+  ],
+  "third_response": [
+    22,
+    26,
+    30,
+    0,
+    22
+  ],
+  "fourth_response": [
+    23,
+    27,
+    31,
+    0,
+    19
+  ],
+  "warning": "Each payout is the full-action best-response value against the particular finite mixture described; none is a GTO result."
+}
