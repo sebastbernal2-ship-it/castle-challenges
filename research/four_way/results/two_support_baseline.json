@@ -1,0 +1,596 @@
+{
+  "method": "support-at-most-two numerical indifference roots + exact full-action audit",
+  "pool_file": "research/four_way/baseline_population.json",
+  "pool_size": 6,
+  "frequency_total": 1000002,
+  "candidate_count": 15,
+  "best_candidate": {
+    "support": [
+      [
+        [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        1000002
+      ]
+    ],
+    "indifference_root_probability_action_0": 1.0,
+    "best_response": [
+      0,
+      0,
+      0,
+      0,
+      100
+    ],
+    "best_response_payout_fraction": [
+      36000216000432000288,
+      4000024000048000032
+    ],
+    "exploitability_fraction": [
+      21,
+      4
+    ],
+    "exploitability": 5.25
+  },
+  "top_candidates": [
+    {
+      "support": [
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            100
+          ],
+          1000002
+        ]
+      ],
+      "indifference_root_probability_action_0": 1.0,
+      "best_response": [
+        0,
+        0,
+        0,
+        1,
+        99
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            0,
+            0,
+            100,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            100
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        1,
+        1,
+        1,
+        0,
+        97
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            0,
+            0,
+            100,
+            0
+          ],
+          1000002
+        ]
+      ],
+      "indifference_root_probability_action_0": 1.0,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            0,
+            100,
+            0,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            100
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        0,
+        1,
+        0,
+        1,
+        98
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            0,
+            100,
+            0,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            100,
+            0
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            0,
+            100,
+            0,
+            0
+          ],
+          1000002
+        ]
+      ],
+      "indifference_root_probability_action_0": 1.0,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            100,
+            0,
+            0,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            100
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        0,
+        0,
+        1,
+        1,
+        98
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            100,
+            0,
+            0,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            100,
+            0
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            100,
+            0,
+            0,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            0,
+            100,
+            0,
+            0
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            0,
+            100,
+            0,
+            0,
+            0
+          ],
+          1000002
+        ]
+      ],
+      "indifference_root_probability_action_0": 1.0,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          672933
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            100
+          ],
+          327069
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.6729315370347662,
+      "best_response": [
+        0,
+        0,
+        21,
+        21,
+        58
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          672933
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            100,
+            0
+          ],
+          327069
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.6729315370347662,
+      "best_response": [
+        0,
+        0,
+        20,
+        0,
+        80
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          1000002
+        ]
+      ],
+      "indifference_root_probability_action_0": 1.0,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            100,
+            0,
+            0,
+            0,
+            0
+          ],
+          327069
+        ],
+        [
+          [
+            0,
+            100,
+            0,
+            0,
+            0
+          ],
+          672933
+        ]
+      ],
+      "indifference_root_probability_action_0": 0.32706846296523384,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    },
+    {
+      "support": [
+        [
+          [
+            100,
+            0,
+            0,
+            0,
+            0
+          ],
+          1000002
+        ]
+      ],
+      "indifference_root_probability_action_0": 1.0,
+      "best_response": [
+        0,
+        0,
+        0,
+        0,
+        100
+      ],
+      "best_response_payout_fraction": [
+        36000216000432000288,
+        4000024000048000032
+      ],
+      "exploitability_fraction": [
+        21,
+        4
+      ],
+      "exploitability": 5.25
+    }
+  ],
+  "warning": "Root isolation is floating-point; exploitability is exact for each rationalized mixture, not an equilibrium proof."
+}

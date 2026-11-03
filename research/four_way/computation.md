@@ -27,8 +27,25 @@ A pure symmetric allocation cannot be a Nash equilibrium; the direct deviation p
 
 A native C++ restricted multiplicative-weights implementation was added in `restricted_replicator.cpp` with a Python runner. On the six-action diagnostic pool, its 1,000-step probabilities agree with the Python reference to within `5.6e-16`. It enabled a support-expansion stress test: restricted-pool payoff gaps fell below `1e-14` on 24 actions, while the full-action reply was still 8.8482; adding that reply led to another pool with a near-9 deviation. See [`double-oracle.md`](double-oracle.md) and `results/double_oracle_chain.json`. This is a strong failure diagnostic for fixed-pool methods, not an equilibrium computation.
 
+## Restricted support-two root search
+
+`restricted_two_support_search.py` enumerates each pure action and each two-action support in a finite pool. For a pair `(a,b)`, the indifference condition `g_a(x)=g_b(x)` is cubic in `x=P(a)`; all unit-interval roots are isolated numerically, rationalized to integer frequencies, and audited with the exact global response oracle. This is a candidate generator—not an exact algebraic restricted-game solver, and it covers no supports larger than two.
+
+Reproduce the baseline and diverse-pool diagnostics with:
+
+```sh
+PYTHONPATH=src python3 research/four_way/restricted_two_support_search.py \
+  research/four_way/baseline_population.json \
+  --output research/four_way/results/two_support_baseline.json
+PYTHONPATH=src python3 research/four_way/restricted_two_support_search.py \
+  research/four_way/results/diverse-pool18.json \
+  --max-actions 18 --output research/four_way/results/two_support_diverse18.json
+```
+
+The strongest candidate in each search has exact global exploitability `21/4 = 5.25`; a support of at most two actions does not approach equilibrium. Numerical root tolerance and frequency rounding mean the root itself is not an exact equilibrium certificate; the reported full-action deviation gap is exact for its rationalized mixture.
+
 ## Current status / what remains
 
-The evaluator exhaustively sums profile payouts against a finite support using floating-point mixture weights, but no strategic population has been solved. A full response search remains difficult: unlike Game 1, changing soldiers at one castle changes the player's total castle points and rank against each opponent triple, so the utility is not separable by castle. The restricted-support dynamics and candidate generation now exist, but they do not solve the nonlinear symmetric equilibrium conditions robustly. A global deviation bound is still needed before any full-game equilibrium claim. The existing Monte Carlo evaluator is still only a sampling diagnostic.
+The evaluator exhaustively sums profile payouts against finite supports, but no strategic population has been solved. A full response search remains difficult: unlike Game 1, changing soldiers at one castle changes the player's total castle points and rank against each opponent triple, so utility is not separable by castle. Restricted-support dynamics, support-two candidate generation, and exact fixed-mixture response checks now exist, but they do not solve the nonlinear symmetric equilibrium conditions robustly. A global deviation bound is still needed before any full-game equilibrium claim. The existing Monte Carlo evaluator is only a sampling diagnostic.
 
-Tests verify the multiset aggregation against explicit ordered-triple enumeration and verify the constant-sum payout invariant. They do not certify strategy quality.
+Tests verify multiset aggregation, the constant-sum payout invariant, the support-two cubic equation, and the exact response kernel. They do not certify a Game 2 equilibrium.
