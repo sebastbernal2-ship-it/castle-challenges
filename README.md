@@ -39,7 +39,7 @@ castle-head-to-head --count
 castle-head-to-head 20,20,20,20,20 --trials 10000 --seed 7
 ```
 
-The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. The current polished candidate at `research/head_to_head/results/polished-full-action-defense-oracle.json` has exact full-action exploitability `30,586 / 40,000,520 ≈ 0.0007646401` points under the encoded rules. Verify it with `PYTHONPATH=src python3 research/head_to_head/verify_strategy.py research/head_to_head/results/polished-full-action-defense-oracle.json`. It remains an approximate strategy, not an exact equilibrium or GTO; methods and ongoing LP work are in `research/head_to_head/computation.md`.
+The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. The current polished candidate at `research/head_to_head/results/polished-full-action-defense-oracle.json` has exact full-action exploitability `30,514 / 40,000,520 ≈ 0.0007628401` points under the encoded rules. Verify it with `PYTHONPATH=src python3 research/head_to_head/verify_strategy.py research/head_to_head/results/polished-full-action-defense-oracle.json`. It remains an approximate strategy, not an exact equilibrium or GTO; methods and ongoing LP work are in `research/head_to_head/computation.md`.
 
 **Research target:** symmetric Nash equilibrium in this finite two-player constant-sum game. There are `C(104,4) = 4,598,126` legal pure strategies, so restricted-game solving and best-response expansion are natural starting points.
 

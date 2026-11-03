@@ -53,6 +53,6 @@ The formulation is exact, but the current solver is not yet effective: it uses f
 ## 6. What remains for a full solution
 
 1. Stabilize a first-order saddle solver on the compact path-flow polytope (or use a convergent column-generation LP), and check it against the exact full-action DP gap at every checkpoint.
-2. Turn the positive gap into a true certificate: either drive it to zero with exact rational primal/dual bounds, or report a rigorous epsilon-equilibrium bound. The current best exact gap is `30,586 / 40,000,520`.
+2. Turn the positive gap into a true certificate: either drive it to zero with exact rational primal/dual bounds, or report a rigorous epsilon-equilibrium bound. The current best exact gap is `30,514 / 40,000,520`.
 3. Confirm challenge tie and sampling semantics. The current results certify only the encoded rules.
 4. Do not label the current candidate GTO or an exact equilibrium.
