@@ -1,13 +1,11 @@
-// Exact-rational full-action best response oracle for a finite Game 2 mixture.
-// Input: support size, then each allocation's five soldier counts and integer
-// frequency. Output: lexicographically first maximizing action and its exact
-// expected-payout fraction. Frequencies must sum to at most 1e12 so all weighted
-// payout numerators fit unsigned __int128.
+// Exact-rational full-action Game 2 response oracle.
+// Input: support size, then allocations (five counts) and integer frequencies.
+// Output: maximizing legal action and its exact expected-payout fraction.
+// Frequencies must sum to <=1e12 so weighted numerators fit unsigned __int128.
 #include <algorithm>
 #include <array>
 #include <cstdint>
 #include <iostream>
-#include <limits>
 #include <string>
 #include <vector>
 
@@ -15,43 +13,55 @@ using Allocation = std::array<int, 5>;
 static constexpr std::array<int, 5> value{1, 2, 3, 4, 5};
 static constexpr std::array<int, 4> prize4{36, 16, 8, 0};
 using U128 = unsigned __int128;
+using ScenarioScores = std::array<std::array<std::array<std::uint8_t, 4>, 101>, 5>;
 
 struct OpponentTriple {
-    int a;
-    int b;
-    int c;
     U128 weighted_multiplicity;
+    ScenarioScores score_increment{}; // castle, own count, player (self first)
 };
 
-static int payout_quarters(const Allocation& me, const Allocation& a,
-                           const Allocation& b, const Allocation& c) {
-    const std::array<const Allocation*, 4> players{&me, &a, &b, &c};
-    std::array<int, 4> score12{};
+static int payout_quarters(const std::array<int, 4>& score12) {
+    int above = 0;
+    int tied = 1;
+    for (int player = 1; player < 4; ++player) {
+        above += score12[player] > score12[0];
+        tied += score12[player] == score12[0];
+    }
+    int prize_sum = 0;
+    for (int rank = above; rank < above + tied; ++rank)
+        prize_sum += prize4[rank];
+    return prize_sum / tied;
+}
+
+static void precompute_scenario(OpponentTriple& scenario,
+                                const Allocation& a, const Allocation& b,
+                                const Allocation& c) {
+    const std::array<const Allocation*, 3> opponents{&a, &b, &c};
     for (int castle = 0; castle < 5; ++castle) {
         int high = 0;
-        for (auto p : players) high = std::max(high, (*p)[castle]);
-        int leaders = 0;
-        for (auto p : players) leaders += ((*p)[castle] == high);
-        const int share = value[castle] * (12 / leaders);
-        for (int i = 0; i < 4; ++i)
-            if ((*players[i])[castle] == high) score12[i] += share;
+        for (auto opponent : opponents)
+            high = std::max(high, (*opponent)[castle]);
+        int opponent_leaders = 0;
+        for (auto opponent : opponents)
+            opponent_leaders += ((*opponent)[castle] == high);
+        for (int own = 0; own <= 100; ++own) {
+            auto& inc = scenario.score_increment[castle][own];
+            if (own > high) {
+                inc[0] = static_cast<std::uint8_t>(12 * value[castle]);
+            } else if (own == high) {
+                const int share = 12 * value[castle] / (opponent_leaders + 1);
+                inc[0] = static_cast<std::uint8_t>(share);
+                for (int player = 0; player < 3; ++player)
+                    if ((*opponents[player])[castle] == high)
+                        inc[player + 1] = static_cast<std::uint8_t>(share);
+            } else {
+                const int share = 12 * value[castle] / opponent_leaders;
+                for (int player = 0; player < 3; ++player)
+                    if ((*opponents[player])[castle] == high)
+                        inc[player + 1] = static_cast<std::uint8_t>(share);
+            }
+        }
     }
-    std::array<int, 4> order{0, 1, 2, 3};
-    std::sort(order.begin(), order.end(), [&](int x, int y) {
-        return score12[x] > score12[y];
-    });
-    int rank = 0;
-    while (rank < 4) {
-        int end = rank + 1;
-        while (end < 4 && score12[order[end]] == score12[order[rank]]) ++end;
-        int prize_sum = 0;
-        for (int place = rank; place < end; ++place) prize_sum += prize4[place];
-        const int shared_prize4 = prize_sum / (end - rank);
-        for (int place = rank; place < end; ++place)
-            if (order[place] == 0) return shared_prize4;
-        rank = end;
-    }
-    return 0;
 }
 
 static std::string to_string_u128(U128 n) {
@@ -97,7 +107,11 @@ int main() {
                                        : (i == j || j == k) ? 3 : 6;
                 const U128 weighted = static_cast<U128>(multiplicity)
                                     * weights[i] * weights[j] * weights[k];
-                if (weighted) triples.push_back({i, j, k, weighted});
+                if (!weighted) continue;
+                OpponentTriple scenario{};
+                scenario.weighted_multiplicity = weighted;
+                precompute_scenario(scenario, actions[i], actions[j], actions[k]);
+                triples.push_back(std::move(scenario));
             }
         }
     }
@@ -111,10 +125,17 @@ int main() {
                 for (int d = 0; d <= 100 - a - b - c; ++d) {
                     const Allocation candidate{a, b, c, d, 100 - a - b - c - d};
                     U128 numerator = 0;
-                    for (const auto& t : triples)
-                        numerator += t.weighted_multiplicity
-                                   * payout_quarters(candidate, actions[t.a],
-                                                     actions[t.b], actions[t.c]);
+                    for (const auto& scenario : triples) {
+                        std::array<int, 4> score12{};
+                        for (int castle = 0; castle < 5; ++castle) {
+                            const auto& inc = scenario.score_increment[castle]
+                                                                       [candidate[castle]];
+                            for (int player = 0; player < 4; ++player)
+                                score12[player] += inc[player];
+                        }
+                        numerator += scenario.weighted_multiplicity
+                                   * payout_quarters(score12);
+                    }
                     if (!have_best || numerator > best_numerator) {
                         best = candidate;
                         best_numerator = numerator;

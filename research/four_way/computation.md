@@ -14,6 +14,8 @@ Restricted replicator plus full-action oracle experiments are documented in `res
 
 A native C++ restricted multiplicative-weights implementation agrees with the Python reference on the six-action pool to within `5.6e-16`. On 24 actions, restricted payoff gaps fell below `1e-14` while a full-action reply still earned 8.8482; the response-expanded pool remained exploitable. See [`double-oracle.md`](double-oracle.md) and `results/double_oracle_chain.json`.
 
+The exact integer oracle precomputes each opponent triple's per-castle score increments before scanning candidate allocations. This avoids repeatedly recomputing castle leaders. It exactly searched the 18-action equal-weight pool (1,140 unordered triples) and found `(15,24,28,32,1)` with payout `8.6314268745`, or exploitability `4.8814268745`; see `results/exact_response_diverse18.json`. Runtime was about 89 seconds on the recorded local machine. This is a fixed-mixture audit, not a population solution.
+
 ## Restricted support search (sizes one through three)
 
 `restricted_two_support_search.py` enumerates pure and two-action supports in a finite pool. For a pair `(a,b)`, the indifference condition `g_a(x)=g_b(x)` is cubic in `x=P(a)`; unit-interval roots are isolated numerically, rationalized to integer frequencies, and audited with the exact global response oracle.

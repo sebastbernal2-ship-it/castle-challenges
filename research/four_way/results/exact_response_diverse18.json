@@ -1,0 +1,35 @@
+{
+  "population_file": "research/four_way/results/diverse-pool18.json",
+  "original_support_size": 18,
+  "quantized_support_size": 18,
+  "oracle_support_size": 18,
+  "frequency_total": 1000002,
+  "oracle_frequency_total": 1000002,
+  "discarded_frequency_fraction": [
+    0,
+    1
+  ],
+  "certified_global_best_response_upper_bound_fraction": [
+    79921098732911047,
+    9259314814925926
+  ],
+  "certified_exploitability_upper_bound_fraction": [
+    90397336353877649,
+    18518629629851852
+  ],
+  "certified_exploitability_upper_bound": 4.881426874489569,
+  "distribution_quantization": "largest-remainder integer frequencies; all response arithmetic is exact for this rationalized mixture",
+  "best_response": [
+    15,
+    24,
+    28,
+    32,
+    1
+  ],
+  "exact_expected_payout_fraction_on_oracle_mixture": "34525914652617572304/4000024000048000032",
+  "expected_payout_decimal_on_oracle_mixture": 8.631426874489568,
+  "discard_bound": "A discarded mass delta changes any action's expected payout by at most 9*delta; retained probabilities are renormalized and globally best-responded exactly.",
+  "unordered_opponent_triples": 1140,
+  "full_legal_action_count": 4598126,
+  "scope": "Exact full-action best response to the stated integer-frequency mixture; not an equilibrium claim."
+}
