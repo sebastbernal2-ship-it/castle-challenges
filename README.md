@@ -39,7 +39,7 @@ castle-head-to-head --count
 castle-head-to-head 20,20,20,20,20 --trials 10000 --seed 7
 ```
 
-The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. For full-action computation and exact deviation checks, run `PYTHONPATH=src python3 research/head_to_head/run_fictitious_play.py --rounds 2000000 --seed 1`; results and interpretation are in `research/head_to_head/computation.md`. The current polished candidate has a certified full-action exploitability of about 0.000769 points under the encoded rules. It remains an approximate strategy, not an exact equilibrium or GTO.
+The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium. The current polished candidate at `research/head_to_head/results/polished-full-action-defense-oracle.json` has exact full-action exploitability `30,586 / 40,000,520 ≈ 0.0007646401` points under the encoded rules. Verify it with `PYTHONPATH=src python3 research/head_to_head/verify_strategy.py research/head_to_head/results/polished-full-action-defense-oracle.json`. It remains an approximate strategy, not an exact equilibrium or GTO; methods and ongoing LP work are in `research/head_to_head/computation.md`.
 
 **Research target:** symmetric Nash equilibrium in this finite two-player constant-sum game. There are `C(104,4) = 4,598,126` legal pure strategies, so restricted-game solving and best-response expansion are natural starting points.
 
@@ -47,7 +47,7 @@ The evaluator reports performance against a sampled uniform-composition baseline
 
 Four players allocate 100 soldiers each. Each castle's points are awarded to its high bidder(s), split equally in case of a tie. Players are ranked by castle points; players tied in rank split the payouts for the rank slots they occupy, using `(9, 4, 2, 0)`.
 
-Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. A C++ exhaustive full-action response search against a finite support can be run with `python3 research/four_way/run_full_best_response.py research/four_way/baseline_population.json`; it uses long-double probability arithmetic, applies only to the supplied mixture, and does not establish equilibrium. Pure symmetric allocations are provably exploitable; mixed equilibrium remains unsolved.
+Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. `run_exact_full_best_response.py` evaluates the best response over all 4,598,126 legal allocations using exact integer arithmetic for a stated integer-frequency mixture; the probability quantization and fixed-mixture scope are reported in its output. `restricted_two_support_search.py` searches pure/two-action supports and exact-audits candidates, but found no useful equilibrium approximation. Mixed equilibrium remains unsolved; see `research/four_way/analysis.md` for the complete method and practical blockers.
 
 ```sh
 castle-four-way 20,20,20,20,20 --trials 10000 --seed 7
