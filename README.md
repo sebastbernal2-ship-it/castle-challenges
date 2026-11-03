@@ -32,7 +32,7 @@ python -m unittest discover -s tests -v
 
 Each player allocates 100 whole soldiers across castles worth `(1, 2, 3, 4, 5)`. For each castle, the larger allocation wins its points and a tie splits the points. The challenge objective is average castle score over opponents.
 
-Game-specific code: `src/castle_challenges/games/head_to_head/`
+Game-specific code: `src/castle_challenges/games/head_to_head/`. The `best_response` module contains an exact dynamic-programming oracle against any finite mixed strategy; see `research/head_to_head/analysis.md` for the derivation and double-oracle plan.
 
 ```sh
 castle-head-to-head --count
@@ -47,7 +47,7 @@ The evaluator reports performance against a sampled uniform-composition baseline
 
 Four players allocate 100 soldiers each. Each castle's points are awarded to its high bidder(s), split equally in case of a tie. Players are ranked by castle points; players tied in rank split the payouts for the rank slots they occupy, using `(9, 4, 2, 0)`.
 
-Game-specific code: `src/castle_challenges/games/four_way/`
+Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and a solver plan are in `research/four_way/analysis.md`.
 
 ```sh
 castle-four-way 20,20,20,20,20 --trials 10000 --seed 7
