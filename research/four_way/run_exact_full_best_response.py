@@ -108,11 +108,15 @@ def main() -> None:
                         help="integer denominator for the audited rational mixture")
     parser.add_argument("--max-support", type=int,
                         help="keep the largest integer frequencies; add a rigorous 9*tail-mass BR bound")
+    parser.add_argument("--threads", type=int, default=1,
+                        help="parallel full-action scan workers")
     parser.add_argument("--compiler", default="c++")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if not 1 <= args.frequency_total <= 1_000_000_000_000:
         parser.error("frequency total must be in 1..1e12")
+    if not 1 <= args.threads <= 256:
+        parser.error("threads must be in 1..256")
 
     data = json.loads(args.population.read_text(), parse_float=Fraction)
     actions, weights = _load_entries(data)
@@ -127,9 +131,11 @@ def main() -> None:
     source = Path(__file__).with_name("exact_full_action_best_response.cpp")
     with tempfile.TemporaryDirectory(prefix="castle-fourway-exact-br-") as temp:
         binary = Path(temp) / "exact_best_response"
-        subprocess.run([args.compiler, "-O3", "-std=c++17", str(source), "-o", str(binary)],
+        subprocess.run([args.compiler, "-O3", "-std=c++17", "-pthread",
+                        str(source), "-o", str(binary)],
                        check=True, stdout=subprocess.DEVNULL)
-        result = subprocess.run([str(binary)], input="\n".join(lines) + "\n",
+        result = subprocess.run([str(binary), str(args.threads)],
+                                input="\n".join(lines) + "\n",
                                 text=True, capture_output=True, check=True).stdout.strip()
     allocation, numerator, denominator, profile_count = result.split("\t")
     exact_retained_payout = Fraction(int(numerator), int(denominator))
@@ -149,6 +155,7 @@ def main() -> None:
         "oracle_support_size": len(retained),
         "frequency_total": args.frequency_total,
         "oracle_frequency_total": sum(retained.values()),
+        "oracle_threads": args.threads,
         "discarded_frequency_fraction": [tail_fraction.numerator, tail_fraction.denominator],
         "certified_global_best_response_upper_bound_fraction": [payout_upper_bound.numerator, payout_upper_bound.denominator],
         "certified_exploitability_upper_bound_fraction": [exploitability_upper_bound.numerator, exploitability_upper_bound.denominator],

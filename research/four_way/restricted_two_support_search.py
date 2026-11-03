@@ -119,7 +119,7 @@ def _compile_oracle() -> Path:
     temp = tempfile.TemporaryDirectory(prefix="four-way-support-search-")
     _TEMP_DIRS.append(temp)
     binary = Path(temp.name) / "oracle"
-    subprocess.run([compiler, "-O3", "-std=c++17", str(source), "-o", str(binary)],
+    subprocess.run([compiler, "-O3", "-std=c++17", "-pthread", str(source), "-o", str(binary)],
                    check=True, stdout=subprocess.DEVNULL)
     return binary
 
@@ -129,7 +129,7 @@ def _audit(binary: Path, actions: tuple[tuple[int, ...], ...],
     lines = [str(len(actions))]
     lines.extend("{} {}".format(" ".join(map(str, action)), weight)
                  for action, weight in zip(actions, weights) if weight)
-    output = subprocess.run([str(binary)], input="\n".join(lines) + "\n",
+    output = subprocess.run([str(binary), "1"], input="\n".join(lines) + "\n",
                             text=True, capture_output=True, check=True).stdout.strip()
     response, numerator, denominator, _ = output.split("\t")
     return tuple(map(int, response.split(","))), int(numerator), int(denominator)

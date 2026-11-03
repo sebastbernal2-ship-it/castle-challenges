@@ -43,14 +43,19 @@ class ExactFullActionOracleTests(unittest.TestCase):
                   / "exact_full_action_best_response.cpp")
         with tempfile.TemporaryDirectory(prefix="four-way-exact-oracle-test-") as temp:
             binary = Path(temp) / "oracle"
-            subprocess.run([shutil.which("c++"), "-O2", "-std=c++17",
+            subprocess.run([shutil.which("c++"), "-O2", "-std=c++17", "-pthread",
                             str(source), "-o", str(binary)], check=True,
                            stdout=subprocess.DEVNULL)
             result = subprocess.run(
-                [str(binary)], input="1\n20 20 20 20 20 1\n", text=True,
+                [str(binary), "1"], input="1\n20 20 20 20 20 1\n", text=True,
+                capture_output=True, check=True,
+            ).stdout.strip()
+            parallel_result = subprocess.run(
+                [str(binary), "4"], input="1\n20 20 20 20 20 1\n", text=True,
                 capture_output=True, check=True,
             ).stdout.strip()
 
+        self.assertEqual(parallel_result, result)
         allocation, numerator, denominator, triple_count = result.split("\t")
         response = tuple(map(int, allocation.split(",")))
         opponent = (20, 20, 20, 20, 20)

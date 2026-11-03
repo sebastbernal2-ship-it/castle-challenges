@@ -5,6 +5,7 @@
   "oracle_support_size": 8,
   "frequency_total": 1000002,
   "oracle_frequency_total": 1000002,
+  "oracle_threads": 8,
   "discarded_frequency_fraction": [
     0,
     1

@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include <thread>
 #include <vector>
 
 using Allocation = std::array<int, 5>;
@@ -75,7 +76,12 @@ static std::string to_string_u128(U128 n) {
     return out;
 }
 
-int main() {
+int main(int argc, char** argv) {
+    const int thread_count = argc > 1 ? std::stoi(argv[1]) : 1;
+    if (thread_count < 1 || thread_count > 256) {
+        std::cerr << "thread count must be in 1..256\n";
+        return 2;
+    }
     int n;
     if (!(std::cin >> n) || n <= 0) {
         std::cerr << "expected positive support size\n";
@@ -123,33 +129,54 @@ int main() {
         }
     }
 
+    struct ThreadResult { Allocation action{}; U128 numerator = 0; bool present = false; };
+    const int workers = std::min(thread_count, 101);
+    std::vector<ThreadResult> results(workers);
+    std::vector<std::thread> threads;
+    threads.reserve(workers);
+    for (int tid = 0; tid < workers; ++tid) {
+        threads.emplace_back([&, tid] {
+            auto& result = results[tid];
+            for (int a = tid; a <= 100; a += workers)
+                for (int b = 0; b <= 100 - a; ++b)
+                    for (int c = 0; c <= 100 - a - b; ++c)
+                        for (int d = 0; d <= 100 - a - b - c; ++d) {
+                            const Allocation candidate{a, b, c, d,
+                                                       100 - a - b - c - d};
+                            U128 numerator = 0;
+                            for (const auto& scenario : triples) {
+                                std::array<int, 4> score12{};
+                                for (int castle = 0; castle < 5; ++castle) {
+                                    const auto& inc = scenario.score_increment[castle]
+                                                                          [candidate[castle]];
+                                    for (int player = 0; player < 4; ++player)
+                                        score12[player] += inc[player];
+                                }
+                                numerator += scenario.weighted_multiplicity
+                                           * payout_quarters(score12);
+                            }
+                            if (!result.present || numerator > result.numerator ||
+                                (numerator == result.numerator && candidate < result.action)) {
+                                result.action = candidate;
+                                result.numerator = numerator;
+                                result.present = true;
+                            }
+                        }
+        });
+    }
+    for (auto& thread : threads) thread.join();
+
     Allocation best{};
     U128 best_numerator = 0;
     bool have_best = false;
-    for (int a = 0; a <= 100; ++a)
-        for (int b = 0; b <= 100 - a; ++b)
-            for (int c = 0; c <= 100 - a - b; ++c)
-                for (int d = 0; d <= 100 - a - b - c; ++d) {
-                    const Allocation candidate{a, b, c, d, 100 - a - b - c - d};
-                    U128 numerator = 0;
-                    for (const auto& scenario : triples) {
-                        std::array<int, 4> score12{};
-                        for (int castle = 0; castle < 5; ++castle) {
-                            const auto& inc = scenario.score_increment[castle]
-                                                                       [candidate[castle]];
-                            for (int player = 0; player < 4; ++player)
-                                score12[player] += inc[player];
-                        }
-                        numerator += scenario.weighted_multiplicity
-                                   * payout_quarters(score12);
-                    }
-                    if (!have_best || numerator > best_numerator) {
-                        best = candidate;
-                        best_numerator = numerator;
-                        have_best = true;
-                    }
-                }
-
+    for (const auto& result : results) {
+        if (result.present && (!have_best || result.numerator > best_numerator ||
+            (result.numerator == best_numerator && result.action < best))) {
+            best = result.action;
+            best_numerator = result.numerator;
+            have_best = true;
+        }
+    }
     const U128 denominator = 4 * total * total * total;
     std::cout << best[0];
     for (int i = 1; i < 5; ++i) std::cout << ',' << best[i];

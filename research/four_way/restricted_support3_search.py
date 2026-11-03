@@ -129,7 +129,7 @@ def exact_audit(actions, weights, binary):
     payload = [str(len(actions))]
     payload.extend("{} {}".format(" ".join(map(str, action)), weight)
                    for action, weight in zip(actions, weights) if weight)
-    output = subprocess.run([str(binary)], input="\n".join(payload) + "\n",
+    output = subprocess.run([str(binary), "1"], input="\n".join(payload) + "\n",
                             text=True, capture_output=True, check=True).stdout.strip()
     response, numerator, denominator, _ = output.split("\t")
     from fractions import Fraction
@@ -177,7 +177,7 @@ def search(path: Path, *, max_actions: int = 12, grid_denominator: int = 8) -> d
     audits = []
     with tempfile.TemporaryDirectory(prefix="four-way-support3-") as temp:
         binary = Path(temp) / "oracle"
-        subprocess.run([compiler, "-O3", "-std=c++17", str(source), "-o", str(binary)],
+        subprocess.run([compiler, "-O3", "-std=c++17", "-pthread", str(source), "-o", str(binary)],
                        check=True, stdout=subprocess.DEVNULL)
         for support, p, restricted_value in restricted_equilibria:
             actions = tuple(pool[i] for i in support)
