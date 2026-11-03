@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "castle-challenges"
-version = "0.1.0"
-description = "Research tools for two castle allocation games"
+version = "0.2.0"
+description = "Separate research scaffolds for two castle allocation games"
 requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-castle-challenges = "castle_challenges.cli:main"
+castle-head-to-head = "castle_challenges.games.head_to_head.cli:main"
+castle-four-way = "castle_challenges.games.four_way.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

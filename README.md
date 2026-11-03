@@ -1,47 +1,69 @@
-# Castle Challenges
+# Castle Challenges Research
 
-A reproducible research workspace for finding strong strategies—and, where possible, Nash/GTO solutions—for the two 100-soldier castle games.
+This repository studies two related allocation challenges as **separate games**. They share the legal allocation format, but have different scoring rules, objectives, analyses, and (eventually) solvers.
 
-## Rules encoded
+## Repository structure
 
-An allocation is a five-tuple of nonnegative integers summing to 100. Castles have values `(1, 2, 3, 4, 5)`.
-
-### Game 1: head-to-head
-For each castle, the player with more soldiers receives its value; equal allocations split the value. Utility is the sum over castles. Against a population distribution, a strategy's payoff is its expected score against a random opponent. The symmetric zero-sum payoff is equivalently the difference in scores (the score sum is always 15).
-
-### Game 2: four-way battle
-Each castle's value is split equally among all players tied for the largest allocation there. A player's rank is determined by their total castle points. Players tied in rank split the payouts for the rank positions they occupy: e.g. a two-way tie for first/second receives `(9+4)/2 = 6.5` each. Payouts are `(9, 4, 2, 0)`.
-
-## Important modelling caveat
-
-“GTO” depends on the opponent model and on whether players may use mixed strategies. This project treats each game as a symmetric, finite, simultaneous game with private independent randomization. Game 1 has a constant-sum payoff, so symmetric Nash equilibrium strategies are well-defined. Game 2 is a general-sum multiplayer game; a symmetric Nash equilibrium is not generally a unique strategy and need not maximize tournament score against a particular applicant population. We should report the equilibrium concept and assumptions alongside every result.
-
-The browser description leaves some details open (for example, how random groups are sampled and how payout ties are handled). The rules above make explicit conventions; confirm them against the actual challenge implementation before treating results as definitive.
-
-## Getting started
-
-Requires Python 3.10+; no runtime dependencies.
-
-```sh
-python -m unittest discover -s tests -v
-python -m castle_challenges.cli count
-python -m castle_challenges.cli evaluate 20,20,20,20,20 --opponents 10000 --seed 7
+```text
+src/castle_challenges/
+├── common/                 # Allocation representation and validation only
+└── games/
+    ├── head_to_head/       # Game 1 rules, evaluation, CLI, solver work
+    └── four_way/           # Game 2 rules, evaluation, CLI, solver work
+research/
+├── head_to_head/           # Game 1 notebooks, experiments, findings
+└── four_way/               # Game 2 notebooks, experiments, findings
+tests/
+├── head_to_head/           # Game 1 tests
+└── four_way/               # Game 2 tests
 ```
 
-The allocation space is large: `C(104,4) = 4,598,126` pure strategies. Exact full-game matrix methods are therefore not the first step. The package provides exact per-profile scoring and seeded Monte Carlo evaluation, which form a trustworthy foundation for restricted-game solvers, best-response oracles, and population searches.
+## Shared setup
 
-## Research plan
+- Python 3.10+
+- No runtime dependencies
 
-1. Validate semantics and build unit tests against hand-calculated examples.
-2. Characterize the pure-strategy landscape, dominance, and useful allocation families.
-3. For Game 1, solve restricted zero-sum games and expand the support with best responses; bound/validate exploitability with independent searches.
-4. For Game 2, estimate expected rank payout under candidate populations, then use sampled best responses / evolutionary or regret-based methods. Distinguish symmetric equilibrium from performance against a specified field.
-5. Use independent seeds, confidence intervals, and saved experiment parameters. Never present Monte Carlo point estimates as exact GTO results.
+```sh
+python -m pip install -e .
+python -m unittest discover -s tests -v
+```
 
-## Layout
+## Game 1 — Head to Head
 
-- `src/castle_challenges/game.py`: rules and pure allocation enumeration.
-- `src/castle_challenges/simulation.py`: population Monte Carlo evaluators.
-- `src/castle_challenges/cli.py`: small command-line entry point.
-- `tests/`: rules and deterministic sanity checks.
-- `research/`: experiment notes and results (add scripts and provenance here).
+Each player allocates 100 whole soldiers across castles worth `(1, 2, 3, 4, 5)`. For each castle, the larger allocation wins its points and a tie splits the points. The challenge objective is average castle score over opponents.
+
+Game-specific code: `src/castle_challenges/games/head_to_head/`
+
+```sh
+castle-head-to-head --count
+castle-head-to-head 20,20,20,20,20 --trials 10000 --seed 7
+```
+
+The evaluator reports performance against a sampled uniform-composition baseline. That baseline is diagnostic only, not a model of applicants or an equilibrium.
+
+**Research target:** symmetric Nash equilibrium in this finite two-player constant-sum game. There are `C(104,4) = 4,598,126` legal pure strategies, so restricted-game solving and best-response expansion are natural starting points.
+
+## Game 2 — Four-Way Battle
+
+Four players allocate 100 soldiers each. Each castle's points are awarded to its high bidder(s), split equally in case of a tie. Players are ranked by castle points; players tied in rank split the payouts for the rank slots they occupy, using `(9, 4, 2, 0)`.
+
+Game-specific code: `src/castle_challenges/games/four_way/`
+
+```sh
+castle-four-way 20,20,20,20,20 --trials 10000 --seed 7
+```
+
+Opponents are sampled independently with replacement from the sampled uniform-composition baseline.
+
+**Research target:** explicitly state the solution concept. This is a multiplayer general-sum game; symmetric Nash equilibrium, evolutionary stability, and best performance against a particular applicant field are different goals and may yield different strategies.
+
+## Modelling assumptions to verify
+
+The challenge description does not fully specify group sampling or tie resolution details. Current conventions are documented in each rules module: tied castle leaders split castle points, and rank ties average payouts across occupied places. Four-way simulation samples opponents independently with replacement. Verify these against the actual implementation before claiming a definitive solution.
+
+## Research standards
+
+- Keep each game's assumptions, experiments, solver code, and results in its own directory.
+- Record parameters, source revision, random seed, and uncertainty for stochastic results.
+- Separate exact calculations from Monte Carlo estimates.
+- Do not label a population-specific benchmark or approximate solver output “GTO” without a defined equilibrium concept and exploitability validation.
