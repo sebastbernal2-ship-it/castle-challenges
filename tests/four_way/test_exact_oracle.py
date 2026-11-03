@@ -1,3 +1,5 @@
+from fractions import Fraction
+import importlib.util
 from pathlib import Path
 import shutil
 import subprocess
@@ -7,8 +9,25 @@ import unittest
 from castle_challenges.games.four_way.rules import payout
 
 
+RUNNER_PATH = (Path(__file__).parents[2] / "research" / "four_way"
+               / "run_exact_full_best_response.py")
+RUNNER_SPEC = importlib.util.spec_from_file_location("exact_best_response_runner", RUNNER_PATH)
+RUNNER = importlib.util.module_from_spec(RUNNER_SPEC)
+assert RUNNER_SPEC.loader is not None
+RUNNER_SPEC.loader.exec_module(RUNNER)
+
+
 @unittest.skipUnless(shutil.which("c++"), "C++ compiler is required for oracle test")
 class ExactFullActionOracleTests(unittest.TestCase):
+    def test_truncation_has_a_rigorous_total_variation_bound(self):
+        actions = [(1, 1, 1, 1, 96), (2, 2, 2, 2, 92), (3, 3, 3, 3, 88)]
+        counts = dict(zip(actions, (80, 15, 5)))
+        retained, tail = RUNNER._retain_top_support(counts, 1)
+        self.assertEqual(retained, {actions[0]: 80})
+        self.assertEqual(tail, 20)
+        upper = RUNNER._certified_payout_upper_bound(Fraction(8), Fraction(tail, 100))
+        self.assertEqual(upper, Fraction(41, 5))
+
     def test_pure_population_matches_profile_rules(self):
         source = (Path(__file__).parents[2] / "research" / "four_way"
                   / "exact_full_action_best_response.cpp")

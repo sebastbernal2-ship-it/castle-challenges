@@ -22,6 +22,14 @@ Given a finite support `S` and probabilities `p`, expected payoff of a deviation
 
 This is exact but cubic in support size per deviation. Cache opponent triples and their weights; exploit symmetry to aggregate unordered multisets with multiplicity (three draws with replacement). Evaluate all pure deviations only if feasible, or develop an exact branch-and-bound / specialized search with a certified upper bound. Heuristics can find deviations but cannot certify equilibrium. An approximate equilibrium certificate requires a valid upper bound on the best deviation as well as a lower bound from a found action.
 
+### Certified support truncation bound
+
+For a rationalized mixture `p`, retain a subset of support mass `1-delta` and renormalize it to `p_R`; write `p=(1-delta)p_R+delta p_T`. Since every action's payout lies in `[0,9]`, the global response value satisfies
+
+`BR(p) <= (1-delta) BR(p_R) + 9 delta`.
+
+Thus an exact full-action oracle on a small retained support plus the discarded mass gives a rigorous upper bound for the original mixture, without pretending the truncated best response is exact for it. `run_exact_full_best_response.py --max-support K` implements this certificate. It helps only when the discarded mass is very small and `BR(p_R)` is itself low; on the equal six-action baseline, retaining half the mass only recovers the trivial upper bound 9.
+
 ## 4. Structure and useful invariants
 
 - Castle points sum to 15 in every profile, since each castle's value is fully allocated among its leaders.
