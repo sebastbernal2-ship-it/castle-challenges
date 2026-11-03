@@ -90,6 +90,20 @@ The eight-configuration sweep (`49312405`) is complete. Task 0 produced the new 
 
 The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a materially stronger certified strategy, but Game 1 is not fully solved or GTO.
 
+## Compact path-flow / mirror-prox experiment
+
+The legal allocation polytope can be represented as unit flows on a five-layer DAG of cumulative soldier totals: arc `(castle i, total s, count x)` advances from `s` to `s+x`. It has 25,755 arcs, and path decomposition gives a legal allocation mixture. Since Game 1 payoff depends only on castle marginals, the saddle objective is bilinear in the marginals projected from two such flows. `mirror_prox_flow.cpp` uses Gibbs path distributions and forward/backward DP to update them without enumerating actions; the Python runner decomposes its averaged flows into legal allocations and then invokes the exact verifier.
+
+This is a useful compact formulation but the current numerical solver did not improve the incumbent. Exact verification gave gaps `0.17618056` after 1,000 iterations at step `0.03`, `4.41000924` after 100,000 at `0.03`, and `1.00263072` after 200,000 at `0.0002`. The implementation clips very small per-castle Gibbs weights for numerical stability, so it is not yet a certified implementation of unmodified mirror-prox. Run a small reproduction with:
+
+```sh
+PYTHONPATH=src python3 research/head_to_head/run_mirror_prox_flow.py \\
+  --iterations 1000 --eta 0.03 --output /tmp/mirror-prox.json
+PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/mirror-prox.json
+```
+
+The candidate is always full-action audited, but these runs expose a convergence/step-size problem rather than solving it.
+
 ## Restricted-game LP double oracle
 
 For a more direct mathematical optimization, `double_oracle_lp.py` now solves the primal and dual zero-sum LPs on generated row/column strategy pools. Its payoff matrix uses the exact separability of Game 1: against any opponent mixture, each castle contributes from its one-dimensional soldier-count marginals. The restricted pool includes the incumbent mixture as a meta-action, plus pure actions. After each restricted LP, exact integer-DP best responses against the quantized row and column mixtures add new actions; the symmetric average is audited over the full action space. Thus an LP candidate can never replace the incumbent unless its exact certificate is better.
