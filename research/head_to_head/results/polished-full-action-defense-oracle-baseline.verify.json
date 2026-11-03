@@ -1,0 +1,22 @@
+{
+  "strategy_file": "research/head_to_head/results/polished-full-action-defense-oracle-baseline.json",
+  "frequency_total": 20000260,
+  "support_size": 64914,
+  "best_response": [
+    10,
+    26,
+    5,
+    2,
+    57
+  ],
+  "best_response_score_fraction": [
+    300034663,
+    40000520
+  ],
+  "exploitability_fraction": [
+    30763,
+    40000520
+  ],
+  "exploitability": 0.000769065002154972,
+  "verified_full_action_space": true
+}

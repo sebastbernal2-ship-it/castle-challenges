@@ -62,9 +62,9 @@ A stronger direction oracle then produced a substantial further gain. For the to
 | 10,000 | 3,000,000 | 0.0007742399 |
 | 50,000 | 1,000,000 | 0.0007730400 |
 | 50,000 | 1,000,000 | 0.0007702150 |
-| 50,000 | 1,000,000 | **0.0007690650** |
+| 50,000 | 1,000,000 | 0.0007690650 |
 
-Each accepted strategy was checked against all legal attacker actions using the integer-DP verifier. The latest 64,914-action mixture is `results/polished-full-action-defense-oracle.json`, with exact exploitability `30,763 / 40,000,520`, and full-action best response `(10,26,5,2,57)`. Its immediate predecessor checkpoint is `results/full-column-recent-checkpoint.json`.
+Each accepted strategy was checked against all legal attacker actions using the integer-DP verifier. The newest 68,861-action mixture is `results/polished-full-action-defense-oracle.json`, with exact exploitability `30,586 / 40,000,520 ≈ 0.00076464006` and full-action best response `(10,10,5,12,63)`. It came from task 0 of the eight-configuration HiPerGator sweep (`49312405_0`): three polishing steps with `K=50,000`, 1,000,000 oracle iterations, and 128 pure directions. This is an independently re-run exact full-action certificate.
 
 Reproduce the final accepted step (the oracle run takes about 11 minutes on the recorded machine):
 
@@ -76,7 +76,17 @@ PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
 PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/latest.json
 ```
 
-An eight-configuration Slurm sweep is running on HiPerGator (job array `49312405`, all eight tasks now running concurrently), using this exact full-action-audited strategy as its starting point. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets. It writes a full-action certificate beside every candidate.
+The current sweep incumbent is reproducible from its preserved starting mixture with three polishing steps:
+
+```sh
+PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
+  research/head_to_head/results/polished-full-action-defense-oracle-baseline.json \\
+  --steps 3 --top-k 50000 --oracle-iterations 1000000 \\
+  --pure-directions 128 --output /tmp/hpg-candidate-0.json
+PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/hpg-candidate-0.json
+```
+
+The remaining four tasks of the eight-configuration Slurm sweep (`49312405_4`–`49312405_7`) are still running, starting from the earlier `0.0007690650` candidate. Tasks 1–3 did not improve it; task 0 produced the new incumbent above. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets, and writes a full-action certificate beside every candidate.
 
 The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a materially stronger certified strategy, but Game 1 is not fully solved or GTO.
 
@@ -84,7 +94,7 @@ The gap is still positive. The row set is restricted during direction generation
 
 For a more direct mathematical optimization, `double_oracle_lp.py` now solves the primal and dual zero-sum LPs on generated row/column strategy pools. Its payoff matrix uses the exact separability of Game 1: against any opponent mixture, each castle contributes from its one-dimensional soldier-count marginals. The restricted pool includes the incumbent mixture as a meta-action, plus pure actions. After each restricted LP, exact integer-DP best responses against the quantized row and column mixtures add new actions; the symmetric average is audited over the full action space. Thus an LP candidate can never replace the incumbent unless its exact certificate is better.
 
-With exact rational restricted LP solutions and exact full-action responses, this double oracle is a finite complete algorithm: each unsuccessful round adds a previously absent profitable pure action, and the action set is finite. The current implementation uses HiGHS floating-point LPs, so it is a candidate-generation/approximation method rather than an exact equilibrium proof. Its saved full-action gaps remain exact. The first HiPerGator run (`49327028`) completed 50 iterations; the restricted primal/dual LP gaps were near numerical precision, but no LP-generated symmetric average improved the incumbent's `0.0007688900` exact full-action gap. The follow-up run (`49327950`) uses batches of 200 full-action responses per round to expand the pools faster. Iteration logs and best-so-far exact certificates are checkpointed in `results/double-oracle-lp.json` on the cluster. A restricted LP equilibrium by itself is not a certificate for omitted allocations.
+With exact rational restricted LP solutions and exact full-action responses, this double oracle is a finite complete algorithm: each unsuccessful round adds a previously absent profitable pure action, and the action set is finite. The current implementation uses HiGHS floating-point LPs, so it is a candidate-generation/approximation method rather than an exact equilibrium proof. Its saved full-action gaps remain exact. The first HiPerGator run (`49327028`) completed 50 iterations; the restricted primal/dual LP gaps were near numerical precision, but no LP-generated symmetric average improved the incumbent's `0.0007688900` exact full-action gap. The follow-up (`49327950`) completed 20 rounds with batches of 200 responses; its final LP average still had a `0.0134` full-action gap, so the saved exact-audited incumbent remained unchanged. A resumed larger-batch run (`49329832`, 400 responses per round) is now exploring the saved pools. Iteration logs, resumable pool state, and best-so-far exact certificates are checkpointed in `results/double-oracle-lp.json` on the cluster. A restricted LP equilibrium by itself is not a certificate for omitted allocations.
 
 ## Regularized-response experiment
 
@@ -92,4 +102,4 @@ We also implemented exact logit-response marginals by a log-space coefficient DP
 
 ## Interpretation and next computation
 
-The latest committed candidate has a rigorously evaluated `0.0007690650` full-action deviation gap under the encoded rules; the HPG sweep has already found a slightly better exact-audited gap of `0.0007688900`. The LP double-oracle search is running but has not improved that incumbent yet. All gaps are exact certificates for their saved mixtures, not proofs of global optimality; Game 1 is not yet solved.
+The latest candidate has a rigorously evaluated `0.0007646401` full-action deviation gap under the encoded rules; the full-action LP double-oracle runs have not yet improved it. All reported gaps are exact certificates for their saved mixtures, not proofs of global optimality; Game 1 is not yet solved.
