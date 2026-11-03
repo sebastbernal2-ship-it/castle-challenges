@@ -76,7 +76,7 @@ PYTHONPATH=src python3 research/head_to_head/polish_strategy.py \\
 PYTHONPATH=src python3 research/head_to_head/verify_strategy.py /tmp/latest.json
 ```
 
-An eight-configuration Slurm sweep is running on HiPerGator (job array `49312405`, four tasks concurrently), using this exact full-action-audited strategy as its starting point. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets. It writes a full-action certificate beside every candidate.
+An eight-configuration Slurm sweep is running on HiPerGator (job array `49312405`, all eight tasks now running concurrently), using this exact full-action-audited strategy as its starting point. The reusable job array is `hpg_polish_array.sbatch`; it searches larger attacker pools, more oracle iterations, and wider pure-direction sets. It writes a full-action certificate beside every candidate.
 
 The gap is still positive. The row set is restricted during direction generation and fictitious play is finite; neither that restricted-game gap nor these line-search results prove global optimality or an exact equilibrium. This is a materially stronger certified strategy, but Game 1 is not fully solved or GTO.
 
