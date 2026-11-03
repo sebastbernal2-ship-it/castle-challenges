@@ -79,6 +79,42 @@ def _restricted_defense_mix(deviations: list[tuple[int, ...]], defenses: list[tu
     return [count / rounds for count in col_counts]
 
 
+def _defense_oracle_mix(deviations: list[tuple[int, ...]], rounds: int
+                        ) -> tuple[list[tuple[int, ...]], list[float], float | None]:
+    """Solve the restricted attacker/full-action defender game by fictitious play."""
+    compiler = shutil.which("c++")
+    if compiler:
+        source = Path(__file__).with_name("restricted_defense_oracle_fictitious_play.cpp")
+        with tempfile.TemporaryDirectory(prefix="castle-h2h-defense-oracle-") as tmp:
+            binary = Path(tmp) / "defense_oracle"
+            subprocess.run([compiler, "-O3", "-std=c++17", str(source), "-o", str(binary)],
+                           check=True, stdout=subprocess.DEVNULL)
+            payload = f"{len(deviations)} {rounds}\n"
+            payload += "".join(" ".join(map(str, a)) + "\n" for a in deviations)
+            lines = subprocess.run([str(binary)], input=payload, text=True,
+                                   capture_output=True, check=True).stdout.splitlines()
+        upper, lower, _ = map(float, lines[0].split())
+        defenses = []
+        counts = []
+        for line in lines[1:]:
+            fields = list(map(int, line.split()))
+            defenses.append(tuple(fields[:5]))
+            counts.append(fields[5])
+        total = sum(counts)
+        return defenses, [count / total for count in counts], upper - lower
+
+    directions = []
+    for deviation in deviations:
+        pure_hist = [[0] * 101 for _ in range(5)]
+        for i, soldiers in enumerate(deviation):
+            pure_hist[i][soldiers] = 1
+        defense, _, _ = best_response_from_counts(tuple(pure_hist))
+        if defense not in directions:
+            directions.append(defense)
+    probabilities = _restricted_defense_mix(deviations, directions, rounds)
+    return directions, probabilities, None
+
+
 def polish(source: Path, steps: int = 20, top_k: int = 10,
            matrix_rounds: int = 5_000, pure_directions: int = 64) -> dict:
     data = json.loads(source.read_text())
@@ -97,17 +133,8 @@ def polish(source: Path, steps: int = 20, top_k: int = 10,
 
     for step in range(1, steps + 1):
         deviations = top_responses_from_counts(tuple(current_hist), k=top_k)
-        directions = []
-        for br, _ in deviations:
-            pure_hist = [[0] * 101 for _ in range(5)]
-            for i, soldiers in enumerate(br):
-                pure_hist[i][soldiers] = 1
-            descent, _, _ = best_response_from_counts(tuple(pure_hist))
-            if descent not in directions:
-                directions.append(descent)
-
-        defense_probabilities = _restricted_defense_mix(
-            [a for a, _ in deviations], directions, matrix_rounds)
+        directions, defense_probabilities, defense_game_gap = _defense_oracle_mix(
+            [a for a, _ in deviations], matrix_rounds)
         ranked_directions = sorted(zip(directions, defense_probabilities),
                                    key=lambda item: item[1], reverse=True)
         direction_mixtures = [({a: 1.0}, [a]) for a, p in
@@ -139,19 +166,24 @@ def polish(source: Path, steps: int = 20, top_k: int = 10,
         if best_strategy is None:
             break
         strategy, current_hist = best_strategy, best_hist
+        mixture_support = [(action, probability)
+                           for action, probability in best_direction_weights.items()
+                           if probability > 0]
+        mixture_top = sorted(mixture_support, key=lambda item: item[1], reverse=True)[:10]
         trace.append({"step": step, "gap": best_gap, "step_size": best_alpha,
+                      "restricted_defense_game_gap": defense_game_gap,
                       "best_response": list(best_response_action),
-                      "descent_mixture": [[list(action), probability]
-                                           for action, probability in best_direction_weights.items()
-                                           if probability > 0]})
+                      "descent_mixture_support": len(mixture_support),
+                      "descent_mixture_top": [[list(action), probability]
+                                               for action, probability in mixture_top]})
 
     _, numerator, denominator = best_response_from_counts(tuple(current_hist))
     payload = {
         "source": str(source),
-        "method": "best-response subgradient direction + grid line search",
+        "method": "restricted-attacker/full-action-defender fictitious play + exact full-action line search",
         "frequency_total": total,
         "top_deviations_considered": top_k,
-        "restricted_defense_matrix_rounds": matrix_rounds,
+        "restricted_defense_oracle_iterations": matrix_rounds,
         "pure_direction_candidates": pure_directions,
         "trace": trace,
         "final_gap_fraction": [numerator - 15 * denominator // 2, denominator],
@@ -167,7 +199,8 @@ def main() -> None:
     parser.add_argument("strategy", type=Path)
     parser.add_argument("--steps", type=int, default=20)
     parser.add_argument("--top-k", type=int, default=10)
-    parser.add_argument("--matrix-rounds", type=int, default=5_000)
+    parser.add_argument("--matrix-rounds", "--oracle-iterations", dest="matrix_rounds",
+                        type=int, default=5_000)
     parser.add_argument("--pure-directions", type=int, default=64)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
