@@ -48,7 +48,7 @@ The evaluator reports performance against a sampled uniform-composition baseline
 
 Four players allocate 100 soldiers each. Each castle's points are awarded to its high bidder(s), split equally in case of a tie. Players are ranked by castle points; players tied in rank split the payouts for the rank slots they occupy, using `(9, 4, 2, 0)`.
 
-Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. `run_exact_full_best_response.py` evaluates responses over all 4,598,126 legal allocations with exact integer arithmetic and can return the top K; optional support truncation gives a rigorous bound for discarded mass. A restricted symmetric-minimax response-expansion search has reached a best exact-audited deviation gap of about `0.9434`, still far above zero. Game 2 remains unsolved; HPG job `49377453` is continuing the search. See `research/four_way/analysis.md` and `computation.md` for limitations and current status.
+Game-specific code: `src/castle_challenges/games/four_way/`. Its analysis and computation log are in `research/four_way/`. `run_exact_full_best_response.py` evaluates responses over all 4,598,126 legal allocations with exact integer arithmetic and can return the top K; optional support truncation gives a rigorous bound for discarded mass. A restricted symmetric-minimax response-expansion search has reached a best exact-audited deviation gap of about `0.8607`, still far above zero. Game 2 remains unsolved; HPG job `49377453` is continuing the search. See `research/four_way/analysis.md` and `computation.md` for limitations and current status.
 
 ```sh
 castle-four-way 20,20,20,20,20 --trials 10000 --seed 7
