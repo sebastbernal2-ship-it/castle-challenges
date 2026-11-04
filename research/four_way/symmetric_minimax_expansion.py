@@ -89,6 +89,17 @@ def payoff_tensor(actions: list[tuple[int, ...]]):
     return triple_array, multiplicity_array, tensor
 
 
+def prune_pool_support(actions, probabilities, threshold):
+    """Drop inactive restricted actions; the full-game oracle still audits globally."""
+    probabilities = np.asarray(probabilities, dtype=np.float64)
+    keep = probabilities > threshold
+    if not np.any(keep):
+        raise ValueError("support pruning removed every action")
+    reduced = probabilities[keep]
+    reduced /= reduced.sum()
+    return [action for action, active in zip(actions, keep) if active], reduced
+
+
 def payoff_and_jacobian(p, triples, multiplicities, tensor):
     j, k, ell = triples.T
     weighted = multiplicities * p[j] * p[k] * p[ell]
@@ -202,6 +213,10 @@ def run(args):
         warm = np.asarray(state["probabilities"], dtype=float)
         history = state.get("history", [])
         best_gap = float(state.get("best_gap", 9.0))
+        if args.prune_zero_support and len(warm) == len(actions):
+            actions, warm = prune_pool_support(actions, warm, args.support_threshold)
+        elif len(warm) == 0:
+            warm = None
         previous_best = args.output_dir / "best.json"
         if previous_best.exists():
             previous_audit = json.loads(previous_best.read_text())["exact_oracle_audit"]
@@ -244,6 +259,13 @@ def run(args):
         round_best_gap = audit["certified_exploitability_upper_bound"]
         input_gap_upper = audit["input_mixture_certified_exploitability_upper_bound"]
         response = tuple(audit["best_response"])
+        if args.prune_zero_support:
+            next_actions, next_probabilities = prune_pool_support(
+                actions, solution["probabilities"], args.support_threshold
+            )
+        else:
+            next_actions = list(actions)
+            next_probabilities = solution["probabilities"].copy()
         novel_responses = []
         # Add responses from several distinct restricted equilibria so the pool
         # is not steered by a single local basin. This is a search heuristic.
@@ -251,7 +273,7 @@ def run(args):
                 audited, key=lambda pair: pair[1]["certified_exploitability_upper_bound"]):
             for response_record in other_audit["top_responses"]:
                 action = tuple(response_record["allocation"])
-                if action not in actions and action not in novel_responses:
+                if action not in next_actions and action not in novel_responses:
                     novel_responses.append(action)
                 if len(novel_responses) >= args.add_responses_per_round:
                     break
@@ -307,14 +329,15 @@ def run(args):
         }
         (args.output_dir / f"round-{iteration:03d}.json").write_text(
             json.dumps(mixture, indent=2) + "\n")
-        warm = solution["probabilities"]
+        warm = next_probabilities
         exact_candidate = round_best_gap <= args.exact_tolerance
         if not exact_candidate and novel_responses:
-            actions.extend(novel_responses)
+            next_actions.extend(novel_responses)
             warm = np.r_[warm, np.zeros(len(novel_responses))]
         elif not exact_candidate:
             warm = None
             record["all_responses_already_in_pool"] = True
+        actions = next_actions
         args.state.write_text(json.dumps({"actions": [list(a) for a in actions],
                                           "probabilities": warm.tolist() if warm is not None else [],
                                           "history": history, "best_gap": best_gap}, indent=2) + "\n")
@@ -343,7 +366,12 @@ def main():
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--exact-tolerance", type=float, default=0.0)
+    parser.add_argument("--prune-zero-support", action="store_true",
+                        help="keep only positive-mass restricted actions between rounds")
+    parser.add_argument("--support-threshold", type=float, default=1e-8)
     args = parser.parse_args()
+    if args.support_threshold < 0 or args.support_threshold >= 1:
+        parser.error("support threshold must be in [0, 1)")
     print(json.dumps(run(args), indent=2))
 
 

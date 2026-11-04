@@ -23,21 +23,16 @@ static std::uint8_t payout_quarters(const Allocation& a, const Allocation& b,
         for (int p = 0; p < 4; ++p)
             if ((*players[p])[castle] == high) scores[p] += share12;
     }
-    std::array<int, 4> order{0, 1, 2, 3};
-    std::sort(order.begin(), order.end(), [&](int x, int y) {
-        return scores[x] > scores[y];
-    });
-    for (int start = 0; start < 4;) {
-        int end = start + 1;
-        while (end < 4 && scores[order[end]] == scores[order[start]]) ++end;
-        int sum = 0;
-        for (int rank = start; rank < end; ++rank) sum += prize4[rank];
-        const int shared = sum / (end - start);
-        for (int rank = start; rank < end; ++rank)
-            if (order[rank] == 0) return static_cast<std::uint8_t>(shared);
-        start = end;
+    int above = 0;
+    int tied = 1;
+    for (int player = 1; player < 4; ++player) {
+        above += scores[player] > scores[0];
+        tied += scores[player] == scores[0];
     }
-    return 0;
+    int prize_sum = 0;
+    for (int rank = above; rank < above + tied; ++rank)
+        prize_sum += prize4[rank];
+    return static_cast<std::uint8_t>(prize_sum / tied);
 }
 
 extern "C" void four_way_payoff_tensor(const int* flat_actions, int n,

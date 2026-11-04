@@ -21,6 +21,7 @@ python3 research/four_way/symmetric_minimax_expansion.py \
   --resume \
   --max-rounds 30 \
   --restarts 6 \
+  --prune-zero-support \
   --audit-candidates 3 \
   --add-responses-per-round 4 \
   --oracle-top-k 10 \
