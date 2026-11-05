@@ -30,6 +30,7 @@ class SymmetricMinimaxTests(unittest.TestCase):
             (0, 0, 0, 0, 100),
         ]
         triples, multiplicities, tensor = payoff_tensor(actions)
+        self.assertEqual(tensor.dtype, np.uint8)
         p = np.array([0.16, 0.12, 0.20, 0.17, 0.21, 0.14])
         utilities, jacobian = payoff_and_jacobian(p, triples, multiplicities, tensor)
         self.assertAlmostEqual(float(p @ utilities), 3.75, places=12)

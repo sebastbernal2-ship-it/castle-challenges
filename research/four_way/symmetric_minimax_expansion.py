@@ -85,7 +85,9 @@ def payoff_tensor(actions: list[tuple[int, ...]]):
     flat_actions = (ctypes.c_int * (5 * n))(*(x for action in actions for x in action))
     _library, function = _payoff_function()
     function(flat_actions, n, output)
-    tensor = np.ctypeslib.as_array(output).reshape(n, len(triples)).astype(np.float64)
+    # Keep quarter-unit payouts compact; matrix products promote against the
+    # float64 probability weights, while preserving uint8 cuts tensor memory 8x.
+    tensor = np.ctypeslib.as_array(output).reshape(n, len(triples))
     return triple_array, multiplicity_array, tensor
 
 

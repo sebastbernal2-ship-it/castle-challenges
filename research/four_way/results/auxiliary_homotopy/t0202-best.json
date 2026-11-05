@@ -1816,6 +1816,286 @@
       0,
       34,
       1
+    ],
+    [
+      67,
+      0,
+      0,
+      0,
+      33
+    ],
+    [
+      66,
+      1,
+      0,
+      0,
+      33
+    ],
+    [
+      43,
+      0,
+      25,
+      0,
+      32
+    ],
+    [
+      66,
+      0,
+      1,
+      0,
+      33
+    ],
+    [
+      65,
+      2,
+      0,
+      0,
+      33
+    ],
+    [
+      42,
+      1,
+      25,
+      0,
+      32
+    ],
+    [
+      65,
+      1,
+      1,
+      0,
+      33
+    ],
+    [
+      64,
+      3,
+      0,
+      0,
+      33
+    ],
+    [
+      66,
+      0,
+      0,
+      1,
+      33
+    ],
+    [
+      38,
+      0,
+      30,
+      0,
+      32
+    ],
+    [
+      41,
+      2,
+      25,
+      0,
+      32
+    ],
+    [
+      42,
+      0,
+      26,
+      0,
+      32
+    ],
+    [
+      64,
+      2,
+      1,
+      0,
+      33
+    ],
+    [
+      65,
+      0,
+      2,
+      0,
+      33
+    ],
+    [
+      63,
+      4,
+      0,
+      0,
+      33
+    ],
+    [
+      65,
+      1,
+      0,
+      1,
+      33
+    ],
+    [
+      66,
+      0,
+      0,
+      0,
+      34
+    ],
+    [
+      37,
+      1,
+      30,
+      0,
+      32
+    ],
+    [
+      42,
+      0,
+      25,
+      1,
+      32
+    ],
+    [
+      40,
+      3,
+      25,
+      0,
+      32
+    ],
+    [
+      41,
+      0,
+      25,
+      0,
+      34
+    ],
+    [
+      65,
+      0,
+      0,
+      0,
+      35
+    ],
+    [
+      40,
+      1,
+      25,
+      0,
+      34
+    ],
+    [
+      33,
+      0,
+      31,
+      36,
+      0
+    ],
+    [
+      32,
+      34,
+      0,
+      0,
+      34
+    ],
+    [
+      38,
+      0,
+      28,
+      0,
+      34
+    ],
+    [
+      42,
+      0,
+      24,
+      0,
+      34
+    ],
+    [
+      64,
+      1,
+      0,
+      0,
+      35
+    ],
+    [
+      39,
+      0,
+      27,
+      0,
+      34
+    ],
+    [
+      40,
+      0,
+      26,
+      0,
+      34
+    ],
+    [
+      39,
+      2,
+      25,
+      0,
+      34
+    ],
+    [
+      35,
+      0,
+      29,
+      36,
+      0
+    ],
+    [
+      31,
+      35,
+      0,
+      0,
+      34
+    ],
+    [
+      37,
+      1,
+      28,
+      0,
+      34
+    ],
+    [
+      41,
+      1,
+      24,
+      0,
+      34
+    ],
+    [
+      64,
+      0,
+      1,
+      0,
+      35
+    ],
+    [
+      63,
+      2,
+      0,
+      0,
+      35
+    ],
+    [
+      38,
+      1,
+      27,
+      0,
+      34
+    ],
+    [
+      39,
+      1,
+      26,
+      0,
+      34
+    ],
+    [
+      40,
+      0,
+      25,
+      1,
+      34
     ]
   ],
   "active_actions": [
@@ -1834,10 +2114,17 @@
       21
     ],
     [
-      48,
+      76,
       0,
+      0,
+      0,
+      24
+    ],
+    [
+      54,
+      0,
+      22,
       24,
-      28,
       0
     ],
     [
@@ -1862,6 +2149,13 @@
       23
     ],
     [
+      55,
+      0,
+      22,
+      23,
+      0
+    ],
+    [
       51,
       24,
       0,
@@ -1869,18 +2163,39 @@
       0
     ],
     [
+      47,
+      0,
+      26,
+      27,
+      0
+    ],
+    [
+      45,
+      26,
+      0,
+      29,
+      0
+    ],
+    [
+      54,
+      0,
+      24,
+      22,
+      0
+    ],
+    [
+      44,
+      0,
+      28,
+      0,
+      28
+    ],
+    [
       55,
       23,
       0,
       0,
       22
-    ],
-    [
-      51,
-      0,
-      23,
-      26,
-      0
     ],
     [
       56,
@@ -1897,11 +2212,32 @@
       0
     ],
     [
+      45,
+      0,
+      27,
+      0,
+      28
+    ],
+    [
+      57,
+      0,
+      21,
+      22,
+      0
+    ],
+    [
       56,
       22,
       0,
       0,
       22
+    ],
+    [
+      43,
+      0,
+      25,
+      32,
+      0
     ],
     [
       50,
@@ -1911,11 +2247,88 @@
       24
     ],
     [
-      53,
+      57,
       21,
       0,
       0,
+      22
+    ],
+    [
+      50,
+      0,
+      23,
+      27,
+      0
+    ],
+    [
+      48,
+      0,
+      25,
+      27,
+      0
+    ],
+    [
+      50,
+      25,
+      0,
+      25,
+      0
+    ],
+    [
+      23,
+      28,
+      27,
+      22,
+      0
+    ],
+    [
+      24,
+      27,
+      27,
+      22,
+      0
+    ],
+    [
+      40,
+      31,
+      0,
+      0,
+      29
+    ],
+    [
+      37,
+      34,
+      0,
+      0,
+      29
+    ],
+    [
+      44,
+      0,
+      25,
+      31,
+      0
+    ],
+    [
+      52,
+      22,
+      0,
+      0,
       26
+    ],
+    [
+      51,
+      23,
+      0,
+      0,
+      26
+    ],
+    [
+      43,
+      0,
+      27,
+      0,
+      30
     ],
     [
       69,
@@ -1925,30 +2338,58 @@
       31
     ],
     [
-      48,
+      36,
+      32,
       0,
-      29,
-      23,
+      32,
       0
     ],
     [
-      42,
+      37,
+      30,
       0,
+      33,
+      0
+    ],
+    [
+      40,
       28,
       0,
-      30
-    ],
-    [
-      35,
-      33,
-      0,
       32,
       0
     ],
     [
-      11,
-      32,
-      23,
+      39,
+      28,
+      0,
+      33,
+      0
+    ],
+    [
+      39,
+      30,
+      0,
+      31,
+      0
+    ],
+    [
+      38,
+      31,
+      0,
+      0,
+      31
+    ],
+    [
+      36,
+      33,
+      0,
+      0,
+      31
+    ],
+    [
+      40,
+      26,
+      0,
       34,
       0
     ],
@@ -1960,45 +2401,116 @@
       32
     ],
     [
-      31,
-      34,
-      0,
-      35,
-      0
-    ],
-    [
       33,
       31,
       0,
       36,
       0
+    ],
+    [
+      10,
+      33,
+      23,
+      34,
+      0
+    ],
+    [
+      34,
+      30,
+      0,
+      36,
+      0
+    ],
+    [
+      67,
+      0,
+      0,
+      0,
+      33
+    ],
+    [
+      66,
+      0,
+      0,
+      0,
+      34
+    ],
+    [
+      65,
+      0,
+      0,
+      0,
+      35
+    ],
+    [
+      33,
+      0,
+      31,
+      36,
+      0
+    ],
+    [
+      35,
+      0,
+      29,
+      36,
+      0
     ]
   ],
   "probabilities": [
-    0.27271304319806805,
-    0.7203278642810993,
-    0.0006148374374075817,
-    0.0005466993087276043,
-    0.00032183776807797904,
-    0.0001223733551356246,
-    4.240914183850847e-05,
-    0.00032568228820285377,
-    9.088167480139862e-05,
-    5.0381455611915414e-05,
-    4.970019036186992e-05,
-    0.00039237088632340693,
-    0.00022700250454640644,
-    4.8696824937577656e-05,
-    6.040235954814471e-05,
-    0.000431943137016634,
-    0.0010035553550261,
-    0.00029022387730306693,
-    8.229103327996633e-06,
-    0.001168587455882316,
-    0.0006018283964087089,
-    0.0005614500003470041
+    0.2728626481557029,
+    0.7201385600086055,
+    3.6589444744381884e-05,
+    5.344525462877539e-06,
+    3.811076228300827e-05,
+    0.00037055838864689055,
+    2.7903245649165618e-05,
+    1.6729277859119155e-05,
+    0.000223503281065065,
+    4.780419926294364e-05,
+    0.00025211229856403295,
+    0.00024246440054245314,
+    6.183875082430281e-05,
+    0.000251541562241302,
+    0.0003637402954372151,
+    0.00010846215129710472,
+    3.6143645797284826e-05,
+    0.00021044802259843036,
+    8.018637928020385e-05,
+    6.018851470201073e-06,
+    0.00013085106619506896,
+    0.0005758838771365672,
+    0.0002400775991958153,
+    3.0980708217849776e-06,
+    6.289812055989765e-06,
+    8.272706481749807e-05,
+    2.4930483523344566e-05,
+    2.674317125133984e-05,
+    0.00028471220744201995,
+    6.85286435733502e-05,
+    0.0002980443106963326,
+    1.735193015785049e-05,
+    3.871629664884826e-06,
+    9.342547004836255e-05,
+    9.08296367744441e-05,
+    3.746844041154001e-05,
+    1.9691618407057233e-05,
+    6.480034625088956e-05,
+    1.6777774527285636e-05,
+    1.2950236864462184e-05,
+    5.931367360157063e-05,
+    4.1547114240808186e-05,
+    8.237480241294553e-05,
+    0.0003440305628988603,
+    4.5052017784230036e-05,
+    0.0003716825762716974,
+    0.00012917362165653235,
+    3.204159516407254e-05,
+    0.0007844744879872908,
+    0.00041993798002704216,
+    0.00021061053080478312
   ],
-  "restricted_auxiliary_max": 3.7500000967603513,
+  "restricted_auxiliary_max": 3.7500001015294524,
   "optimizer_success": true,
   "exact_auxiliary_audit": {
     "t_fraction": [
@@ -2006,765 +2518,765 @@
       1000
     ],
     "frequency_total": 1000000,
-    "support_size": 22,
+    "support_size": 51,
     "expected_cost_fraction": [
-      183644263,
-      250000000
+      229518143,
+      312500000
     ],
     "top_responses": [
       {
         "allocation": [
-          67,
-          0,
-          0,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          223959314522159589,
-          25000000000000000
-        ],
-        "target_payout": 8.958372580886383,
-        "auxiliary_payout_fraction": [
-          46940706860438118489,
-          12500000000000000000
-        ],
-        "auxiliary_payout": 3.7552565488350496,
-        "adjusted_component_numerator": "3531281226780989582400000",
-        "class_cost_fraction": [
-          1279,
-          625
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          66,
-          1,
-          0,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375509695459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.755096954598711,
-        "adjusted_component_numerator": "3528089342054227348200000",
-        "class_cost_fraction": [
-          10233,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          43,
-          0,
-          25,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          8993421652520196519,
-          1000000000000000000
-        ],
-        "target_payout": 8.993421652520196,
-        "auxiliary_payout_fraction": [
-          1877497430652539848419,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.7549948613050796,
-        "adjusted_component_numerator": "3526047476181593936760000",
-        "class_cost_fraction": [
-          5139,
-          2500
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          66,
-          0,
-          1,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          447918631877920737,
-          50000000000000000
-        ],
-        "target_payout": 8.958372637558416,
-        "auxiliary_payout_fraction": [
-          93873434007069994437,
-          25000000000000000000
-        ],
-        "auxiliary_payout": 3.7549373602827996,
-        "adjusted_component_numerator": "3524897455735995549600000",
-        "class_cost_fraction": [
-          5117,
-          2500
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          65,
-          2,
-          0,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375493735459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7549373545987113,
-        "adjusted_component_numerator": "3524897342054227348200000",
-        "class_cost_fraction": [
-          5117,
-          2500
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          42,
-          1,
-          25,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          8993378287599625323,
-          1000000000000000000
-        ],
-        "target_payout": 8.993378287599626,
-        "auxiliary_payout_fraction": [
-          1877413250795562157623,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.754826501591124,
-        "adjusted_component_numerator": "3522680281902486304920000",
-        "class_cost_fraction": [
-          10279,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          65,
-          1,
-          1,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674533218278877,
-          200000000000000000
-        ],
-        "target_payout": 8.958372666091394,
-        "auxiliary_payout_fraction": [
-          375477776604646166577,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7547777660464616,
-        "adjusted_component_numerator": "3521705571009233315400000",
-        "class_cost_fraction": [
-          2047,
-          1000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          64,
-          3,
-          0,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375477775459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7547777545987113,
-        "adjusted_component_numerator": "3521705342054227348200000",
-        "class_cost_fraction": [
-          2047,
-          1000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          66,
-          0,
-          0,
-          1,
-          33
-        ],
-        "target_payout_fraction": [
-          223959314522159589,
-          25000000000000000
-        ],
-        "target_payout": 8.958372580886383,
-        "auxiliary_payout_fraction": [
-          46934721860438118489,
-          12500000000000000000
-        ],
-        "auxiliary_payout": 3.7547777488350493,
-        "adjusted_component_numerator": "3521705226780989582400000",
-        "class_cost_fraction": [
-          2047,
-          1000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          38,
-          0,
-          30,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          359999992130702319,
-          40000000000000000
-        ],
-        "target_payout": 8.999999803267558,
-        "auxiliary_payout_fraction": [
-          75094552955120934219,
-          20000000000000000000
-        ],
-        "auxiliary_payout": 3.7547276477560465,
-        "adjusted_component_numerator": "3520703205200934219000000",
-        "class_cost_fraction": [
-          1286,
-          625
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          41,
-          2,
-          25,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          8993378281318111371,
-          1000000000000000000
-        ],
-        "target_payout": 8.993378281318112,
-        "auxiliary_payout_fraction": [
-          1877333450161129248471,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.7546669003222584,
-        "adjusted_component_numerator": "3519488256525169938840000",
-        "class_cost_fraction": [
-          257,
-          125
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          42,
-          0,
-          26,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          8993378266754491323,
-          1000000000000000000
-        ],
-        "target_payout": 8.993378266754492,
-        "auxiliary_payout_fraction": [
-          1877333448690203623623,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.754666897380407,
-        "adjusted_component_numerator": "3519488197688144944920000",
-        "class_cost_fraction": [
-          257,
-          125
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          64,
-          2,
-          1,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674533218278877,
-          200000000000000000
-        ],
-        "target_payout": 8.958372666091394,
-        "auxiliary_payout_fraction": [
-          375461816604646166577,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7546181660464617,
-        "adjusted_component_numerator": "3518513571009233315400000",
-        "class_cost_fraction": [
-          2559,
-          1250
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          65,
-          0,
-          2,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          447918631877920737,
-          50000000000000000
-        ],
-        "target_payout": 8.958372637558416,
-        "auxiliary_payout_fraction": [
-          93865454007069994437,
-          25000000000000000000
-        ],
-        "auxiliary_payout": 3.7546181602827997,
-        "adjusted_component_numerator": "3518513455735995549600000",
-        "class_cost_fraction": [
-          2559,
-          1250
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          63,
-          4,
-          0,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375461815459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7546181545987114,
-        "adjusted_component_numerator": "3518513342054227348200000",
-        "class_cost_fraction": [
-          2559,
-          1250
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          65,
-          1,
-          0,
-          1,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375461815459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7546181545987114,
-        "adjusted_component_numerator": "3518513342054227348200000",
-        "class_cost_fraction": [
-          2559,
-          1250
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          66,
-          0,
-          0,
-          0,
-          34
-        ],
-        "target_payout_fraction": [
-          223959314522159589,
-          25000000000000000
-        ],
-        "target_payout": 8.958372580886383,
-        "auxiliary_payout_fraction": [
-          46932726860438118489,
-          12500000000000000000
-        ],
-        "auxiliary_payout": 3.7546181488350494,
-        "adjusted_component_numerator": "3518513226780989582400000",
-        "class_cost_fraction": [
-          2559,
-          1250
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
+          6,
+          34,
+          23,
           37,
-          1,
-          30,
-          0,
-          32
+          0
         ],
         "target_payout_fraction": [
-          359999992130702319,
-          40000000000000000
+          3599366665708510659,
+          400000000000000000
         ],
-        "target_payout": 8.999999803267558,
+        "target_payout": 8.998416664271277,
         "auxiliary_payout_fraction": [
-          75091360955120934219,
-          20000000000000000000
+          750766819229519576559,
+          200000000000000000000
         ],
-        "auxiliary_payout": 3.7545680477560466,
-        "adjusted_component_numerator": "3517511205200934219000000",
+        "auxiliary_payout": 3.7538340961475978,
+        "adjusted_component_numerator": "3504731323655957655900000",
         "class_cost_fraction": [
-          10289,
+          10291,
           5000
         ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          42,
-          0,
-          25,
-          1,
-          32
-        ],
-        "target_payout_fraction": [
-          8993378381909712063,
-          1000000000000000000
-        ],
-        "target_payout": 8.993378381909713,
-        "auxiliary_payout_fraction": [
-          1877253660320880918363,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.754507320641762,
-        "adjusted_component_numerator": "3516296662915236734520000",
-        "class_cost_fraction": [
-          10281,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          40,
-          3,
-          25,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          8993378281318111371,
-          1000000000000000000
-        ],
-        "target_payout": 8.993378281318112,
-        "auxiliary_payout_fraction": [
-          1877253650161129248471,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.7545073003222584,
-        "adjusted_component_numerator": "3516296256525169938840000",
-        "class_cost_fraction": [
-          10281,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          41,
-          1,
-          26,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          8993378281318111371,
-          1000000000000000000
-        ],
-        "target_payout": 8.993378281318112,
-        "auxiliary_payout_fraction": [
-          1877253650161129248471,
-          500000000000000000000
-        ],
-        "auxiliary_payout": 3.7545073003222584,
-        "adjusted_component_numerator": "3516296256525169938840000",
-        "class_cost_fraction": [
-          10281,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          63,
-          3,
-          1,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674533218278877,
-          200000000000000000
-        ],
-        "target_payout": 8.958372666091394,
-        "auxiliary_payout_fraction": [
-          375445856604646166577,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7544585660464618,
-        "adjusted_component_numerator": "3515321571009233315400000",
-        "class_cost_fraction": [
-          10237,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          64,
-          1,
-          2,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674533218278877,
-          200000000000000000
-        ],
-        "target_payout": 8.958372666091394,
-        "auxiliary_payout_fraction": [
-          375445856604646166577,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7544585660464618,
-        "adjusted_component_numerator": "3515321571009233315400000",
-        "class_cost_fraction": [
-          10237,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          65,
-          0,
-          1,
-          1,
-          33
-        ],
-        "target_payout_fraction": [
-          447918631877920737,
-          50000000000000000
-        ],
-        "target_payout": 8.958372637558416,
-        "auxiliary_payout_fraction": [
-          93861464007069994437,
-          25000000000000000000
-        ],
-        "auxiliary_payout": 3.7544585602828,
-        "adjusted_component_numerator": "3515321455735995549600000",
-        "class_cost_fraction": [
-          10237,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          62,
-          5,
-          0,
-          0,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375445855459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7544585545987115,
-        "adjusted_component_numerator": "3515321342054227348200000",
-        "class_cost_fraction": [
-          10237,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          64,
-          2,
-          0,
-          1,
-          33
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375445855459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7544585545987115,
-        "adjusted_component_numerator": "3515321342054227348200000",
-        "class_cost_fraction": [
-          10237,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          65,
-          1,
-          0,
-          0,
-          34
-        ],
-        "target_payout_fraction": [
-          1791674521883872641,
-          200000000000000000
-        ],
-        "target_payout": 8.958372609419364,
-        "auxiliary_payout_fraction": [
-          375445855459871136741,
-          100000000000000000000
-        ],
-        "auxiliary_payout": 3.7544585545987115,
-        "adjusted_component_numerator": "3515321342054227348200000",
-        "class_cost_fraction": [
-          10237,
-          5000
-        ],
-        "opponent_triples": 2024
-      },
-      {
-        "allocation": [
-          37,
-          0,
-          31,
-          0,
-          32
-        ],
-        "target_payout_fraction": [
-          359999992130702319,
-          40000000000000000
-        ],
-        "target_payout": 8.999999803267558,
-        "auxiliary_payout_fraction": [
-          75088168955120934219,
-          20000000000000000000
-        ],
-        "auxiliary_payout": 3.7544084477560467,
-        "adjusted_component_numerator": "3514319205200934219000000",
-        "class_cost_fraction": [
-          1029,
-          500
-        ],
-        "opponent_triples": 2024
+        "opponent_triples": 23426
       },
       {
         "allocation": [
           36,
-          2,
-          30,
+          27,
           0,
-          32
+          37,
+          0
         ],
         "target_payout_fraction": [
-          1799996853549819819,
+          1791227084649228309,
           200000000000000000
         ],
-        "target_payout": 8.999984267749099,
+        "target_payout": 8.956135423246142,
         "auxiliary_payout_fraction": [
-          375440530958131801719,
+          375375208546052059209,
           100000000000000000000
         ],
-        "auxiliary_payout": 3.754405309581318,
-        "adjusted_component_numerator": "3514256441706360343800000",
+        "auxiliary_payout": 3.7537520854605204,
+        "adjusted_component_numerator": "3503091109914411841800000",
         "class_cost_fraction": [
-          1029,
-          500
+          5119,
+          2500
         ],
-        "opponent_triples": 2024
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          35,
+          28,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          17913726980783670321,
+          2000000000000000000
+        ],
+        "target_payout": 8.956863490391836,
+        "auxiliary_payout_fraction": [
+          3753739555023950702421,
+          1000000000000000000000
+        ],
+        "auxiliary_payout": 3.7537395550239507,
+        "adjusted_component_numerator": "3502840501183014048420000",
+        "class_cost_fraction": [
+          10239,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          37,
+          26,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          1791033387970011687,
+          200000000000000000
+        ],
+        "target_payout": 8.95516693985006,
+        "auxiliary_payout_fraction": [
+          375371605181451180387,
+          100000000000000000000
+        ],
+        "auxiliary_payout": 3.7537160518145116,
+        "adjusted_component_numerator": "3502370436994236077400000",
+        "class_cost_fraction": [
+          10237,
+          5000
+        ],
+        "opponent_triples": 23426
       },
       {
         "allocation": [
           39,
+          24,
           0,
-          29,
-          0,
-          32
+          37,
+          0
         ],
         "target_payout_fraction": [
-          8996776573319308143,
+          8953583641160993133,
           1000000000000000000
         ],
-        "target_payout": 8.996776573319309,
+        "target_payout": 8.953583641160993,
         "auxiliary_payout_fraction": [
-          1877197877653250122443,
+          1876857712739660306433,
           500000000000000000000
         ],
-        "auxiliary_payout": 3.7543957553065,
-        "adjusted_component_numerator": "3514065356210004897720000",
+        "auxiliary_payout": 3.753715425479321,
+        "adjusted_component_numerator": "3502357910290412257320000",
+        "class_cost_fraction": [
+          2047,
+          1000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          5,
+          35,
+          23,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          449921209224771603,
+          50000000000000000
+        ],
+        "target_payout": 8.998424184495432,
+        "auxiliary_payout_fraction": [
+          93841900380821931903,
+          25000000000000000000
+        ],
+        "auxiliary_payout": 3.753676015232877,
+        "adjusted_component_numerator": "3501569705361545522400000",
+        "class_cost_fraction": [
+          2573,
+          1250
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          28,
+          35,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          896193837169145577,
+          100000000000000000
+        ],
+        "target_payout": 8.961938371691456,
+        "auxiliary_payout_fraction": [
+          187682374052323703277,
+          50000000000000000000
+        ],
+        "auxiliary_payout": 3.753647481046474,
+        "adjusted_component_numerator": "3500999021633481310800000",
+        "class_cost_fraction": [
+          5123,
+          2500
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          7,
+          34,
+          22,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          3598280128281359301,
+          400000000000000000
+        ],
+        "target_payout": 8.995700320703397,
+        "auxiliary_payout_fraction": [
+          750720918949377289401,
+          200000000000000000000
+        ],
+        "auxiliary_payout": 3.7536045947468866,
+        "adjusted_component_numerator": "3500141295641728940100000",
+        "class_cost_fraction": [
+          10289,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          34,
+          29,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          4478435438186755053,
+          500000000000000000
+        ],
+        "target_payout": 8.956870876373511,
+        "auxiliary_payout_fraction": [
+          938395361748062260353,
+          250000000000000000000
+        ],
+        "auxiliary_payout": 3.753581446992249,
+        "adjusted_component_numerator": "3499678340548980828240000",
+        "class_cost_fraction": [
+          256,
+          125
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          8,
+          35,
+          20,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          7025766302916891,
+          781250000000000
+        ],
+        "target_payout": 8.992980867733621,
+        "auxiliary_payout_fraction": [
+          1466224244237105991,
+          390625000000000000
+        ],
+        "auxiliary_payout": 3.7535340652469915,
+        "adjusted_component_numerator": "3498730705643826739200000",
         "class_cost_fraction": [
           5143,
           2500
         ],
-        "opponent_triples": 2024
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          5,
+          34,
+          24,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          3599371040421305463,
+          400000000000000000
+        ],
+        "target_payout": 8.998427601053264,
+        "auxiliary_payout_fraction": [
+          750703421075511851763,
+          200000000000000000000
+        ],
+        "auxiliary_payout": 3.753517105377559,
+        "adjusted_component_numerator": "3498391508255185176300000",
+        "class_cost_fraction": [
+          10293,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          4,
+          36,
+          23,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          449921209224771603,
+          50000000000000000
+        ],
+        "target_payout": 8.998424184495432,
+        "auxiliary_payout_fraction": [
+          93837910380821931903,
+          25000000000000000000
+        ],
+        "auxiliary_payout": 3.7535164152328773,
+        "adjusted_component_numerator": "3498377705361545522400000",
+        "class_cost_fraction": [
+          10293,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          33,
+          30,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          4478634087330746637,
+          500000000000000000
+        ],
+        "target_payout": 8.957268174661493,
+        "auxiliary_payout_fraction": [
+          938375525311605410337,
+          250000000000000000000
+        ],
+        "auxiliary_payout": 3.7535021012464216,
+        "adjusted_component_numerator": "3498091425632432826960000",
+        "class_cost_fraction": [
+          10241,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          27,
+          36,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          896193837169145577,
+          100000000000000000
+        ],
+        "target_payout": 8.961938371691456,
+        "auxiliary_payout_fraction": [
+          187674394052323703277,
+          50000000000000000000
+        ],
+        "auxiliary_payout": 3.7534878810464742,
+        "adjusted_component_numerator": "3497807021633481310800000",
+        "class_cost_fraction": [
+          10247,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          38,
+          25,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          17906127357315652131,
+          2000000000000000000
+        ],
+        "target_payout": 8.953063678657825,
+        "auxiliary_payout_fraction": [
+          3753450793053680865231,
+          1000000000000000000000
+        ],
+        "auxiliary_payout": 3.753450793053681,
+        "adjusted_component_numerator": "3497065261777617304620000",
+        "class_cost_fraction": [
+          2559,
+          1250
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          6,
+          35,
+          22,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          3598283879526805071,
+          400000000000000000
+        ],
+        "target_payout": 8.995709698817013,
+        "auxiliary_payout_fraction": [
+          750689377825167312171,
+          200000000000000000000
+        ],
+        "auxiliary_payout": 3.7534468891258363,
+        "adjusted_component_numerator": "3496987183220731217100000",
+        "class_cost_fraction": [
+          1029,
+          500
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          30,
+          33,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          358373235164633163,
+          40000000000000000
+        ],
+        "target_payout": 8.959330879115829,
+        "auxiliary_payout_fraction": [
+          75068799350923949463,
+          20000000000000000000
+        ],
+        "auxiliary_payout": 3.7534399675461976,
+        "adjusted_component_numerator": "3496848751627949463000000",
+        "class_cost_fraction": [
+          2561,
+          1250
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          34,
+          28,
+          1,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          4478429654241476673,
+          500000000000000000
+        ],
+        "target_payout": 8.956859308482953,
+        "auxiliary_payout_fraction": [
+          938354877569589143973,
+          250000000000000000000
+        ],
+        "auxiliary_payout": 3.7534195102783565,
+        "adjusted_component_numerator": "3496439606271131517840000",
+        "class_cost_fraction": [
+          10241,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          17,
+          23,
+          23,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          4493798537516522583,
+          500000000000000000
+        ],
+        "target_payout": 8.987597075033046,
+        "auxiliary_payout_fraction": [
+          938351034780368780883,
+          250000000000000000000
+        ],
+        "auxiliary_payout": 3.753404139121475,
+        "adjusted_component_numerator": "3496132183133502470640000",
+        "class_cost_fraction": [
+          257,
+          125
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          31,
+          32,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          17916573258274181061,
+          2000000000000000000
+        ],
+        "target_payout": 8.95828662913709,
+        "auxiliary_payout_fraction": [
+          3753388629050492287161,
+          1000000000000000000000
+        ],
+        "auxiliary_payout": 3.7533886290504923,
+        "adjusted_component_numerator": "3495821981713845743220000",
+        "class_cost_fraction": [
+          10243,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          7,
+          36,
+          20,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          7025766302916891,
+          781250000000000
+        ],
+        "target_payout": 8.992980867733621,
+        "auxiliary_payout_fraction": [
+          1466161900487105991,
+          390625000000000000
+        ],
+        "auxiliary_payout": 3.753374465246991,
+        "adjusted_component_numerator": "3495538705643826739200000",
+        "class_cost_fraction": [
+          10287,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          8,
+          34,
+          21,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          1798596168507211149,
+          200000000000000000
+        ],
+        "target_payout": 8.992980842536056,
+        "auxiliary_payout_fraction": [
+          375337446015708326049,
+          100000000000000000000
+        ],
+        "auxiliary_payout": 3.753374460157083,
+        "adjusted_component_numerator": "3495538603845665209800000",
+        "class_cost_fraction": [
+          10287,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          29,
+          34,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          1791957122445137319,
+          200000000000000000
+        ],
+        "target_payout": 8.959785612225687,
+        "auxiliary_payout_fraction": [
+          375337222363438869219,
+          100000000000000000000
+        ],
+        "auxiliary_payout": 3.7533722236343885,
+        "adjusted_component_numerator": "3495493873391773843800000",
+        "class_cost_fraction": [
+          2049,
+          1000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          4,
+          35,
+          24,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          449921633693868831,
+          50000000000000000
+        ],
+        "target_payout": 8.998432673877376,
+        "auxiliary_payout_fraction": [
+          93833963252200751931,
+          25000000000000000000
+        ],
+        "auxiliary_payout": 3.75335853008803,
+        "adjusted_component_numerator": "3495220002464601544800000",
+        "class_cost_fraction": [
+          5147,
+          2500
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          3,
+          37,
+          23,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          449921209224771603,
+          50000000000000000
+        ],
+        "target_payout": 8.998424184495432,
+        "auxiliary_payout_fraction": [
+          93833920380821931903,
+          25000000000000000000
+        ],
+        "auxiliary_payout": 3.7533568152328773,
+        "adjusted_component_numerator": "3495185705361545522400000",
+        "class_cost_fraction": [
+          5147,
+          2500
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          5,
+          34,
+          23,
+          38,
+          0
+        ],
+        "target_payout_fraction": [
+          3599366665708510659,
+          400000000000000000
+        ],
+        "target_payout": 8.998416664271277,
+        "auxiliary_payout_fraction": [
+          750671059229519576559,
+          200000000000000000000
+        ],
+        "auxiliary_payout": 3.753355296147598,
+        "adjusted_component_numerator": "3495155323655957655900000",
+        "class_cost_fraction": [
+          5147,
+          2500
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          32,
+          31,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          8957309978610910713,
+          1000000000000000000
+        ],
+        "target_payout": 8.95730997861091,
+        "auxiliary_payout_fraction": [
+          1876675472822101982013,
+          500000000000000000000
+        ],
+        "auxiliary_payout": 3.753350945644204,
+        "adjusted_component_numerator": "3495068313588079280520000",
+        "class_cost_fraction": [
+          5121,
+          2500
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          36,
+          26,
+          1,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          3581960691197069007,
+          400000000000000000
+        ],
+        "target_payout": 8.954901727992672,
+        "auxiliary_payout_fraction": [
+          750668655803863969707,
+          200000000000000000000
+        ],
+        "auxiliary_payout": 3.7533432790193197,
+        "adjusted_component_numerator": "3494914981090396970700000",
+        "class_cost_fraction": [
+          10239,
+          5000
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          27,
+          35,
+          1,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          1792387698464894457,
+          200000000000000000
+        ],
+        "target_payout": 8.961938492324473,
+        "auxiliary_payout_fraction": [
+          375332830541434340157,
+          100000000000000000000
+        ],
+        "auxiliary_payout": 3.7533283054143434,
+        "adjusted_component_numerator": "3494615508990868031400000",
+        "class_cost_fraction": [
+          1281,
+          625
+        ],
+        "opponent_triples": 23426
+      },
+      {
+        "allocation": [
+          26,
+          37,
+          0,
+          37,
+          0
+        ],
+        "target_payout_fraction": [
+          896193837169145577,
+          100000000000000000
+        ],
+        "target_payout": 8.961938371691456,
+        "auxiliary_payout_fraction": [
+          187666414052323703277,
+          50000000000000000000
+        ],
+        "auxiliary_payout": 3.753328281046474,
+        "adjusted_component_numerator": "3494615021633481310800000",
+        "class_cost_fraction": [
+          1281,
+          625
+        ],
+        "opponent_triples": 23426
       }
     ],
     "scope": "exact ranking over all 4,598,126 legal actions for this quantized mixture and auxiliary cost"
   },
-  "best_response_auxiliary_gap": 0.005256548835049557,
-  "method": "warm continuation after exact response neighborhood expansion"
+  "best_response_auxiliary_gap": 0.0038340961475977764,
+  "method": "retained-column multistart exact auxiliary expansion"
 }
