@@ -37,5 +37,16 @@
   "support_history_checkpoint_gap": 0.007925663979153175,
   "support_history_checkpoint_pool_size": 180,
   "support_history_checkpoint_support_size": 20,
-  "scope": "exact auxiliary best-response audits against quantized mixtures; not target-game equilibrium certificates"
+  "scope": "exact auxiliary best-response audits against quantized mixtures; not target-game equilibrium certificates",
+  "best_multistart_refit_gap": 0.005256548835049557,
+  "best_multistart_refit_pool_size": 259,
+  "best_multistart_refit_support_size": 22,
+  "best_multistart_refit_response": [
+    67,
+    0,
+    0,
+    0,
+    33
+  ],
+  "best_checkpoint": "t0202-best.json"
 }
