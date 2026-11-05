@@ -69,7 +69,7 @@ On the two-action branch `{a0,a1}`, the numerical indifference continuation puts
 
 A fixed-parameter experiment at `t=0.202` did not close the auxiliary-game gap. The exact-response expansion repeatedly changed support; retaining 248 discovered columns reduced the largest audited auxiliary payoff gap to about `0.0070`, but subsequent rounds remained around `0.008`. A multi-start refit on a 259-action pool lowered the exact auxiliary gap to `0.00526` (support size 22; best omitted response `(67,0,0,0,33)`). A mixture over the earlier active-support history had gap `0.00793`. These are auxiliary-game gaps, **not** target-game exploitability certificates. The best full audit checkpoint is `results/auxiliary_homotopy/t0202-best.json`.
 
-This is useful progress on implementing the proposed path, but it also exposes its difficulty: even a nearby homotopy slice has many changing responses, and the column-generation branch can cycle. No endpoint at `t=1` has been reached, and this does not solve Game 2.
+This is useful progress on implementing the proposed path, but it also exposes its difficulty: even a nearby homotopy slice has many changing responses, and the column-generation branch can cycle. Warm-starting the `t=0.202` pool at `t=0.205`, `0.210`, and `0.220` without closing the intervening slices produced auxiliary gaps `0.0275`, `0.0588`, and `0.1210`; the path cannot safely jump between parameters. No endpoint at `t=1` has been reached, and this does not solve Game 2.
 
 ## What the exploratory checks rule out
 

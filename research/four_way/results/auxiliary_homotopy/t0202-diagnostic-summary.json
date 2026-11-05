@@ -48,5 +48,50 @@
     0,
     33
   ],
-  "best_checkpoint": "t0202-best.json"
+  "best_checkpoint": "t0202-best.json",
+  "warm_step_probes": [
+    {
+      "t": [
+        205,
+        1000
+      ],
+      "auxiliary_gap": 0.027516338482707514,
+      "best_response": [
+        37,
+        0,
+        31,
+        0,
+        32
+      ]
+    },
+    {
+      "t": [
+        210,
+        1000
+      ],
+      "auxiliary_gap": 0.058799722516697184,
+      "best_response": [
+        37,
+        0,
+        31,
+        0,
+        32
+      ]
+    },
+    {
+      "t": [
+        220,
+        1000
+      ],
+      "auxiliary_gap": 0.12101400584823052,
+      "best_response": [
+        37,
+        0,
+        31,
+        0,
+        32
+      ]
+    }
+  ],
+  "interpretation": "Warm-starting later t values without full re-separation fails quickly; a valid continuation must close each auxiliary-game slice before advancing."
 }
