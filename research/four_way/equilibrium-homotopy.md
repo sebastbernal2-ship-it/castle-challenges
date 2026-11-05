@@ -54,6 +54,23 @@ Against a profile with exactly `k` of the three opponents using `a1` and the res
 
 Thus `a1` strictly beats `a0` throughout this two-action restricted game. This gives an exact first homotopy segment, but not a full-game equilibrium: the pure profile `a1` is itself exploitable by the theorem above. The next support event must bring in further allocations.
 
+## Implemented auxiliary-response continuation probe
+
+`exact_auxiliary_best_response.cpp` and `trace_auxiliary_homotopy.py` now implement a numerical fixed-`t` continuation/column-generation probe with an exact full-action response oracle. To break broad payoff ties, the experiment uses
+
+\[
+c(a_0)=0,\quad c(a_1)=1,\quad
+c(a)=2+\frac{a_1+2a_2+3a_3+4a_4+5a_5}{5000}
+\]
+
+for other allocations. The cost perturbation does not change the target game at `t=1`; at `t=0`, `a0` remains uniquely dominant. The auxiliary oracle ranks all legal allocations exactly for a quantized mixture and rational `t`.
+
+On the two-action branch `{a0,a1}`, the numerical indifference continuation puts about `0.728` mass on `a1` near `t=0.1996`. At that point `(58,21,0,21,0)` is an omitted action reaching the auxiliary equilibrium payoff (within quantization error); it pays 9 in the target game. This demonstrates that the homotopy encounters new full-game responses very early, not just at its endpoint.
+
+A fixed-parameter experiment at `t=0.202` did not close the auxiliary-game gap. The exact-response expansion repeatedly changed support; retaining 248 discovered columns reduced the largest audited auxiliary payoff gap to about `0.0070`, but subsequent rounds remained around `0.008`. A mixture over the active-support history had gap `0.00793`. These are auxiliary-game gaps, **not** target-game exploitability certificates. The full audited checkpoint is `results/auxiliary_homotopy/t0202-support-history.json`.
+
+This is useful progress on implementing the proposed path, but it also exposes its difficulty: even a nearby homotopy slice has many changing responses, and the column-generation branch can cycle. No endpoint at `t=1` has been reached, and this does not solve Game 2.
+
 ## What the exploratory checks rule out
 
 - Comparing actions coordinatewise against the current 55-action support leaves 3,057,040 exact payoff classes, only a modest reduction from 4,598,126 allocations.
